@@ -3,7 +3,7 @@ import { DataTypes } from 'sequelize';
 
 export let persona_model = (sequelize: any) => {
 
-  let t_persona = sequelize.define('persona', {
+  let t_persona = sequelize.define('t_persona', {
     per_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
