@@ -1,13 +1,11 @@
 import { conexion } from './../configuracion/sequelize';
 import express, { Request, Response } from 'express';
-import { pabellon_router } from './../rutas/Pabellon';
-import { aulas_router} from './../rutas/Aulas';
-import { usuario_router} from './../rutas/Usuario';
 let bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 
 import * as swaggerDocument from './../apidocs/documentacion.json';
-import { reserva_router } from '../rutas/Reserva';
+
+import { persona_router} from '../rutas/persona';
 
 
 export class Server {
@@ -35,10 +33,8 @@ export class Server {
     });
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-    this.app.use('/api', pabellon_router);
-    this.app.use('/api', aulas_router);
-    this.app.use('/api', usuario_router);
-    this.app.use('/api', reserva_router);
+    this.app.use('/api', persona_router);
+
   }
 
   start() {
