@@ -1,4 +1,6 @@
 import { DataTypes, Sequelize } from 'sequelize';
+
+
 export let categoria_model = (sequelize: Sequelize) => {
     var categoria = sequelize.define('t_categoria', {
         cat_id: {
