@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize, Model } from 'sequelize';
-import { type } from 'os';
+
 
 export let ordendetalle_model = (sequelize: Sequelize) => {
     class ordendetalle_model extends Model{
