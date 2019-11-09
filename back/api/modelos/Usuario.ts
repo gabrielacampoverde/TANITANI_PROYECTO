@@ -2,10 +2,8 @@ import { DataTypes, Sequelize } from 'sequelize';
 
 const crypto = require('crypto');
 var jwt = require('jsonwebtoken')
-
-export let destino_model = (sequelize: Sequelize) => {
-
-  let usuario = sequelize.define('t_usuario', {
+export let usuario_model = (sequelize: Sequelize) => {
+    var usuario = sequelize.define('t_usuario', {
         usu_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
