@@ -12,7 +12,7 @@ const Usuario_1 = require("../modelos/Usuario");
 const MetodoPago_1 = require("../modelos/MetodoPago");
 const Orden_1 = require("../modelos/Orden");
 const Sequelize = require("sequelize");
-exports.conexion = new Sequelize('aulas', 'root', 'root', {
+exports.conexion = new Sequelize('tanitani', 'root', 'root', {
     host: 'localhost',
     dialect: 'mysql',
     timezone: '-05:00',
