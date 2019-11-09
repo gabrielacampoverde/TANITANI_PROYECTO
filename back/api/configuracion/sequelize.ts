@@ -11,9 +11,10 @@ import { orden_model } from "../modelos/Orden";
 import { metodopago_model } from "../modelos/MetodoPago";
 import { categoriaproducto_model } from "../modelos/CategoriaProducto";
 
+
 const Sequelize = require("sequelize");
 
-export const conexion = new Sequelize('aulas','root', 'admin', {
+export const conexion = new Sequelize('aulas','root', 'root', {
   host: 'localhost',
   dialect: 'mysql',
   timezone: '-05:00',
@@ -72,3 +73,4 @@ CategoriaProducto.belongsTo(Producto,{foreignKey:"prod_id"});
 
 Categoria.hasMany(CategoriaProducto,{foreingKey:"cat_id"});
 CategoriaProducto.belongsTo(Categoria,{foreignKey:"cat_id"});
+

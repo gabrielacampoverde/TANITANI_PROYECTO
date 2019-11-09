@@ -6,6 +6,8 @@ const swaggerUi = require('swagger-ui-express');
 import * as swaggerDocument from './../apidocs/documentacion.json';
 
 import { persona_router} from '../rutas/persona';
+import { categoria_router } from '../rutas/categoria';
+import { metodoPago_router } from '../rutas/metodoPago';
 
 
 export class Server {
@@ -34,6 +36,8 @@ export class Server {
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
     this.app.use('/api', persona_router);
+    this.app.use('/api', categoria_router);
+    this.app.use('/api', metodoPago_router);
 
   }
 
