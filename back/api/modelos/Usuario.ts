@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize } from 'sequelize';
-import { Usuario } from '../configuracion/sequelize';
+
 const crypto = require('crypto');
 var jwt = require('jsonwebtoken')
 export let usuario_model = (sequelize: Sequelize) => {
