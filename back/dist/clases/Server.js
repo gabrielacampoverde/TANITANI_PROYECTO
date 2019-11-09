@@ -16,7 +16,6 @@ let bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = __importStar(require("./../apidocs/documentacion.json"));
 const persona_1 = require("../rutas/persona");
-const categoria_1 = require("../rutas/categoria");
 const metodoPago_1 = require("../rutas/metodoPago");
 class Server {
     constructor() {
@@ -39,7 +38,6 @@ class Server {
         });
         this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
         this.app.use('/api', persona_1.persona_router);
-        this.app.use('/api', categoria_1.categoria_router);
         this.app.use('/api', metodoPago_1.metodoPago_router);
     }
     start() {

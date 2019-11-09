@@ -31,7 +31,7 @@ exports.postMetPago = (req, res) => {
     if (!req.body.mpago_nom) {
         res.status(400).json({
             ok: false,
-            mensaje: "No se recibieron todos los campos en el request"
+            mensaje: "No se recibieron todos los campos REQUERIDOS"
         });
         return;
     }
@@ -43,13 +43,13 @@ exports.postMetPago = (req, res) => {
         res.status(201).json({
             ok: true,
             contenido: objmetPagoCreado,
-            mensaje: "Pabellon creado correctamente"
+            mensaje: "Metodo de pago creado correctamente"
         });
-    }).catch((errorsh) => {
+    }).catch((error) => {
         res.status(500).json({
             ok: false,
             mensaje: "Error interno en el servidor",
-            contenido: errorsh
+            contenido: error
         });
     });
 };
@@ -63,7 +63,7 @@ exports.putmetPago = (req, res) => {
     }).then((pagActualizado) => {
         sequelize_1.MetodoPago.findByPk(pagActualizado[0]).then((objmetPago) => {
             res.status(200).json({
-                message: 'ok',
+                message: 'ok, pago actualizado',
                 content: pagActualizado,
             });
         });

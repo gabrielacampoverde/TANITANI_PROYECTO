@@ -39,7 +39,7 @@ export let postMetPago = (req: Request, res: Response) => {
     res.status(400).json(
       {
         ok: false,
-        mensaje: "No se recibieron todos los campos en el request"
+        mensaje: "No se recibieron todos los campos REQUERIDOS"
       }
     );
     return;
@@ -56,15 +56,15 @@ export let postMetPago = (req: Request, res: Response) => {
       {
         ok: true,
         contenido: objmetPagoCreado,
-        mensaje: "Pabellon creado correctamente"
+        mensaje: "Metodo de pago creado correctamente"
       }
     );
-  }).catch((errorsh: any) => {
+  }).catch((error: any) => {
     res.status(500).json(
       {
         ok: false,
         mensaje: "Error interno en el servidor",
-        contenido: errorsh
+        contenido: error
       }
     );
   })
@@ -84,7 +84,7 @@ export let putmetPago = (req:Request, res:Response) =>{
     }).then((pagActualizado:any) => {
       MetodoPago.findByPk(pagActualizado[0]). then((objmetPago:any) => {
         res.status(200).json({
-          message:'ok',
+          message:'ok, pago actualizado',
           content:pagActualizado,
         })
       })

@@ -9,10 +9,11 @@ const Ordendetalle_1 = require("../modelos/Ordendetalle");
 const Persona_1 = require("../modelos/Persona");
 const Producto_1 = require("../modelos/Producto");
 const Usuario_1 = require("../modelos/Usuario");
-const MetodoPago_1 = require("../modelos/MetodoPago");
 const Orden_1 = require("../modelos/Orden");
+const MetodoPago_1 = require("../modelos/MetodoPago");
+const CategoriaProducto_1 = require("../modelos/CategoriaProducto");
 const Sequelize = require("sequelize");
-exports.conexion = new Sequelize('aulas', 'root', 'admin', {
+exports.conexion = new Sequelize('tanitani', 'root', 'root', {
     host: 'localhost',
     dialect: 'mysql',
     timezone: '-05:00',
@@ -32,5 +33,28 @@ exports.Ordendetalle = Ordendetalle_1.ordendetalle_model(exports.conexion);
 exports.Persona = Persona_1.persona_model(exports.conexion);
 exports.Producto = Producto_1.producto_model(exports.conexion);
 exports.Usuario = Usuario_1.usuario_model(exports.conexion);
-exports.MetodoPago = MetodoPago_1.metodopago_model(exports.conexion);
 exports.Orden = Orden_1.orden_model(exports.conexion);
+exports.MetodoPago = MetodoPago_1.metodopago_model(exports.conexion);
+exports.CategoriaProducto = CategoriaProducto_1.categoriaproducto_model(exports.conexion);
+exports.Usuario.hasMany(exports.Orden, { foreingKey: "usu_id" });
+exports.Orden.belongsTo(exports.Usuario, { foreingKey: "usu_id" });
+exports.Usuario.hasMany(exports.Comentario, { foreingKey: "usu_id" });
+exports.Comentario.belongsTo(exports.Usuario, { foreingKey: "usu_id" });
+exports.MetodoPago.hasMany(exports.Compras, { foreingKey: "mpago_id" });
+exports.Compras.belongsTo(exports.MetodoPago, { foreingKey: "mpago_id" });
+exports.Orden.hasMany(exports.Compras, { foreingKey: "orde_id" });
+exports.Compras.belongsTo(exports.Orden, { foreingKey: "orde_id" });
+exports.Compras.hasMany(exports.Destino, { foreingKey: "compra_id" });
+exports.Destino.belongsTo(exports.Compras, { foreingKey: "compra_id" });
+exports.Persona.hasMany(exports.Usuario, { foreingKey: "per_id" });
+exports.Usuario.belongsTo(exports.Persona, { foreingKey: "per_id" });
+exports.Producto.hasMany(exports.Ordendetalle, { foreingKey: "pro_id" });
+exports.Ordendetalle.belongsTo(exports.Producto, { foreingKey: "pro_id" });
+exports.Producto.hasMany(exports.Imagen, { foreingKey: "pro_id" });
+exports.Imagen.belongsTo(exports.Producto, { foreingKey: "pro_id" });
+exports.Producto.hasMany(exports.Comentario, { foreingKey: "pro_id" });
+exports.Comentario.belongsTo(exports.Producto, { foreingKey: "pro_id" });
+exports.Producto.hasMany(exports.CategoriaProducto, { foreingKey: "prod_id" });
+exports.CategoriaProducto.belongsTo(exports.Producto, { foreignKey: "prod_id" });
+exports.Categoria.hasMany(exports.CategoriaProducto, { foreingKey: "cat_id" });
+exports.CategoriaProducto.belongsTo(exports.Categoria, { foreignKey: "cat_id" });

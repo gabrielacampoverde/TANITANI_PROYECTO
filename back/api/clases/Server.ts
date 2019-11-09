@@ -6,8 +6,9 @@ const swaggerUi = require('swagger-ui-express');
 import * as swaggerDocument from './../apidocs/documentacion.json';
 
 import { persona_router} from '../rutas/persona';
-import { categoria_router } from '../rutas/categoria';
 import { metodoPago_router } from '../rutas/metodoPago';
+import { categoria_model } from '../modelos/Categoria';
+
 
 
 export class Server {
@@ -36,9 +37,9 @@ export class Server {
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
     this.app.use('/api', persona_router);
-    this.app.use('/api', categoria_router);
     this.app.use('/api', metodoPago_router);
-
+    
+    
   }
 
   start() {
@@ -48,7 +49,7 @@ export class Server {
       // force:false, si las tablas no existen en la base de datos
       // las crea. Si las tablas ya existían en la base de datos
       // sólo crea las nuevas tablas en caso de que hubieran
-      conexion.sync({ force: true }).then(() => {
+      conexion.sync({ force: false }).then(() => {
         console.log("Base de datos creada correctamente");
       })
     });
