@@ -1,20 +1,23 @@
-import { Sequelize, Model } from 'sequelize';
+import { DataTypes, Sequelize, Model } from 'sequelize';
+import { type } from 'os';
 
-export var ordendetalle_model = (sequelize: Sequelize, type: any) => {
-    class ordendetalle_model extends Model{};
+export let ordendetalle_model = (sequelize: Sequelize) => {
+    class ordendetalle_model extends Model{
+        static init: any;
+};
 
         ordendetalle_model.init({
         odet_id: {
-            type:type.INTEGER,
+            type:DataTypes.INTEGER,
             primaryKey:true,
             autoIncrement: true,
             allowNull:false
         },
         odet_cant:{
-            type:type.DECIMAL(10.2)
+            type:DataTypes.DECIMAL(10.2)
         },
         odet_prec:{
-            type:type.DECIMAL(10,2)
+            type:DataTypes.DECIMAL(10,2)
         }
     },{
         sequelize,
