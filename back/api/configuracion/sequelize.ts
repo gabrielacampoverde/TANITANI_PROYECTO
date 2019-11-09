@@ -12,7 +12,7 @@ import { orden_model } from "../modelos/Orden";
 
 const Sequelize = require("sequelize");
 
-export const conexion = new Sequelize('aulas','root', 'admin', {
+export const conexion = new Sequelize('aulas','root', 'root', {
   host: 'localhost',
   dialect: 'mysql',
   timezone: '-05:00',
