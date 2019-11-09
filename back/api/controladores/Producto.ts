@@ -1,7 +1,7 @@
 //PABELLON CONTROLLER
 import{Request,Response} from 'express'
-import { Producto, Aula, TipoAula } from '../configuracion/sequelize'
-import { reserva_model } from '../modelos/Reserva'
+import { Producto } from '../configuracion/sequelize'
+import { producto_model } from '../modelos/Producto'
 
 export let getProductos=(req:Request,res:Response)=>{
     Producto.findAll().then((objProductos:any)=>{
@@ -50,7 +50,7 @@ if(!req.body.pro_nom){
 }
 
 
-export let getProductossById=(req:Request,res:Response)=>{
+export let getProductosById=(req:Request,res:Response)=>{
     Producto.findByPk(req.params.id).then((objProducto:any)=>{
         if(objProducto){
             res.status(200).json({
