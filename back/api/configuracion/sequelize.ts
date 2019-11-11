@@ -41,36 +41,36 @@ export const MetodoPago:any = metodopago_model(conexion);
 export const CategoriaProducto:any = categoriaproducto_model(conexion);
 
 
-Usuario.hasMany(Orden,{foreingKey:"usu_id"});
-Orden.belongsTo(Usuario,{foreingKey:"usu_id"});
+Usuario.hasMany(Orden,{foreignKey:"usu_id"});
+Orden.belongsTo(Usuario,{foreignKey:"usu_id"});
 
-Usuario.hasMany(Comentario,{foreingKey:"usu_id"});
-Comentario.belongsTo(Usuario,{foreingKey:"usu_id"});
+Usuario.hasMany(Comentario,{foreignKey:"usu_id"});
+Comentario.belongsTo(Usuario,{foreignKey:"usu_id"});
 
-MetodoPago.hasMany(Compras,{foreingKey:"mpago_id"});
-Compras.belongsTo(MetodoPago,{foreingKey:"mpago_id"});
+MetodoPago.hasMany(Compras,{foreignKey:"mpago_id"});
+Compras.belongsTo(MetodoPago,{foreignKey:"mpago_id"});
 
-Orden.hasMany(Compras,{foreingKey:"orde_id"});
-Compras.belongsTo(Orden,{foreingKey:"orde_id"});
+Orden.hasMany(Compras,{foreignKey:"orde_id"});
+Compras.belongsTo(Orden,{foreignKey:"orde_id"});
 
-Compras.hasMany(Destino,{foreingKey:"compra_id"});
-Destino.belongsTo(Compras,{foreingKey:"compra_id"});
+Compras.hasMany(Destino,{foreignKey:"compra_id"});
+Destino.belongsTo(Compras,{foreignKey:"compra_id"});
 
-Persona.hasMany(Usuario,{foreingKey:"per_id"});
-Usuario.belongsTo(Persona,{foreingKey:"per_id"});
+Persona.hasMany(Usuario,{foreignKey:"per_id"});
+Usuario.belongsTo(Persona,{foreignKey:"per_id"});
 
-Producto.hasMany(Ordendetalle,{foreingKey:"pro_id"});
-Ordendetalle.belongsTo(Producto,{foreingKey:"pro_id"});
+Producto.hasMany(Ordendetalle,{foreignKey:"pro_id"});
+Ordendetalle.belongsTo(Producto,{foreignKey:"pro_id"});
 
-Producto.hasMany(Imagen,{foreingKey:"pro_id"});
-Imagen.belongsTo(Producto,{foreingKey:"pro_id"});
+Producto.hasMany(Imagen,{foreignKey:"pro_id"});
+Imagen.belongsTo(Producto,{foreignKey:"pro_id"});
 
-Producto.hasMany(Comentario,{foreingKey:"pro_id"});
-Comentario.belongsTo(Producto,{foreingKey:"pro_id"});
+Producto.hasMany(Comentario,{foreignKey:"pro_id"});
+Comentario.belongsTo(Producto,{foreignKey:"pro_id"});
 
-Producto.hasMany(CategoriaProducto,{foreingKey:"prod_id"});
+Producto.hasMany(CategoriaProducto,{foreignKey:"prod_id"});
 CategoriaProducto.belongsTo(Producto,{foreignKey:"prod_id"});
 
-Categoria.hasMany(CategoriaProducto,{foreingKey:"cat_id"});
+Categoria.hasMany(CategoriaProducto,{foreignKey:"cat_id"});
 CategoriaProducto.belongsTo(Categoria,{foreignKey:"cat_id"});
 
