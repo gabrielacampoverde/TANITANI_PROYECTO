@@ -1,5 +1,5 @@
 import { Model } from 'sequelize';
-// PABELLON CONTROLLER
+// CATEGORIA CONTROLLER
 import { Request, Response } from 'express';
 import { Categoria} from './../configuracion/sequelize';
 import { ok } from 'assert';
@@ -76,11 +76,11 @@ export let postCategoria = (req: Request, res: Response) => {
 export let putCategoria = (req:Request, res:Response) =>{
   Categoria.update(
     {
-      cat_nom: req.body.Categoria.cat_nom
+      cat_nom: req.body.cat_nom
     },
     {
       where:{
-        cat_id: req.body.Categoria.cat_id
+        cat_id: req.body.cat_id
       }
     }).then((catActualizado:any) => {
         Categoria.findByPk(catActualizado[0]). then((objCategoria:any) => {

@@ -3,44 +3,44 @@ import { DataTypes } from 'sequelize';
 
 export let persona_model = (sequelize: any) => {
 
-  let t_persona = sequelize.define('t_persona', {
+  let persona = sequelize.define('t_persona', {
     per_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
-    per_nombre:{
+    per_nom:{
       type: DataTypes.TEXT,
       allowNull: false
     
     },
-    per_apellido: {
+    per_ape: {
       type: DataTypes.TEXT,
       allowNull: true
    
     },
-    per_direccion:{
+    per_dir:{
       type: DataTypes.TEXT,
       allowNull: false
 
     },
-    per_celular:{
+    per_cel:{
       type: DataTypes.STRING(45),
       allowNull: false
 
     },
-    per_estado:{
+    per_est:{
       type: DataTypes.INTEGER,
       allowNull: false
 
     }
     
   }, {
-    tableName: 'persona',
+    tableName: 't_persona',
     timestamps: false
   });
 
-  return t_persona;
+  return persona;
 
 }
