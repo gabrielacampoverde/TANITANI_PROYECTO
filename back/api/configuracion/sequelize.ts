@@ -14,7 +14,7 @@ import { categoriaproducto_model } from "../modelos/CategoriaProducto";
 
 const Sequelize = require("sequelize");
 
-export const conexion = new Sequelize('tanitani','root', 'root', {
+export const conexion = new Sequelize('tanitani','root', 'admin', {
   host: 'localhost',
   dialect: 'mysql',
   timezone: '-05:00',
