@@ -28,7 +28,7 @@ exports.getPersonaById = (req, res) => {
 exports.postPersona = (req, res) => {
     // validando si el req.body cumple con los parametros minimos
     // de entrada
-    if (!req.body.pab_nom) {
+    if (!req.body.per_nom) {
         res.status(400).json({
             ok: false,
             mensaje: "No se recibieron todos los campos en el request"
@@ -37,13 +37,13 @@ exports.postPersona = (req, res) => {
     }
     // creando una instanacia de la clase o modelo
     // Pabellon
-    let objPabellon = sequelize_1.Persona.build(req.body);
+    let objPersona = sequelize_1.Persona.build(req.body);
     // guardando el objeto pabellón en la base de datos
-    objPabellon.save().then((objPabellonCreado) => {
+    objPersona.save().then((objPersonaCreado) => {
         res.status(201).json({
             ok: true,
-            contenido: objPabellonCreado,
-            mensaje: "Pabellon creado correctamente"
+            contenido: objPersonaCreado,
+            mensaje: "Persona creada correctamente"
         });
     }).catch((errorsh) => {
         res.status(500).json({
@@ -55,16 +55,20 @@ exports.postPersona = (req, res) => {
 };
 exports.putPersona = (req, res) => {
     sequelize_1.Persona.update({
-        per_nom: req.body.Persona.per_nom
+        per_nom: req.body.per_nom,
+        per_ape: req.body.per_ape,
+        per_dir: req.body.per_dir,
+        per_cel: req.body.per_cel,
+        per_est: req.body.per_est
     }, {
         where: {
-            per_id: req.body.persona.per_id
+            per_id: req.body.per_id
         }
-    }).then((pabActualizado) => {
-        sequelize_1.Persona.findByPk(pabActualizado[0]).then((objPersona) => {
+    }).then((perActualizado) => {
+        sequelize_1.Persona.findByPk(perActualizado[0]).then((objPersona) => {
             res.status(200).json({
                 message: 'ok',
-                content: pabActualizado,
+                content: perActualizado,
             });
         });
     }).catch((error) => {

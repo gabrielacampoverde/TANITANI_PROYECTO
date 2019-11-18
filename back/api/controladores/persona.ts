@@ -35,7 +35,7 @@ export let getPersonaById = (req:Request, res:Response) => {
 export let postPersona = (req: Request, res: Response) => {
   // validando si el req.body cumple con los parametros minimos
   // de entrada
-  if (!req.body.pab_nom) {
+  if (!req.body.per_nom) {
     res.status(400).json(
       {
         ok: false,
@@ -47,16 +47,16 @@ export let postPersona = (req: Request, res: Response) => {
 
  // creando una instanacia de la clase o modelo
   // Pabellon
-  let objPabellon = Persona.build(req.body);
+  let objPersona = Persona.build(req.body);
 
 
   // guardando el objeto pabellón en la base de datos
-  objPabellon.save().then((objPabellonCreado: any) => {
+  objPersona.save().then((objPersonaCreado: any) => {
     res.status(201).json(
       {
         ok: true,
-        contenido: objPabellonCreado,
-        mensaje: "Pabellon creado correctamente"
+        contenido: objPersonaCreado,
+        mensaje: "Persona creada correctamente"
       }
     );
   }).catch((errorsh: any) => {
@@ -76,17 +76,23 @@ export let postPersona = (req: Request, res: Response) => {
 export let putPersona = (req:Request, res:Response) =>{
   Persona.update(
     {
-      per_nom: req.body.Persona.per_nom
+      per_nom: req.body.per_nom,
+      per_ape: req.body.per_ape,
+      per_dir: req.body.per_dir,
+      per_cel: req.body.per_cel,
+      per_est: req.body.per_est
+
+
     },
     {
       where:{
-        per_id: req.body.persona.per_id
+        per_id: req.body.per_id
       }
-    }).then((pabActualizado:any) => {
-      Persona.findByPk(pabActualizado[0]). then((objPersona:any) => {
+    }).then((perActualizado:any) => {
+      Persona.findByPk(perActualizado[0]). then((objPersona:any) => {
         res.status(200).json({
           message:'ok',
-          content:pabActualizado,
+          content:perActualizado,
         })
       })
       

@@ -69,14 +69,20 @@ export let getProductosById=(req:Request,res:Response)=>{
 export let updateProducto=(req:Request,res:Response)=>{
     Producto.update(
         {
-            pro_nom: req.body.producto.pro_nom
+            // pro_nom: req.body.producto.pro_nom, omiti "producto" para que funcione
+            pro_nom: req.body.pro_nom,
+            pro_prec: req.body.pro_prec,
+            pro_est: req.body.pro_est,
+            pro_desc: req.body.pro_desc
+
         },{
             where:{
-                pro_id: req.body.producto.pro_id
+                pro_id: req.body.pro_id
             }
         
         }).then((prodActualizado:any)=>{
             Producto.findByPk(prodActualizado[0]).then((objProducto:any)=>{
+                
                 res.status(200).json({
                     message:'ok',
                     content: objProducto
@@ -89,4 +95,4 @@ export let updateProducto=(req:Request,res:Response)=>{
         })
     })
 }
-
+ 

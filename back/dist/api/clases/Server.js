@@ -16,8 +16,9 @@ let bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = __importStar(require("./../apidocs/documentacion.json"));
 const persona_1 = require("../rutas/persona");
-const categoria_1 = require("../rutas/categoria");
 const metodoPago_1 = require("../rutas/metodoPago");
+const categoria_1 = require("../rutas/categoria");
+const producto_1 = require("../rutas/producto");
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -39,8 +40,9 @@ class Server {
         });
         this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
         this.app.use('/api', persona_1.persona_router);
-        this.app.use('/api', categoria_1.categoria_router);
         this.app.use('/api', metodoPago_1.metodoPago_router);
+        this.app.use('/api', producto_1.producto_router);
+        this.app.use('/api', categoria_1.categoria_router);
     }
     start() {
         this.app.listen(this.puerto, () => {
@@ -49,7 +51,7 @@ class Server {
             // force:false, si las tablas no existen en la base de datos
             // las crea. Si las tablas ya existían en la base de datos
             // sólo crea las nuevas tablas en caso de que hubieran
-            sequelize_1.conexion.sync({ force: true }).then(() => {
+            sequelize_1.conexion.sync({ force: false }).then(() => {
                 console.log("Base de datos creada correctamente");
             });
         });

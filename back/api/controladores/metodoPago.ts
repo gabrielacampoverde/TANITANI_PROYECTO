@@ -75,11 +75,11 @@ export let postMetPago = (req: Request, res: Response) => {
 export let putmetPago = (req:Request, res:Response) =>{
   MetodoPago.update(
     {
-      mpago_nom: req.body.MetodoPago.mpago_nom
+      mpago_nom: req.body.mpago_nom
     },
     {
       where:{
-        mpago_id: req.body.MetodoPago.mpago_id
+        mpago_id: req.body.mpago_id
       }
     }).then((pagActualizado:any) => {
       MetodoPago.findByPk(pagActualizado[0]). then((objmetPago:any) => {

@@ -4,7 +4,7 @@ import { DataTypes } from 'sequelize';
 export let producto_model = (sequelize: any) => {
 
   let producto = sequelize.define('t_producto', {
-    prod_id: {
+    pro_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,

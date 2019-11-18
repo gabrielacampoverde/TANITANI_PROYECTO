@@ -7,7 +7,8 @@ import * as swaggerDocument from './../apidocs/documentacion.json';
 
 import { persona_router} from '../rutas/persona';
 import { metodoPago_router } from '../rutas/metodoPago';
-import { categoria_model } from '../modelos/Categoria';
+import { categoria_router } from '../rutas/categoria';
+import { producto_router } from '../rutas/producto';
 
 
 
@@ -38,6 +39,8 @@ export class Server {
 
     this.app.use('/api', persona_router);
     this.app.use('/api', metodoPago_router);
+    this.app.use('/api', producto_router);
+    this.app.use('/api', categoria_router);
     
     
   }
@@ -49,7 +52,7 @@ export class Server {
       // force:false, si las tablas no existen en la base de datos
       // las crea. Si las tablas ya existían en la base de datos
       // sólo crea las nuevas tablas en caso de que hubieran
-      conexion.sync({ force: false }).then(() => {
+      conexion.sync({ force:false}).then(() => {
         console.log("Base de datos creada correctamente");
       })
     });

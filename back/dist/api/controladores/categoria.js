@@ -55,10 +55,10 @@ exports.postCategoria = (req, res) => {
 };
 exports.putCategoria = (req, res) => {
     sequelize_1.Categoria.update({
-        cat_nom: req.body.Categoria.cat_nom
+        cat_nom: req.body.cat_nom
     }, {
         where: {
-            cat_id: req.body.Categoria.cat_id
+            cat_id: req.body.cat_id
         }
     }).then((catActualizado) => {
         sequelize_1.Categoria.findByPk(catActualizado[0]).then((objCategoria) => {
