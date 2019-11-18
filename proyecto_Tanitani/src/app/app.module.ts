@@ -12,6 +12,7 @@ import { CrearDatosComponent } from './component/crear-datos/crear-datos.compone
 import {FormsModule} from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
 import { PromocionesComponent } from './component/promociones/promociones.component';
+import { ComplementosComponent } from './component/complementos/complementos.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { PromocionesComponent } from './component/promociones/promociones.compon
     FormularioComponent,
     CrearDatosComponent,
     FilterPipe,
-    PromocionesComponent
+    PromocionesComponent,
+    ComplementosComponent
   ],
   imports: [
     BrowserModule,

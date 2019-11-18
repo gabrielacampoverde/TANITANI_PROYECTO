@@ -1,0 +1,30 @@
+<div class="container">
+        <h1 class="text-center">Complementos</h1>
+        <main class="container mt-5">
+            <div>
+                <div class="alert alert-success text-center" role="alert" *ngIf="!complementos">
+                    <h4 class="alert-heading">Cargando..</h4>
+                    <p>
+                        <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
+                    </p>
+                </div>
+                <div *ngIf="complementos" class="animated slideInLeft">
+                    <div *ngFor="let f of complementos | filter:filterPost">
+                        <div class="card" style="width: 18rem;">
+                            <img src='{{f.url}}'/>
+                                class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{f.nombre}}</h5>
+                                <h4 class="card-title">{{f.precio}}</h4>
+                                <p class="card-text">{{f.descrip}}</p>
+                                <button class="btn btn-danger" (click)="agregar(f.id)">Agregar
+                                        <i class="fa fa-check"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
