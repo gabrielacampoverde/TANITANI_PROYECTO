@@ -12,21 +12,25 @@ import { CrearDatosComponent } from './component/crear-datos/crear-datos.compone
 import {FormsModule} from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
 
+
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
+
+import { ComplementosComponent } from './component/complementos/complementos.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
     HomeComponent,
     FormularioComponent,
     CrearDatosComponent,
     FilterPipe,
-    
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ComplementosComponent
+
   ],
   imports: [
     BrowserModule,
