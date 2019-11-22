@@ -13,7 +13,7 @@ const Orden_1 = require("../modelos/Orden");
 const MetodoPago_1 = require("../modelos/MetodoPago");
 const CategoriaProducto_1 = require("../modelos/CategoriaProducto");
 const Sequelize = require("sequelize");
-exports.conexion = new Sequelize('tanitani', 'root', 'admin', {
+exports.conexion = new Sequelize('tanitani', 'root', 'root', {
     host: 'localhost',
     dialect: 'mysql',
     timezone: '-05:00',
