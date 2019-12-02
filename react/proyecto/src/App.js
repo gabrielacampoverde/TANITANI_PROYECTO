@@ -1,17 +1,19 @@
-import React, {Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './styles/App.sass';
 import SimpleSlider from './Component/SliderView/slider'
-
-function App() {
-  return (
-    <Fragment>
-      <SimpleSlider></SimpleSlider>
-    <div>efesrt</div>
-    </Fragment>
+import Header from './Component/Header/Header'
+export default class componentName extends Component{
+  render(){
+     return(
+      <Fragment>
+        <Header></Header>
+        <SimpleSlider></SimpleSlider>
+      </Fragment>
   
-  );
+    )
+  }
+ 
 }
 
-export default App;
 

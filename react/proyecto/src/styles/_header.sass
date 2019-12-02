@@ -1,0 +1,186 @@
+header
+	background: $white
+	position: fixed
+	width: 100%
+	z-index: 1
+	transition: .5s all
+	.cont-header
+		width: 100%
+		margin: 0 auto
+		.box-oferta
+			background: $primary-color
+			transition: .5s all
+			max-height: 21rem
+			height: auto
+			.container-box
+				width: 90%
+				margin: 0 auto
+				padding: 1rem .2rem
+				text-align: center
+				h5
+					color: $white
+					font-size: .75rem
+					font-family: $Panton-Light
+		.container-h
+			width: 90%
+			margin: 0 auto
+			.cont-header-top
+				width: 100%
+				display: flex
+				flex-wrap: wrap
+				justify-content: space-between
+				padding: .8rem .2rem 0
+				transition: .5s all
+				.search
+					width: 25%
+					align-self: flex-end
+					.input-search
+						position: relative
+						width: fit-content
+						display: flex
+						align-items: center
+						input[type=search]
+							border: none
+							border-bottom: .1rem solid $dark-gray
+							padding: .4rem 0
+							width: 10rem
+							transition: .5s all
+							background: transparent
+							&::placeholder
+								color: lighten($light-gray, 20%)
+								font-size: .85rem
+								text-transform: uppercase
+								font-family: $Panton-SemiBold
+							&:focus
+								width: 12rem
+						&:after
+							content: "\e905"
+							font-family: "icomoon"
+							position: absolute
+							right: 0
+							color: $dark-gray
+							font-size: .95rem
+
+				.logo
+					width: 50%
+					align-self: center
+					display: flex
+					justify-content: center
+					align-items: center
+					a 
+						display: bock
+						img
+							width: 17rem
+							transition: .5s all
+				.icons
+					width: 25%
+					align-self: flex-end
+					.cont-icons
+						display: flex
+						justify-content: flex-end
+						flex-direction: column
+						text-align: right
+						ul 
+							padding: .5rem 
+							display: flex
+							justify-content: flex-end
+							li
+								padding: 0 1rem
+								a
+									font-size: 1.4rem
+									color: gray
+									transition: .5s all
+									&:hover
+										color: $primary-color
+								&:last-child
+									padding-right: 0
+						.help
+							font-size: .7em
+							
+			.cont-nav
+				nav 
+					&>ul 
+						display: flex
+						flex-wrap: wrap
+						justify-content: space-between
+						align-items: center
+						&>li 
+							padding: 1rem 1rem
+							display: flex
+							align-items: center
+							&:first-child
+								padding-left: 0
+							&:last-child
+								padding-right: 0
+							&>a 
+								font-family: $Panton-Bold
+								color: $dark-gray
+								position: relative
+								padding: .8rem .2rem
+								font-size: .92rem
+								&:after
+									content: ''
+									width: 0
+									position: absolute
+									height: 2px
+									background: $primary-color
+									border-radius: 10px
+									left: 0
+									bottom: .5rem
+									transition: .5s all ease
+								&:hover
+									&:after
+										width: 100%
+
+					.has-submenu
+						position: relative
+						display: flex
+						justify-content: center
+						.submenu
+							top: 0
+							position: absolute
+							background: $white
+							margin-top: 4.4rem
+							padding: 1.1rem 1rem 1.1rem 2rem
+							visibility: hidden
+							opacity: 0
+							transform: translateY(2rem)
+							min-width: 10rem
+							z-index: -1
+							left: 0
+							transition: all 0.3s ease-in-out 0s, z-index 0s linear 0.01s
+							&>li
+								padding: .4rem 0
+								font-family:  $Panton-SemiBold
+								&>
+									a 
+										color: $gray
+										font-size: .9rem
+										transition: .5s all
+										&:hover
+											color: $primary-color
+						&:hover
+							&>a
+								&:after
+									width: 100%
+							.submenu
+								visibility: visible
+								opacity: 1
+								z-index: 1
+								transform: translateY(0%)
+								transition-delay: 0s, 0s, 0.3s
+	&.change-header
+		background: $dark-white
+		.cont-header
+			.box-oferta
+				max-height: 0
+				height: 0
+				padding: 0
+				visibility: hidden
+			.container-h
+				.cont-header-top
+					padding: .5rem 0 0
+					.logo
+						a 
+							img
+								width: 13rem
