@@ -1,0 +1,76 @@
+footer 
+    padding: 3rem 0
+    .cont-footer
+        width: 90%
+        margin: 0 auto
+        .flex-footer
+            width: 100%
+            display: flex
+            flex-wrap: wrap
+            align-items: center
+            .item-footer
+                &:first-child
+                    width: 15%
+                    img
+                        width: 9rem
+                &:nth-child(2)
+                    width: 60%
+                    padding: 0 1rem 0 1rem 
+                    ul 
+                        width: 100%
+                        display: flex
+                        li
+                            padding-right: 3rem
+                            a 
+                                font-size: .85rem
+                                font-family: $Panton-SemiBold
+                                color: $dark-gray
+                                transition: .5s all
+                                &:hover
+                                    color: $gray
+                &:nth-child(3)
+                    width: 25%
+                    h5
+                        font-family: $Panton-Bold
+                        margin-bottom: .8rem
+                        font-size: .8rem
+                    input
+                        border: none
+                        border-bottom: .1rem solid $dark-gray
+                        padding: .4rem 0
+                        width: 100%
+                        transition: .5s all
+                        background: transparent
+                        font-size: .85rem
+                        color: $dark-gray
+                        font-family: $Panton-Regular
+                        &::placeholder
+                            color: lighten($light-gray, 20%)
+                            font-size: .85rem
+                            text-transform: uppercase
+                            font-family: $Panton-SemiBold
+                    ul 
+                        display: flex
+                        margin-top: 1.5rem
+                        li
+                            display: flex
+                            a
+                                background: $primary-color
+                                color: $white
+                                font-size: 1.2rem
+                                padding: .6rem
+                                margin-right: .8rem
+                                width: 2.5rem
+                                border-radius: 30%
+                                height: 2.5rem
+                                display: flex
+                                align-items: center
+                                justify-content: center
+                                transition: .5s all 
+                                &:hover
+                                    background: lighten($primary-color, 10%)
+        .copy
+            padding-top: 1rem
+            text-align: center
+            font-size: .78rem
+            color: $dark-gray
