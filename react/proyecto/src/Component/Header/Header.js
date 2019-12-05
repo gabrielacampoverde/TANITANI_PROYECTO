@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import { baseUrl } from "./../../config";
 import logo from "./../../logo.png"
+import { NavLink } from "react-router-dom";
+
 
 export default class Header extends Component {
     listenScrollEvent = e => {
         let header = document.getElementById("header")
         if (window.scrollY > 80) {
-            
+
             console.log(header);
             header.classList.add("change-header");
-            
+
         } else {
             header.classList.remove("change-header");
         }
-      }
-    
-      componentDidMount() {
+    }
+
+    componentDidMount() {
         window.addEventListener('scroll', this.listenScrollEvent)
-      }
-      
+    }
+
     render() {
-        
+
         return (
             <header id="header">
                 <div className="cont-header">
@@ -33,7 +34,7 @@ export default class Header extends Component {
                         <div className="cont-header-top">
                             <div className="search">
                                 <div className="input-search">
-                                    <input type="search" name="search" id="search" placeholder="Search"/>
+                                    <input type="search" name="search" id="search" placeholder="Search" />
                                 </div>
                             </div>
                             <div className="logo">
@@ -76,7 +77,9 @@ export default class Header extends Component {
                                     </li>
                                     <li><a href="">OCASIONES</a></li>
                                     <li><a href="">ESPECIALES</a></li>
-                                    <li><a href="">CORPORATIVOS</a></li>
+                                    <li>
+                                        <NavLink className="nav-link" to={"/coorporativos"}>Coorporativos</NavLink>
+                                    </li>
                                     <li><a href="">COMPLEMENTOS</a></li>
                                     <li><a href="">CONTÁCTANOS</a></li>
                                 </ul>
