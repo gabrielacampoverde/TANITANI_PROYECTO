@@ -17,7 +17,7 @@ export let persona_model = (sequelize: any) => {
     },
     per_ape: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
    
     },
     per_dir:{
