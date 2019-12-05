@@ -9,7 +9,7 @@ import { persona_router} from '../rutas/persona';
 import { metodoPago_router } from '../rutas/metodoPago';
 import { categoria_router } from '../rutas/categoria';
 import { producto_router } from '../rutas/producto';
-
+import {usuario_router} from '../rutas/Usuario';
 
 
 export class Server {
@@ -41,6 +41,7 @@ export class Server {
     this.app.use('/api', metodoPago_router);
     this.app.use('/api', producto_router);
     this.app.use('/api', categoria_router);
+    this.app.use('/api', usuario_router);
     
     
   }
@@ -52,7 +53,7 @@ export class Server {
       // force:false, si las tablas no existen en la base de datos
       // las crea. Si las tablas ya existían en la base de datos
       // sólo crea las nuevas tablas en caso de que hubieran
-      conexion.sync({ force:true}).then(() => {
+      conexion.sync({ force:false}).then(() => {
         console.log("Base de datos creada correctamente");
       })
     });

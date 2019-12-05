@@ -2,8 +2,7 @@ import { Model } from 'sequelize';
 // PABELLON CONTROLLER
 import { Request, Response } from 'express';
 import { Persona} from './../configuracion/sequelize';
-import { ok } from 'assert';
-import { persona_router} from '../rutas/persona'; 
+
 
 export let getPersona = (req: Request, res: Response) => {
   Persona.findAll().then((objPersona: any) =>{

@@ -16,7 +16,7 @@ exports.persona_model = (sequelize) => {
         },
         per_ape: {
             type: sequelize_1.DataTypes.TEXT,
-            allowNull: true
+            allowNull: false
         },
         per_dir: {
             type: sequelize_1.DataTypes.TEXT,

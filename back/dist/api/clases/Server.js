@@ -19,6 +19,7 @@ const persona_1 = require("../rutas/persona");
 const metodoPago_1 = require("../rutas/metodoPago");
 const categoria_1 = require("../rutas/categoria");
 const producto_1 = require("../rutas/producto");
+const Usuario_1 = require("../rutas/Usuario");
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -43,6 +44,7 @@ class Server {
         this.app.use('/api', metodoPago_1.metodoPago_router);
         this.app.use('/api', producto_1.producto_router);
         this.app.use('/api', categoria_1.categoria_router);
+        this.app.use('/api', Usuario_1.usuario_router);
     }
     start() {
         this.app.listen(this.puerto, () => {
@@ -51,7 +53,7 @@ class Server {
             // force:false, si las tablas no existen en la base de datos
             // las crea. Si las tablas ya existían en la base de datos
             // sólo crea las nuevas tablas en caso de que hubieran
-            sequelize_1.conexion.sync({ force: true }).then(() => {
+            sequelize_1.conexion.sync({ force: false }).then(() => {
                 console.log("Base de datos creada correctamente");
             });
         });
