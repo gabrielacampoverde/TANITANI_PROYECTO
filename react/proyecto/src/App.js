@@ -9,6 +9,13 @@ import Cardproducto from './Component/CardProductos/Cardproducto';
 // import Coorporativos from './Component/Coorporativos/Coorporativos';
 import Promociones from './Component/Promociones/Promociones';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+
 export default class componentName extends Component{
   render(){
      return(
@@ -17,7 +24,6 @@ export default class componentName extends Component{
         <SimpleSlider></SimpleSlider>
         <Cardproducto></Cardproducto>
         {/* <Coorporativos></Coorporativos> */}
-        <Promociones></Promociones>
         <Footer/>
       </Fragment>
   
