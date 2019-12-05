@@ -6,6 +6,8 @@ import Header from './Component/Header/Header'
 import Footer from './Component/Footer/Footer'
 import Cardproductos from './Component/CardProductos/Cardproducto';
 import Cardproducto from './Component/CardProductos/Cardproducto';
+// import Coorporativos from './Component/Coorporativos/Coorporativos';
+import Promociones from './Component/Promociones/Promociones';
 
 export default class componentName extends Component{
   render(){
@@ -14,6 +16,8 @@ export default class componentName extends Component{
         <Header></Header>
         <SimpleSlider></SimpleSlider>
         <Cardproducto></Cardproducto>
+        {/* <Coorporativos></Coorporativos> */}
+        <Promociones></Promociones>
         <Footer/>
       </Fragment>
   
