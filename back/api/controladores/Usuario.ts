@@ -5,6 +5,7 @@ const Op = Sequelize.Op; // Los operadores de comparacion de sequelize
 export let crearUsuario = (req: Request, res: Response) => {
     console.log("misuario",req.body);
     Persona.build(req.body.persona).save().then((perCreada:any)=>{
+        // Se hace la relacion para las dos tablas
         let fk_persona= perCreada.per_id
         let jsonusu = req.body.usuario 
         jsonusu.per_id = fk_persona
