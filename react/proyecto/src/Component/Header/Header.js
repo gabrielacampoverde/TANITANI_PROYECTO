@@ -44,9 +44,10 @@ export default class Header extends Component {
                                 <div className="cont-icons">
                                     <ul>
                                         <li>
-                                            <a href="">
-                                                <i className="icon-user"></i>
-                                            </a>
+                                            <NavLink className="nav-link" to={"/loginYregistro"}><i className="icon-user"></i></NavLink>
+                                            {/* <a href="">
+                                              
+                                            </a> */}
                                         </li>
                                         <li>
                                             <a href="">
@@ -59,7 +60,7 @@ export default class Header extends Component {
                                             </a>
                                         </li>
                                     </ul>
-                                    <h6 className="text-color help">NEED HELP? 888-308-2636</h6>
+                                    <h6 className="text-color help">Necesita ayuda? 888-308-2636</h6>
                                 </div>
                             </div>
                         </div>
