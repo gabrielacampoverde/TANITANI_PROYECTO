@@ -6,8 +6,6 @@ export const environment = {
   production: false
 };
 
-export const miurl="http://5d93e83be020b300147db0e8.mockapi.io";
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

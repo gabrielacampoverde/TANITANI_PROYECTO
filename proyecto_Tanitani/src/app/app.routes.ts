@@ -1,7 +1,30 @@
-import {RouterModule, Routes} from '@angular/router';
 
+import { Routes, RouterModule } from '@angular/router';
 
-const caminos: Routes = [
-  
+import { LoginComponent } from './login/login.component';
+
+import { RegisterComponent } from './login/register.component';
+ 
+
+const appRoutes:Routes = [
+
+        {
+            path:'login',
+            component:LoginComponent,
+
+        },
+        {
+            path:'register',
+            component:RegisterComponent,
+        },
+       
+        
+        {
+            path:'**',
+            component:LoginComponent
+
+        }
+
 ];
-export const RUTAS = RouterModule.forRoot(caminos);
+
+    export const APP_ROUTES = RouterModule.forRoot(appRoutes,{useHash:true});

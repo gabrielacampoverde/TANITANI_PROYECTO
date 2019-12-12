@@ -1,31 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+
+//RUTAS
+import {APP_ROUTES} from './app.routes';
+//Importamos las Rutas del Proyecto
 
 import { AppComponent } from './app.component';
-
-
-
-import {RUTAS} from './app.routes';
-
-import {FormsModule} from '@angular/forms';
-import { FilterPipe } from './pipes/filter.pipe';
-
-
-
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './login/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterPipe
+    LoginComponent,
+    RegisterComponent,
+   
+    
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    RUTAS,
-    FormsModule
-
+    APP_ROUTES
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
