@@ -1,5 +1,5 @@
 {
-  "name": "floreria",
+  "name": "adminpro",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,13 +19,7 @@
     "@angular/platform-browser": "~8.2.8",
     "@angular/platform-browser-dynamic": "~8.2.8",
     "@angular/router": "~8.2.8",
-    "animate.css": "^3.7.2",
-    "bootstrap": "^4.3.1",
-    "glyphicons-only-bootstrap": "^1.0.1",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.15.0",
     "rxjs": "~6.4.0",
-    "sweetalert2": "^8.18.6",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
