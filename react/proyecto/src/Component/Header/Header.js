@@ -21,6 +21,7 @@ export default class Header extends Component {
     }
 
     render() {
+
         return (
             <header id="header">
                 <div className="cont-header">
@@ -78,7 +79,7 @@ export default class Header extends Component {
                                     <li><a href="">OCASIONES</a></li>
                                     <li><a href="">ESPECIALES</a></li>
                                     <li>
-                                        <NavLink className="nav-link" to={"/coorporativos"}>coorporativos</NavLink>
+                                        <NavLink className="nav-link" to={"/coorporativos"}>CORPORATIVOS</NavLink>
                                     </li>
                                     <li><a href="">COMPLEMENTOS</a></li>
                                     <li><a href="">CONTÁCTANOS</a></li>

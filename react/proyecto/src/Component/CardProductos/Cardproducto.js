@@ -56,7 +56,6 @@ export default class Cardproducto extends Component {
                     </div>
                 </div>
             </div>
-
         )
     }
 

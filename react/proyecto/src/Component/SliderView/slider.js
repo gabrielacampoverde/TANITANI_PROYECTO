@@ -6,7 +6,7 @@ import {baseUrl} from "./../../config";
 //     {src: baseURL + "/abstract01.jpg"};
 // }
 
-export default class SimpleSlider extends Component {
+export default class Banner extends Component {
   render() {
     const settings = {
       dots: true,
@@ -17,6 +17,7 @@ export default class SimpleSlider extends Component {
     };
     return (
       <div>
+        <h2> Single Item</h2>
         <Slider {...settings}>
           <div className="item">
           <img src={baseUrl + "/floresyyo.jpg"} />
