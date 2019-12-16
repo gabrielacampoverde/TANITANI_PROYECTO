@@ -9,6 +9,8 @@ import Home from './Component/Home/Home'
 import Cardproductos from './Component/CardProductos/Cardproducto';
 import Cardproducto from './Component/CardProductos/Cardproducto';
 import Coorporativos from './Component/Coorporativos/Coorporativos';
+import Registro from './Component/Registro/Registro'
+
 // import Promociones from './Component/Promociones/Promociones';
 import { BrowserRouter, Switch, Route, Router } from 'react-router-dom';
 import loginYregistro from './Component/loginYregistro/logi&registro';
@@ -23,6 +25,7 @@ export default class componentName extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/coorporativos" component={Coorporativos} />
             <Route exact path="/loginYregistro" component={loginYregistro} ></Route>
+            <Route exact path="/registro" component={Registro}></Route>
           </Switch>
           <Footer></Footer>
         </BrowserRouter>

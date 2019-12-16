@@ -16,7 +16,7 @@ export let usuario_model = (sequelize:any) =>{
         },
         usu_tipo: {
             type: DataTypes.STRING(15),
-            allowNull: false
+            allowNull: true
         },
 
         usu_hash: {

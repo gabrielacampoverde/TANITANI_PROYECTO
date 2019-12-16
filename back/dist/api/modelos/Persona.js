@@ -28,7 +28,7 @@ exports.persona_model = (sequelize) => {
         },
         per_est: {
             type: sequelize_1.DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         }
     }, {
         tableName: 't_persona',
