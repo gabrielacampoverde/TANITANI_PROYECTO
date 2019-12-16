@@ -68,7 +68,8 @@ export default class Header extends Component {
                             <nav>
                                 <ul>
                                     <li><a href="">HOME</a></li>
-                                    <li className="has-submenu"><a href="">PROMOCIONES</a>
+                                    <li ><a href="">PROMOCIONES</a></li>
+                                    <li className="has-submenu"><a href="">OCASIONES</a>
                                         <ul className="submenu">
                                             <li><a href="">Promocion 1</a></li>
                                             <li><a href="">Promocion 2</a></li>
@@ -76,7 +77,6 @@ export default class Header extends Component {
                                             <li><a href="">Promocion 4</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="">OCASIONES</a></li>
                                     <li><a href="">ESPECIALES</a></li>
                                     <li>
                                         <NavLink className="nav-link" to={"/coorporativos"}>CORPORATIVOS</NavLink>

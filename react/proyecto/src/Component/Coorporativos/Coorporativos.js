@@ -2,7 +2,16 @@ import React, { Component } from 'react';
 import { baseUrl } from "./../../config";
 
 export default class Coorporativos extends Component {
+   constructor(prop){
+      super(prop);
+   }
    render() {
+      function activaForm() {
+         function handleClick(e) {
+           e.preventDefault();
+           console.log('The link was clicked.');
+         }
+      }
       return (
          <main>
             <div className="divCoor">
@@ -31,7 +40,9 @@ export default class Coorporativos extends Component {
                      todo un éxito.</p>
                         <br></br>
                         <p>Para mayor información llamar al 080-56455588-555</p>
-                        <button className="BotonCoor">Contactanos</button>
+                        <button className="BotonCoor" onClick={activaForm}>
+                        
+                           Contactanos</button>
                      </div>
 
                   </div>

@@ -1,57 +1,28 @@
 import React, { Component } from 'react';
+import { baseUrl } from "./../../config";
 
 export default class Promociones extends Component {
    render() {
       return (
-         <div className="sectionProductos">
-            <div className="container">
-               <div className="flex">
-                  <div className="card">
-                     <div>
-                        <img src={baseUrl + "/bouquet-1.png"} />
-                        <div className="textproduct">
-                           <h4>Bouquete Rosas Forever</h4>
-                           <h5>s/. 75</h5>
-                        </div>
+         <div className="sectionPromo">
+             <div className="containerPromo">
+                 <div className="flexPromo">
+                     <div className="cardPromo">
+                         <div>
+                             <img src={baseUrl + "/bouquet-1.png"} /> 
+                             <div className="textpromo">
+                                 <h4>Bouquete Rosas Forever</h4>
+                                 <div className="contenedorPromo">
+                                    <div className="h5Promo"><h5 className="h51">s/ 75</h5></div>
+                                    <div className="h5Promo1"><h5 className="h52">-25%</h5></div>
+                                    <div className="h5Promo"><h5 className="h53">s/ 50</h5></div>
+                                 </div>
+                             </div>
+                         </div>
                      </div>
-                     <div className="hover">
-                        <div className="cont-hover">
-                           <div className="flex-content">
-                              <div className="item">
-                                 <i className="icon-heart"></i>
-                              </div>
-                              <div className="item">
-                                 <i className="icon-magnifier"></i>
-                              </div>
-                              <div className="item">
-                                 <i className="icon-shopping-cart"></i>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div className="card">
-                     <div>
-                        <img src={baseUrl + "/bouquet-1.png"} />
-                        <div className="textproduct">
-                           <h4>Bouquete Rosas Forever</h4>
-                           <h5>s/. 75</h5>
-                        </div>
-                     </div>
-
-                  </div>
-                  <div className="card">
-                     <div>
-                        <img src={baseUrl + "/bouquet-1.png"} />
-                        <div className="textproduct">
-                           <h4>Bouquete Rosas Forever</h4>
-                           <h5>s/. 75</h5>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+                 </div>
+             </div>
          </div>
-      )
+     )
    }
 }
