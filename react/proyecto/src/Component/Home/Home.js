@@ -9,10 +9,10 @@ export default class Home extends Component {
     render() {
 
         return (
-           <Fragment>
-               <SimpleSlider></SimpleSlider>
-               <Cardproducto></Cardproducto>
-           </Fragment>
+               <main>
+                <SimpleSlider></SimpleSlider>
+                <Cardproducto></Cardproducto>
+               </main>
                 
         )
     }
