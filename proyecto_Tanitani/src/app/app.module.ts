@@ -9,7 +9,6 @@ import {APP_ROUTES} from './app.routes';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/login/register.component';
 import { CrearFacturaComponent } from './components/crear-factura/crear-factura.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
 import { VerFacturaComponent } from './components/ver-factura/ver-factura.component';
@@ -22,7 +21,6 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     CrearFacturaComponent,
     FacturasComponent,
     VerFacturaComponent,

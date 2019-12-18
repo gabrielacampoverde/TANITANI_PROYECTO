@@ -1,67 +1,42 @@
 <main class="container mt-5">
     <section>
-        <h2 class="display-4">Crear Factura</h2>
-        <form class="mt-4 animated slideInLeft " 
-                #formulario="ngForm">
+        <h2 class="display-4">Crear Usuario</h2>
+        <form class="mt-4 animated slideInLeft " #formulario="ngForm">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-6">
 
+                    <div class="col-md-9">
+                        <label for="">Nombres:</label>
+                        <input type="text" required class="form-control" [(ngModel)]="objFactura.per_nom" name="per_nom" placeholder="Ejm: Maria Alejandra">
                     </div>
-                    <div class="col-md-6">
-                        <label for="">Nro de Factura:</label>
-                        <input type="text"
-                                required
-                                class="form-control"
-                                [(ngModel)]="objFactura.fact_nro"
-                                name="fact_nro"
-                                placeholder="Ejm: F001-00456">
-                    </div>
+
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-12">
-                        <label for="">Razón Social:</label>
-                        <input type="text"
-                                class="form-control"
-                                required
-                                [(ngModel)]="objFactura.fact_rz"
-                                name="fact_rz"
-                                placeholder="Ejm: Binario Consultores S.R.L.">
+
+                    <div class="col-md-9">
+                        <label for="">Apellidos:</label>
+                        <input type="text" class="form-control" required [(ngModel)]="objFactura.per_ape" name="per_ape" placeholder="Ejm: Rivera Carpio">
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="">Fecha de Facturación</label>
-                        <input type="date" 
-                                class="form-control" 
-                                required
-                                [(ngModel)]="objFactura.fact_fech"
-                                name="fact_fech">
+                        <label for="">Direccion:</label>
+                        <input type="text" class="form-control" required [(ngModel)]="objFactura.per_dir" name="per_dir" placeholder="Ejm: Psje Del Solar 419">
                     </div>
                     <div class="col-md-6">
-                        <label for="">Ruc:</label>
-                        <input type="text"
-                                maxlength="11" 
-                                minlength="11"
-                                class="form-control"
-                                required
-                                [(ngModel)]="objFactura.fact_ruc"
-                                name="fact_ruc"
-                                placeholder="Ejm: 20038573192">
+                        <label for="">Celular:</label>
+                        <input type="text" maxlength="9" minlength="9" class="form-control" required [(ngModel)]="objFactura.per_cel" name="per_cel" placeholder="Ejm: 949785765">
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit"
-                        class="btn btn-block btn-lg btn-dark"
-                        [disabled]="!formulario.valid"
-                        (click)="crearFactura()">
+                <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="crearFactura()">
                     <i class="fas fa-save"></i>
-                    Registrar Factura
+                    Registrar Usuario
                 </button>
             </div>
         </form>

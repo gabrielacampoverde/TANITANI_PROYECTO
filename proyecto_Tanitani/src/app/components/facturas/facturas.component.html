@@ -13,45 +13,37 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="">Id de Factura:</label>
-                                    <input type="text" required class="form-control"
-                                            [(ngModel)]="objFactura.id" name="id"
-                                            disabled>
+                                    <label for="">Id de Usuario:</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objFactura.id" name="id" disabled>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="">Nro de Factura:</label>
-                                    <input type="text" required class="form-control" [(ngModel)]="objFactura.fact_nro"
-                                        name="fact_nro" placeholder="Ejm: F001-00456">
+                                    <label for="">Nombres:</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objFactura.fact_nro" name="fact_nro" placeholder="Ejm: F001-00456">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="">Razón Social:</label>
-                                    <input type="text" class="form-control" required [(ngModel)]="objFactura.fact_rz"
-                                        name="fact_rz" placeholder="Ejm: Binario Consultores S.R.L.">
+                                    <label for="">Apellidos:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objFactura.fact_rz" name="fact_rz" placeholder="Ejm: Binario Consultores S.R.L.">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="">Fecha de Facturación</label>
-                                    <input type="date" class="form-control" required [(ngModel)]="objFactura.fact_fech"
-                                        name="fact_fech">
+                                    <label for="">Direccion</label>
+                                    <input type="date" class="form-control" required [(ngModel)]="objFactura.fact_fech" name="fact_fech">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="">Ruc:</label>
-                                    <input type="text" maxlength="11" minlength="11" class="form-control" required
-                                        [(ngModel)]="objFactura.fact_ruc" name="fact_ruc"
-                                        placeholder="Ejm: 20038573192">
+                                    <label for="">Celular:</label>
+                                    <input type="text" maxlength="9" minlength="9" class="form-control" required [(ngModel)]="objFactura.fact_ruc" name="fact_ruc" placeholder="Ejm: 20038573192">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid"
-                                (click)="guardarCambios()">
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="guardarCambios()">
                                 <i class="fas fa-save"></i>
                                 Guardar Cambios
                             </button>
@@ -88,7 +80,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let f of facturas">
-                        <td><input type="checkbox" class="form-control" (change) = "seleccionarFactura($event, f)"></td>
+                        <td><input type="checkbox" class="form-control" (change)="seleccionarFactura($event, f)"></td>
                         <td>{{f.id}}</td>
                         <td>{{f.fact_rz}}</td>
                         <td>{{f.fact_nro}}</td>
@@ -116,7 +108,3 @@
     </button>
 
 </main>
-
-
-
-

@@ -14,10 +14,10 @@ export class CrearFacturaComponent implements OnInit, OnDestroy {
   subscriptor: Subscription;
 
   objFactura = {
-    fact_nro: '',
-    fact_rz: '',
-    fact_fech: '',
-    fact_ruc: ''
+    per_nom: '',
+    per_ape: '',
+    per_dir: '',
+    per_cel: ''
   }
 
   constructor(private _sFactura: FacturasService,
@@ -42,8 +42,8 @@ export class CrearFacturaComponent implements OnInit, OnDestroy {
           Swal.fire({
             title: 'Éxito!',
             type: 'success',
-            text: 'La factura ha sido creada con éxito mafren!',
-            confirmButtonText: 'Ir a Facturas',
+            text: 'El Usuario ha sido creada con éxito!',
+            confirmButtonText: 'Ir a Usuarios',
             allowOutsideClick: false
           }).then((result) => {
             if (result.value) {

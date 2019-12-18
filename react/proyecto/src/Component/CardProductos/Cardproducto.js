@@ -8,6 +8,11 @@ export default class Cardproducto extends Component {
 
         return (
             <div className="sectionProductos">
+                <div className="banner-red">
+                    <p>
+                    <h4>“El amor espera en el borde de un pétalo.”</h4>
+                    </p>
+                </div>
                 <div className="container">
                     <div className="flex">
                         <div className="card">
@@ -56,7 +61,6 @@ export default class Cardproducto extends Component {
                     </div>
                 </div>
             </div>
-
         )
     }
 

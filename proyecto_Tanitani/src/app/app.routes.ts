@@ -2,7 +2,6 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/login/register.component';
 import { CrearFacturaComponent } from './components/crear-factura/crear-factura.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
 import { VerFacturaComponent } from './components/ver-factura/ver-factura.component';
@@ -23,11 +22,7 @@ const appRoutes:Routes = [
             component:LoginComponent,
 
         },
-        {
-            path:'register',
-            component:RegisterComponent,
-        },
-
+  
         {
             path:'facturas/crear',
             component:CrearFacturaComponent,
