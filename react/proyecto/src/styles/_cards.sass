@@ -1,29 +1,96 @@
-.sectionProductos
-    .banner-red
-        background: red
-        padding: 2rem 0
+.banner-product
+    background: $red
+    padding: 2rem 0
+    text-align: center
+    h4
+        color: white
         text-align: center
-        h4
-            color: white
-            text-align: center
-            font-weight: normal
-            font-size: 2rem
+        font-weight: normal
+        font-size: 2rem
+.sectionProductos
+    background-image: url(/img/floresyyo.jpg)
+    background-repeat: no-repeat
+    background-attachment: fixed
+    padding: 3rem 0
+    
     .container
+        //margin: 5rem auto 0 auto
+        background: white
         .product-list
             display: flex
             flex-wrap: wrap
 
             .product-item 
                 width: calc(100% / 3)
-                padding: 0 1rem
-                img
-                    width: 100%
-                .textproduct
+                display: block
+                margin-bottom: 5rem
+                &:hover
+                    position: relative
+                    box-shadow: 0 5px 30px rgba(31,31,31,.17)
+                    .product-text
+                        opacity: 0
+                        visibility: hidden
+                        transition: all .5s ease
+                    .product-image
+                        position: relative
+                        .buttons-actions
+                            opacity: 1
+                            background: white
+                            top: 100%
+                            z-index: 99
+                            transition: all .5s ease
+                            padding-bottom: 30px
+                
+                .product-image
+                    position: relative
+                    img
+                        width: 100%
+                    .buttons-actions
+                        opacity: 0
+                        width: 100%
+                        position: absolute
+                        top: 0
+                        transition: all .5s ease
+                        .icons
+                            display: flex
+                            justify-content: center
+                            margin: 1rem 0
+                            a.item
+                                border: 1px solid $red
+                                width: 40px
+                                height: 40px
+                                line-height: 52px
+                                text-align: center
+                                margin: 0 .5rem
+                                &:hover
+                                    background: $red
+                                    i
+                                        color: white
+                                i
+                                    color: $red
+                                    font-size: 1.7rem
+
+                        .btn-add-to-cart
+                            display: block
+                            .btn-add
+                                border: 1px solid $red
+                                background: $red
+                                color: white
+                                padding: 9px 20px
+                                width: 100%
+                                height: 40px
+                                cursor: pointer
+                                &:hover
+                                    background: white
+                                    color: $red
+                .product-text
                     text-align: center
+                    transition: all .5s ease
                     h4
                         font-size: 1.2rem
                         font-family: $Panton-Regular
+                        margin-bottom: .5rem
                     h5
                         font-size: 1.4rem
                         font-family: $Panton-Bolder
-                .product-image
+                        margin-bottom: 1rem
