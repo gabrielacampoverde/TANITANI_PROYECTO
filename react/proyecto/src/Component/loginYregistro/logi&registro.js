@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { baseUrl } from "./../../config";
+import Registro from './../Registro/Registro'
 
 export default class loginYregistro extends Component {
    render() {
@@ -37,29 +38,8 @@ export default class loginYregistro extends Component {
                     </div>
                 </div>
                 <div className="sign-up-htm">
-                    <div className="group">
-                        <label for="user" className="label">Usuario</label>
-                        <input id="user" type="text" className="input"/>
-                    </div>
-                    <div className="group">
-                        <label for="pass" className="label">Contraseña</label>
-                        <input id="pass" type="password" className="input" data-type="password"/>
-                    </div>
-                    <div className="group">
-                        <label for="pass" className="label">Repetir contraseña</label>
-                        <input id="pass" type="password" className="input" data-type="password"/>
-                    </div>
-                    <div className="group">
-                        <label for="pass" className="label">Email</label>
-                        <input id="pass" type="text" className="input"/>
-                    </div>
-                    <div className="group">
-                        <input type="submit" className="button" value="Crear" style={{color: '#B5141C'}}/>
-                        <br/>
-                        <hr/>
-                        <a for="tab-1" id="last1">Ya es miembro?</a>
-                        
-                    </div>    
+                    <Registro></Registro>
+                     
 				</div>
 			</div>
 		</div>
