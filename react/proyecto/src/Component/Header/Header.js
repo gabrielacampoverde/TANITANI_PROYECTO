@@ -56,7 +56,8 @@ export default class Header extends Component {
                                         </li>
                                         <li>
                                             <a href="">
-                                                <i className="icon-shopping-cart"></i>
+                                                <NavLink className="nav-link" to={"/carritoDeCompras"}><i className="icon-shopping-cart"></i></NavLink>
+                                            
                                             </a>
                                         </li>
                                     </ul>
@@ -68,8 +69,7 @@ export default class Header extends Component {
                             <nav>
                                 <ul>
                                     <li><a href="">HOME</a></li>
-                                    <li ><a href="">PROMOCIONES</a></li>
-                                    <li className="has-submenu"><a href="">OCASIONES</a>
+                                    <li className="has-submenu"><a href="">PROMOCIONES</a>
                                         <ul className="submenu">
                                             <li><a href="">Promocion 1</a></li>
                                             <li><a href="">Promocion 2</a></li>
@@ -77,9 +77,10 @@ export default class Header extends Component {
                                             <li><a href="">Promocion 4</a></li>
                                         </ul>
                                     </li>
+                                    <li><a href="">OCASIONES</a></li>
                                     <li><a href="">ESPECIALES</a></li>
                                     <li>
-                                        <NavLink className="nav-link" to={"/coorporativos"}>CORPORATIVOS</NavLink>
+                                        <NavLink className="nav-link" to={"/coorporativos"}>Coorporativos</NavLink>
                                     </li>
                                     <li><a href="">COMPLEMENTOS</a></li>
                                     <li><a href="">CONTÁCTANOS</a></li>
