@@ -29,11 +29,11 @@ export default class loginYregistro extends Component {
                         <label for="check"><span className="icon"></span> Recuérdame</label>
                     </div>
                     <div className="group">
-                        <input type="submit" className="button" value="Ingresar" style={{color: '#B5141C'}}/>
+                        <a href="#"><input type="submit" className="botonSombra" className="button" value="Ingresar" style={{color: '#B5141C'}}/></a>
                         <br/>
                         <hr/>
                         <br/>
-                        <a href="#forgot" id="last">Olvidó su contraseña?</a>
+                        <a href="#" id="last">Olvidó su contraseña?</a>
                     </div>
                 </div>
                 <div className="sign-up-htm">
@@ -54,10 +54,10 @@ export default class loginYregistro extends Component {
                         <input id="pass" type="text" className="input"/>
                     </div>
                     <div className="group">
-                        <input type="submit" className="button" value="Crear" style={{color: '#B5141C'}}/>
+                        <a href="#"><input type="submit" className="botonSombra" className="button" value="Crear" style={{color: '#B5141C'}}/></a>
                         <br/>
                         <hr/>
-                        <a for="tab-1" id="last1">Ya es miembro?</a>
+                        <a href="#" for="tab-1" id="last1">Ya es miembro?</a>
                         
                     </div>    
 				</div>

@@ -11,6 +11,7 @@ import Coorporativos from './Component/Coorporativos/Coorporativos';
 // import Promociones from './Component/Promociones/Promociones';
 import { BrowserRouter, Switch, Route, Router } from 'react-router-dom';
 import loginYregistro from './Component/loginYregistro/logi&registro';
+import carritoDeCompras from './Component/carritoDeCompras/carritoDeCompras';
 export default class componentName extends Component {
   render() {
     return (
@@ -21,6 +22,7 @@ export default class componentName extends Component {
           <Switch>
             <Route exact path="/coorporativos" component={Coorporativos} />
             <Route exact path="/loginYregistro" component={loginYregistro} ></Route>
+            <Route exact path="/carritoDeCompras" component={carritoDeCompras} ></Route>
           </Switch>
           <Footer></Footer>
         </BrowserRouter>
