@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import carrito from '../carritoDeCompras/canasta.jpg';
-import bouquet from '../carritoDeCompras/bouquet-1.png';
-import rose from '../carritoDeCompras/rose.jpg';
+import globoPincesa from './../carritoDeCompras/globoPincesa.png';
+import vacaFlores from './../carritoDeCompras/vacaFlores.png';
+import ositaBombon from './../carritoDeCompras/ositaBombon.png';
 import { baseUrl } from "../../config";
+import { NavLink } from "react-router-dom";
 
 export default class carritoDeCompras extends Component {
    render() {
@@ -15,12 +16,12 @@ export default class carritoDeCompras extends Component {
 <table className="tabla">
  <tr>
 
-    <td colSpan={5}> <h1 style={{textAlign:'center',letterSpacing:'4px'}}> <b>CARRITO DE COMPRAS</b>  </h1></td>
+    <td colSpan={5}> <h1 style={{textAlign:'left',letterSpacing:'5px',fontSize:'20px'}}> <b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CARRITO DE COMPRAS </b>  </h1></td>
 
   </tr>
   <br/>
   <tr>
-      <td colSpan={5} style={{textAlign:'center', marginBottom: '4%',fontSize:'14px'}}> <u>Necesita ayuda? +51 054-273884 Email servicio al cliente|Shipping information|Return policy</u>  </td>
+      <td colSpan={5} style={{textAlign:'center', marginBottom: '4%',fontSize:'14px'}}><b style={{color:'red'}}>* <a href="#">Necesita ayuda?&nbsp;</a></b> <u>&nbsp; &nbsp;<a href=""><i class="icon-phone">+51 054-273884</i></a> &nbsp; &nbsp;<a href="#">Servicio al cliente</a> &nbsp; | &nbsp; <a href="#">Información de envío </a>&nbsp;| &nbsp;<a href="#">Política de devolución</a> </u></td>
   </tr>
 
      <br/>
@@ -29,7 +30,7 @@ export default class carritoDeCompras extends Component {
      <br/>
   <tr>
 
-    <td> <img src={{carrito}} height='90px' width="90px"/> </td>
+    <td> <img src={{vacaFlores}} height='90px' width="90px"/> </td>
     
 
     <td>Arreglo de rosas con peluche</td>
@@ -45,7 +46,7 @@ export default class carritoDeCompras extends Component {
 <br/>
   <tr>
 
-    <td> <img src={{rose}} height='90px' width="90px"/></td>
+    <td> <img src={{globoPincesa}} height='90px' width="90px"/></td>
 
     <td>Globos happy birthday princesa</td>
 
@@ -59,7 +60,7 @@ export default class carritoDeCompras extends Component {
 <br/>
   <tr>
 
-    <td><img src={{bouquet}} height='90px' width="90px"/></td>
+    <td><img src={{ositaBombon}} height='90px' width="90px"/></td>
 
     <td>Bombones con osita love</td>
 
@@ -79,7 +80,9 @@ export default class carritoDeCompras extends Component {
 </table>
 <br/>
 <button id="button">
-   <a href="">COMPRAR</a>
+   <a href="">
+     
+     COMPRAR</a>
 </button>
 	</div>
     <br/>

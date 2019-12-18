@@ -51,7 +51,8 @@ export default class Header extends Component {
                                         </li>
                                         <li>
                                             <a href="">
-                                                <i className="icon-heart"></i>
+                                                <NavLink className="nav-link" to={"/compra"}>
+                                                <i className="icon-heart"></i></NavLink>
                                             </a>
                                         </li>
                                         <li>
