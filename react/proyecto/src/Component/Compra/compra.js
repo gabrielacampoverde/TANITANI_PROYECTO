@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import globoPincesa from './../Compra/globoPincesa.png';
-import vacaFlores from './../Compra/vacaFlores.png';
-import ositaBombon from './../Compra/ositaBombon.png';
+import compra from './../Compra/compra.js';
 import carritoDeCompras from './../carritoDeCompras/carritoDeCompras';
 import {baseUrl} from "./../../config";
 import { NavLink } from "react-router-dom";
@@ -13,27 +11,27 @@ export default class Compra extends Component {
         <div>
         <table className="lista">
         <tr>
-            <td><i className="fa fa-check-circle-o" aria-hidden="true" style={{fontSize:'50px'}}></i></td>
-            <td><i className="fa fa-check-circle-o" aria-hidden="true" style={{fontSize:'50px'}}></i></td>
-            <td><i className="fa fa-check-circle-o" aria-hidden="true" style={{fontSize:'50px'}}></i></td>
-            <td><i className="fa fa-check-circle-o" aria-hidden="true" style={{fontSize:'50px'}}></i></td>
+            <td><img src={baseUrl + "/compra-img/check.png"} height='90px' width="90px" id="img3"/></td>
+            <td><img src={baseUrl + "/compra-img/check.png"} height='90px' width="90px" id="img3"/></td>
+            <td><img src={baseUrl + "/compra-img/check.png"} height='90px' width="90px" id="img3"/></td>
+            <td><img src={baseUrl + "/compra-img/check.png"} height='90px' width="90px" id="img3"/></td>
         </tr>
         <tr>
-            <td>Información <br/> de envío</td>
-            <td>Métodos <br/> de envío</td>
-            <td>Formas <br/> de pago</td>
-            <td>Visualiza <br/> tu orden</td>
+            <td><a href="tabla1">Información <br/> de envío</a></td>
+            <td><a href="#">Métodos <br/> de envío</a></td>
+            <td><a href="">Formas <br/> de pago</a></td>
+            <td><a href="carritoDeCompras">Visualiza <br/> tu orden</a></td>
         </tr>
     </table>
     <br/>
     <br/>
     <br/>
     <br/>
-    <h1><b><b>CHECK OUT</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        Email | Atención al cliente | Información de envío | Política de retorno</b>
+    <h1><b><b>CHECK OUT</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Email &nbsp;|&nbsp; Atención al cliente &nbsp;|&nbsp; Información de envío&nbsp; |&nbsp; Política de retorno</b>
     </h1>
     <br/><br/><br/><br/>
-    <table className="tabla1">
+    <table className="tabla1"  itemRef='tabla1' >
         <tr>
             <td><b>DATOS DEL EMISOR</b></td>
             <td><b>DATOS DEL RECEPTOR</b></td>
@@ -43,8 +41,8 @@ export default class Compra extends Component {
             <td><br/>Avenida Alcanfores 924-B <br/>Distrito: Cerro Colorado <br/>Ciudad:Arequipa <br/>Pais:Perú</td>
         </tr>
         <tr>
-            <td> <br/> <button style={{borderRadius: '5px', border: '1px solid rgb(226, 32, 32)',height: '90%' ,color: 'white',alignSelf: 'center',backgroundColor: 'rgb(235, 41, 41)'}}>MODIFICAR</button></td>
-            <td>  <br/>  <button style={{borderRadius: '5px', border: '1px solid rgb(233, 37, 37)',height: '90%',color: 'white',alignSelf: 'center',backgroundColor: 'rgb(228, 39, 39)'}}>MODIFICAR</button></td>
+            <td> <br/> <button style={{borderRadius: '5px', border: '1px solid rgb(226, 32, 32)',height: '50px' , width:'30%', color: 'white',alignSelf: 'center',backgroundColor: 'rgb(235, 41, 41)', fontSize:'12px'}}>MODIFICAR</button></td>
+            <td>  <br/>  <button style={{borderRadius: '5px', border: '1px solid rgb(233, 37, 37)',height: '50px', width:'23%',color: 'white',alignSelf: 'center',backgroundColor: 'rgb(228, 39, 39)',fontSize:'12px'}}>MODIFICAR</button></td>
         </tr>
     </table>
 
@@ -53,30 +51,30 @@ export default class Compra extends Component {
         <ul>
             <li>
                 <span>*</span> Nombres y Apellidos:<br/> <br/>
-                <input type="text" name=" " value=" "/>
+                <input type="text" name=" " value=" " style={{background:'none'}}/>
                 <br/><br/> <span>*</span> Dirección:<br/><br/>
-                <input type="text" name="lastname" value=""/>
+                <input type="text" name="lastname" value="" style={{background:'none'}}/>
                 <br/><br/> <span>*</span> Ciudad:<br/> <br/>
-                <input type="text" name="firstname" value=""/>
+                <input type="text" name="firstname" value="" style={{background:'none'}}/>
                 <br/><br/> <span>*</span> Código Postal:<br/> <br/>
-                <input type="text" name="lastname" value=""/>
+                <input type="text" name="lastname" value="" style={{background:'none'}}/>
                 <br/><br/> <span>*</span> Teléfono:<br/> <br/>
-                <input type="text" name="firstname" value=""/>
+                <input type="text" name="firstname" value="" style={{background:'none'}}/>
                 <br/><br/>
 
 
             </li>
             <li>
                 <span>*</span> Nombres y Apellidos:<br/> <br/>
-                <input type="text" name=" " value=" "/>
+                <input type="text" name=" " value=" " style={{background:'none'}}/>
                 <br/><br/> <span>*</span> Dirección:<br/><br/>
-                <input type="text" name="lastname" value=""/>
+                <input type="text" name="lastname" value="" style={{background:'none'}}/>
                 <br/><br/> <span>*</span> Ciudad:<br/> <br/>
-                <input type="text" name="firstname" value=""/>
+                <input type="text" name="firstname" value="" style={{background:'none'}}/>
                 <br/><br/> <span>*</span> Código Postal:<br/> <br/>
-                <input type="text" name="lastname" value=""/>
+                <input type="text" name="lastname" value="" style={{background:'none'}}/>
                 <br/><br/> <span>*</span> Teléfono:<br/> <br/>
-                <input type="text" name="firstname" value=""/>
+                <input type="text" name="firstname" value="" style={{background:'none'}}/>
                 <br/><br/>
 
             </li>
@@ -92,10 +90,13 @@ export default class Compra extends Component {
     <br/>
     <br/>
     
-    <table className="tabla2">
+    <div className="tablaDePagos">
+      <br/>
+      
+      <table className="tabla2">
         <tr>
             <td>
-                <b>Envío gratutio</b>
+                <b>Envío gratutio &nbsp;&nbsp; |</b>
 
             </td>
             <td>
@@ -104,44 +105,53 @@ export default class Compra extends Component {
             </td>
             
         </tr>
+        <br/>
         <tr>
+           
            <td><br/><input type="checkbox" class="cbox1" value=""/>&nbsp;&nbsp;Envío GRATIS <br/>&nbsp; </td>
-            <td><br/><input type="checkbox" class="cbox1" value=""/>&nbsp;&nbsp;Terrestre S/.15 <br/> (ENTREGA: Máx. 3 días)</td>
-            <td><br/><input type="checkbox" class="cbox1" value=""/>&nbsp;&nbsp;Aérea ECONO S./ 25 <br/> (ENTREGA: Máx 2 días )</td>
-            <td><br/><input type="checkbox" class="cbox1" value=""/>&nbsp;&nbsp;Aérea EXPRESS S/. 45 <br/> (ENTREGA: El día siguiente)</td>
+            <td><br/><input type="checkbox" class="cbox1" value=""/>&nbsp;&nbsp;&nbsp;&nbsp;Terrestre S/.15 <br/> (ENTREGA: Máx. 3 días)</td>
+            <td><br/><input type="checkbox" class="cbox1" value=""/>Aérea ECONO S./ 25 <br/> (ENTREGA: Máx 2 días )</td>
+            <td><br/><input type="checkbox" class="cbox1" value=""/>&nbsp;&nbsp;Aérea EXPRESS S/. 45 <br/> (ENTREGA: Al día siguiente)</td>
             
-
         </tr>
     </table>
+    <br/><br/>
+    </div>
     <br/>
     <br/>
+    
+    
     <hr width={870}/>
     <br/>
-    <table className="tabla3">
-        <tr>
-            <td colspan="2"> <b>INFORMACIÓN DE PAGO</b></td>
-        </tr>
+    <h2 style={{marginLeft: '18.8%'}}>INFORMACIÓN DE PAGO</h2>
+    <br/>
+    <br/>
+    <div className="tabla33">
+      <table className="tabla3">
         <br/>
         <br/>
         <tr>
             <td>Tarjeta de crédito</td> 
-            <td>PAYPAL&nbsp;¿Qué es PAYPAL?</td>
+            <td>PAYPAL&nbsp;¿Qué es Paypal?</td>
         </tr>
          <br/>
           
         <tr>
-            <td> <span className="asterisco">*</span> Número de tarjeta</td>
-            <td><input type="text" style={{border: 'none',borderBottom: '1px solid black',color: 'black',fontSize: '13px'}}/></td>
+            <td> <br/><span className="asterisco">*</span>  Número de tarjeta</td>
+            <td><input type="text" style={{border: 'none',borderBottom: '1px solid black',color: 'black',fontSize: '13px',background:'none'}}/></td>
         </tr>
+        <br/>
         <tr>
             <td><span className="asterisco">*</span> Fecha de expiración</td>
-            <td><input type="text" style={{border: 'none',borderBottom: '1px solid black',color: 'black',fontSize: '13px'}}/></td>
+            <td><input type="text" style={{border: 'none',borderBottom: '1px solid black',color: 'black',fontSize: '13px',background:'none'}}/></td>
         </tr>
+        <br/>
         <tr>
             <td><span className="asterisco">*</span> Código de tarjeta</td>
-            <td><input type="text" style={{border: 'none',borderBottom: '1px solid black',color: 'black',fontSize: '13px'}}/></td>
+            <td><input type="text" style={{border: 'none',borderBottom: '1px solid black',color: 'black',fontSize: '13px',background:'none'}}/></td>
         </tr>
     </table>
+    </div>
     <br/>
     <br/>
     <button id="botonValidar">VALIDAR</button>
@@ -162,7 +172,7 @@ export default class Compra extends Component {
             <td><b> PRECIO TOTAL.</b></td>
         </tr>
         <tr>
-            <td><img src={baseUrl + "/vacaFlores"} height='90px' width="90px" id="img2"/></td>
+            <td><img src={baseUrl + "/compra-img/vacaFlores.png"} height='130px' width="130px" id="img2"/></td>
             <td> <br/> Arreglo de rosas <br/> con peluche </td>
             <td> <br/> Rosas rojas con <br/> peluche vaquita</td>
             <td>M</td>
@@ -171,7 +181,7 @@ export default class Compra extends Component {
             <td style={{textAlign: 'center'}}>S/.89.90</td>
         </tr>
         <tr>
-            <td><img src={baseUrl + "/globoPincesa"} height='90px' width="90px" id="img2"/></td>
+            <td><img src={baseUrl + "/compra-img/globoPincesa.png"} height='130px' width="130px" id="img2"/></td>
             <td> <br/> Globo Happy Birthday <br/> Princesa </td>
             <td> <br/> Globo corazon más<br/> peluche princesa</td>
             <td>L</td>
@@ -180,7 +190,7 @@ export default class Compra extends Component {
         <td style={{textAlign: 'center'}}>S/.156.00</td>
         </tr>
         <tr>
-            <td><img src={baseUrl + "ositaBombon"} height='90px' width="90px" id="img3"/></td>
+            <td><img src={baseUrl + "/compra-img/ositaBombon.png"} height='130px' width="130px" id="img3"/></td>
             <td><br/> Bombones con <br/> Osita love </td>
             <td> <br/> Bombones chocolate con <br/> almendras y osa </td>
             <td>M</td>
