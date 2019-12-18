@@ -32,7 +32,7 @@ export let persona_model = (sequelize: any) => {
     },
     per_est:{
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
 
     }
     

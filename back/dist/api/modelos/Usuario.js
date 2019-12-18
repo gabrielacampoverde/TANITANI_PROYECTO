@@ -18,7 +18,7 @@ exports.usuario_model = (sequelize) => {
         },
         usu_tipo: {
             type: sequelize_1.DataTypes.STRING(15),
-            allowNull: false
+            allowNull: true
         },
         usu_hash: {
             type: sequelize_1.DataTypes.TEXT

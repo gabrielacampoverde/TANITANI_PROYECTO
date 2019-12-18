@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { baseUrl } from "./../../config";
+import Registro from './../Registro/Registro'
 
 export default class loginYregistro extends Component {
    render() {
@@ -60,6 +61,9 @@ export default class loginYregistro extends Component {
                         <a href="#" for="tab-1" id="last1">Ya es miembro?</a>
                         
                     </div>    
+
+                    <Registro></Registro>
+                     
 				</div>
 			</div>
 		</div>
