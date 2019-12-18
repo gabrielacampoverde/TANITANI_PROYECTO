@@ -71,56 +71,110 @@ const Registro = () => {
         setTimeout(() => toastr.warning(`No deje espacios en blanco`), 500)
     }
 
-    return (
-        <main>
-            <div className="sectionRegister">
-                <div className="contRegister">
-                    <div className="container">
-                    <form onSubmit={nuevoUsuario}>
-                        <div className="group">
-                            <label>Nombres</label>
-                            <input className="input" type="text" value={name} onChange={(event) => setName(event.target.value)} />
-                        </div>
-                        <div className="group">
-                            <label>Apellido</label>
-                            <input className="input" type="text" value={apell} onChange={(event) => setApell(event.target.value)} />
-                        </div>
-                        <div className="group">
+    return ( <
+        main >
+        <
+        div className = "sectionRegister" >
+        <
+        div className = "contRegister" >
+        <
+        div className = "container" >
+        <
+        form onSubmit = { nuevoUsuario } >
+        <
+        div className = "group" >
+        <
+        label > Nombres < /label> <
+        input className = "input"
+        type = "text"
+        value = { name }
+        onChange = {
+            (event) => setName(event.target.value) }
+        /> <
+        /div> <
+        div className = "group" >
+        <
+        label > Apellido < /label> <
+        input className = "input"
+        type = "text"
+        value = { apell }
+        onChange = {
+            (event) => setApell(event.target.value) }
+        /> <
+        /div> <
+        div className = "group" >
 
-                            <label>Direccion</label>
-                            <input className="input" type="text" value={dir} onChange={(event) => setDir(event.target.value)} />
-                        </div>
-                        <div className="group">
-                            <label>Celular</label>
-                            <input className="input" type="text" value={cel} onChange={(event) => setCel(event.target.value)} />
-                        </div>
-                        <div className="group">
-                            <label>Email</label>
-                            <input className="input" type="text" value={email} onChange={(event) => setEmail(event.target.value)} />
-                        </div>
-                        <div className="group">
-                            <label>Contraseña</label>
-                            <input className="input" type="text" value={pass} onChange={(event) => setPass(event.target.value)} />
-                        </div>
-                        <div className="group">
-                        <button className="btn btn-primary button" onClick={() => {
-                            let c = contador;
-                            c++;
-                            setContador(c);
-                        }} style={{color: '#B5141C'}}>Crear Usuario</button>
-                                    <br/>
-                                    <hr/>
-                                    <a for="tab-1" id="last1">Ya es miembro?</a>
-                                    
-                                </div>   
-                        
-                    </form>
-                    </div>
-                </div>
-            </div>
-            
-        </main>
-        
+        <
+        label > Direccion < /label> <
+        input className = "input"
+        type = "text"
+        value = { dir }
+        onChange = {
+            (event) => setDir(event.target.value) }
+        /> <
+        /div> <
+        div className = "group" >
+        <
+        label > Celular < /label> <
+        input className = "input"
+        type = "text"
+        value = { cel }
+        onChange = {
+            (event) => setCel(event.target.value) }
+        /> <
+        /div> <
+        div className = "group" >
+        <
+        label > Email < /label> <
+        input className = "input"
+        type = "text"
+        value = { email }
+        onChange = {
+            (event) => setEmail(event.target.value) }
+        /> <
+        /div> <
+        div className = "group" >
+        <
+        label > Contraseña < /label> <
+        input className = "input"
+        type = "text"
+        value = { pass }
+        onChange = {
+            (event) => setPass(event.target.value) }
+        /> <
+        /div> <
+        div className = "group" >
+        <
+        button className = "btn btn-primary button"
+        onClick = {
+            () => {
+                let c = contador;
+                c++;
+                setContador(c);
+            }
+        }
+        style = {
+            { color: '#B5141C' } } > Crear Usuario < /button> <
+        br / >
+        <
+        hr / >
+        <
+        a
+        for = "tab-1"
+        id = "last1" > Ya es miembro ? < /a>
+
+        <
+        /div>   
+
+        <
+        /form> <
+        /div> <
+        /div> <
+        /div>
+
+        <
+        /main>
+
     )
 }
 
