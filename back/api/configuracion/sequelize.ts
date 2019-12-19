@@ -68,8 +68,8 @@ Imagen.belongsTo(Producto,{foreignKey:"pro_id"});
 Producto.hasMany(Comentario,{foreignKey:"pro_id"});
 Comentario.belongsTo(Producto,{foreignKey:"pro_id"});
 
-Producto.hasMany(CategoriaProducto,{foreignKey:"prod_id"});
-CategoriaProducto.belongsTo(Producto,{foreignKey:"prod_id"});
+Producto.hasMany(CategoriaProducto,{foreignKey:"pro_id"});
+CategoriaProducto.belongsTo(Producto,{foreignKey:"pro_id"});
 
 Categoria.hasMany(CategoriaProducto,{foreignKey:"cat_id"});
 CategoriaProducto.belongsTo(Categoria,{foreignKey:"cat_id"});

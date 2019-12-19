@@ -1,0 +1,81 @@
+<main class="container mt-5">
+    <section>
+        <h2 class="display-4">Crear Producto</h2>
+        <form class="mt-4 animated slideInLeft " 
+                #formulario="ngForm">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Nombre:</label>
+                        <input type="text"
+                                required
+                                class="form-control"
+                                [(ngModel)]="objProducto.pro_nom"
+                                name="pro_nom"
+                                placeholder="Ejm: Oso de peluche">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="">Precio:</label>
+                        <input type="text"
+                                class="form-control"
+                                required
+                                [(ngModel)]="objProducto.pro_prec"
+                                name="pro_prec"
+                                placeholder="S/. 10.00...">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Estado:</label>
+                        <input type="text" 
+                                class="form-control" 
+                                required
+                                [(ngModel)]="objProducto.pro_est"
+                                name="pro_est" placeholder="En soles...">
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <label for="">Imagen:</label>
+                        <input type="text"
+                                
+                                class="form-control"
+                                required
+                                [(ngModel)]="objProducto.prod_img"
+                                name="prod_img"
+                                placeholder="Url http://lorempixel.com/640/480/fashion">
+                    </div> -->
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Descripción:</label>
+                        <input type="text" 
+                                class="form-control" 
+                                required
+                                [(ngModel)]="objProducto.pro_desc"
+                                name="pro_desc" placeholder="Cantidad">
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit"
+                        class="btn btn-block btn-lg btn-info"
+                        [disabled]="!formulario.valid"
+                        (click)="crearProducto()">
+                    <i class="fas fa-save"></i>
+                    Registrar Producto
+                </button>
+            </div>
+        </form>
+    </section>
+</main>

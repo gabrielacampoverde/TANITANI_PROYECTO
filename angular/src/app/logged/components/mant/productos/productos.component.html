@@ -1,0 +1,175 @@
+
+<!-- colocamos el modal -->
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+  Launch
+</button> -->
+
+<!-- Modal -->
+
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title">EDITAR REGISTRO</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 animated pulse " 
+                    #formulario="ngForm">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                          
+                                <label for="">ID de Producto</label>
+                                <input type="text" requered class="form-control" required [(ngModel)]="ObjProducto.pro_id" name="pro_id" disabled>
+                                <!-- tiene quye tener el atributo name si o si, no importa el nombre que se le ponga  -->
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Nombre:</label>
+                            <input type="text"
+                                    required
+                                    class="form-control"
+                                    [(ngModel)]="ObjProducto.pro_nom"
+                                    name="pro_nom"
+                                   >
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="">Precio:</label>
+                            <input type="text"
+                                    class="form-control"
+                                    required
+                                    [(ngModel)]="ObjProducto.pro_prec"
+                                    name="pro_desc"
+                                   >
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Estado:</label>
+                            <input type="text" 
+                                    class="form-control" 
+                                    required
+                                    [(ngModel)]="ObjProducto.pro_est"
+                                    name="pro_est">
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <label for="">Imagen:</label>
+                            <input type="text"
+                                    
+                                    class="form-control"
+                                    required
+                                    [(ngModel)]="ObjProducto.prod_img"
+                                    name="prod_img"
+                                    >
+                                    
+                        </div> -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Descripción:</label>
+                            <input type="text" 
+                                    class="form-control" 
+                                    required
+                                    [(ngModel)]="ObjProducto.pro_desc"
+                                    name="pro_desc" >
+                        </div>
+                        
+                            <!-- <div class="col-md-6 container-fluid" >
+                                <img src= {{ObjProducto.prod_img}} class="card-img-top"   required name="prod_img">
+                                
+                            </div> -->
+                          
+                        
+                    </div>
+                   
+                    
+                </div>
+                <div class="form-group">
+                    <button type="submit"
+                            class="btn btn-block btn-lg btn-info"
+                            [disabled]="!formulario.valid"
+                            (click)="guardarCambios()">
+                        <i class="fas fa-save"></i>
+                        Guardar Cambios
+                    </button>
+                </div>
+            </form>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+<main class="container mt-5">
+    
+        <button class="btn btn-outline-danger" *ngIf="productosSeleccionadas.length>0" (click)="eliminarProductos()">Eliminar Productos</button>
+    <div>
+        <div class="alert alert-info text-center" role="alert" *ngIf="!productos">
+            <!-- <h4 class="alert-heading">Cargando..</h4> -->
+            <!-- <p>
+                <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
+            </p> -->
+            <button class="btn btn-info" type="button" disabled>
+                <h4><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                Cargando...</h4>
+              </button>
+        </div>
+        <div *ngIf="productos" class="animated slideInLeft">
+            <table class="table table-hover" >
+                <thead >
+                        <!-- class="bg-info" -->
+                    <tr>
+                        <th>SEL. BORRAR</th> 
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>PRECIO</th>
+                        <th>ESTADO</th>
+                        <th>DESCRIPCIÓN</th>
+                        <!-- <th>STOCK</th> -->
+                        <th>ACTIONS</th>
+                    </tr> 
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of productos.Producto">
+                            <td><input type="checkbox" class="form-control" id=[{{p.pro_id}}] (change)="seleccionarProducto($event, p)"><label for=[{{p.pro_id}}]></label></td>
+                        <td>{{p.pro_id}}</td>
+                        <td>{{p.pro_nom}}</td>
+                        <td>{{p.pro_prec}}</td>
+                        <td>{{p.pro_est}}</td>
+                        <td>{{p.pro_desc}}</td>
+                        <!-- <td><img src={{p.prod_img}} style="width: 45px" class="card-img-top" alt="..." ></td>
+                        <td>{{p.prod_stock}}</td> -->
+                        <td style="display: flex;"> <button class="btn btn-outline-danger" (click)="eliminarProducto(p.pro_id)"><i class="fas fa-trash-alt" aria-hidden="true"></i> </button>
+                            <button class="btn btn-outline-info ml-2" (click)="abrirModalEditar(p.pro_id)"><i class="fas fa-user-edit"></i> </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <button class="btn btn-info btnCrear animated bounce slow"
+        (click)="crearProducto()">
+        <i class="fa fa-plus fa-2x" 
+        aria-hidden="true"></i>
+    </button>
+
+</main>

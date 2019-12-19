@@ -5,28 +5,55 @@ const swaggerUi = require('swagger-ui-express');
 
 import * as swaggerDocument from './../apidocs/documentacion.json';
 
+
 import { persona_router} from '../rutas/persona';
 import { metodoPago_router } from '../rutas/metodoPago';
 import { categoria_router } from '../rutas/categoria';
-import { producto_router } from '../rutas/producto';
+import {producto_router} from '../rutas/producto';
 import {usuario_router} from '../rutas/Usuario';
+import { method } from 'bluebird';
+import { Resolver } from 'dns';
 
+// const cors=require('cors');
 
 export class Server {
   public app: express.Application;
   public puerto: any;
   constructor() {
     this.app = express();
+
+    // this.app.use(cors());
     // obtener el puerto que nos asignará heroku
     // o establer por defecto el puerto 3000
+<<<<<<< HEAD
+    this.puerto = process.env.PORT || 4000;
+=======
     this.puerto = process.env.PORT || 3000;
+>>>>>>> 1566fd51bd9cd4c082d21a308e2409d33dc14ca8
     this.habilitarCORS();
     // la configuracion de body-parser, siempre debe estas
     // antes de configurar las rutas
     this.configurarBodyParser();
     this.configurarRutas();
   }
+<<<<<<< HEAD
+
   habilitarCORS(){
+    // console.log("ingreso");
+    // this.app.use((req, res, next) => {
+    //   res.header('Access-Control-Allow-Origin', '*');
+    //   res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    //   if(req.method==='OPTIONS'){
+    //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    //     return res.status(200).json({});
+    //   }
+    
+      // res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+      // next();
+    // });
+=======
+  habilitarCORS(){
+>>>>>>> 1566fd51bd9cd4c082d21a308e2409d33dc14ca8
     this.app.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -34,12 +61,22 @@ export class Server {
       res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
       next();
     });
+<<<<<<< HEAD
+
+  } 
+
+=======
   }
+>>>>>>> 1566fd51bd9cd4c082d21a308e2409d33dc14ca8
   configurarBodyParser() {
     this.app.use(bodyParser.json());
   }
 
   configurarRutas() {
+    // this.app.use(cors({
+    //   origin:'http://localhost:4200',
+    //   methods:['GET','POST','PATCH','DELETE','PUT']
+    // }));
     // configurando una ruta por defecto o de prueba
     this.app.get('/', (req: Request, res: Response) => {
       res.status(200).send("BIENVENIDO AL SERVIDOR");

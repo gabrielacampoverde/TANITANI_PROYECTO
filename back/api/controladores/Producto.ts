@@ -7,7 +7,8 @@ export let getProductos=(req:Request,res:Response)=>{
     Producto.findAll().then((objProductos:any)=>{
         res.status(200).json({
             message:'Ok',
-            content:objProductos
+            Producto:objProductos
+
         })
     })
 
@@ -96,3 +97,32 @@ export let updateProducto=(req:Request,res:Response)=>{
     })
 }
  
+export var producto_controller = {
+    
+    deleteById: (req:Request, res:Response) => {
+        let {id} = req.params;
+        // console.log("delete",id_empleado)
+        Producto.destroy({
+            where:{
+                pro_id:id
+            }
+        }).then((cantidad:any) => {
+            if(cantidad > 0){
+                console.log("Cant",cantidad);
+                let respuesta = {
+                    success:true,
+                    message:"Usuario Eliminado",
+                    content:cantidad
+                }
+                res.status(200).send(respuesta);
+            }else{
+                let respuesta = {
+                    success:false,
+                    message:"No se ha eliminado",
+                    content:''
+                }
+                res.status(500).send(respuesta);
+            }
+        })
+    }
+}

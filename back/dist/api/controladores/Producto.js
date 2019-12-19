@@ -5,7 +5,7 @@ exports.getProductos = (req, res) => {
     sequelize_1.Producto.findAll().then((objProductos) => {
         res.status(200).json({
             message: 'Ok',
-            content: objProductos
+            Producto: objProductos
         });
     });
 };
@@ -75,4 +75,33 @@ exports.updateProducto = (req, res) => {
             content: error
         });
     });
+};
+exports.producto_controller = {
+    deleteById: (req, res) => {
+        let { id } = req.params;
+        // console.log("delete",id_empleado)
+        sequelize_1.Producto.destroy({
+            where: {
+                pro_id: id
+            }
+        }).then((cantidad) => {
+            if (cantidad > 0) {
+                console.log("Cant", cantidad);
+                let respuesta = {
+                    success: true,
+                    message: "Usuario Eliminado",
+                    content: cantidad
+                };
+                res.status(200).send(respuesta);
+            }
+            else {
+                let respuesta = {
+                    success: false,
+                    message: "No se ha eliminado",
+                    content: ''
+                };
+                res.status(500).send(respuesta);
+            }
+        });
+    }
 };

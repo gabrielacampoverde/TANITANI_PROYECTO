@@ -20,12 +20,14 @@ const metodoPago_1 = require("../rutas/metodoPago");
 const categoria_1 = require("../rutas/categoria");
 const producto_1 = require("../rutas/producto");
 const Usuario_1 = require("../rutas/Usuario");
+// const cors=require('cors');
 class Server {
     constructor() {
         this.app = express_1.default();
+        // this.app.use(cors());
         // obtener el puerto que nos asignará heroku
         // o establer por defecto el puerto 3000
-        this.puerto = process.env.PORT || 3000;
+        this.puerto = process.env.PORT || 4000;
         this.habilitarCORS();
         // la configuracion de body-parser, siempre debe estas
         // antes de configurar las rutas
@@ -33,6 +35,17 @@ class Server {
         this.configurarRutas();
     }
     habilitarCORS() {
+        // console.log("ingreso");
+        // this.app.use((req, res, next) => {
+        //   res.header('Access-Control-Allow-Origin', '*');
+        //   res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+        //   if(req.method==='OPTIONS'){
+        //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+        //     return res.status(200).json({});
+        //   }
+        // res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+        // next();
+        // });
         this.app.use((req, res, next) => {
             res.header('Access-Control-Allow-Origin', '*');
             res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -45,6 +58,10 @@ class Server {
         this.app.use(bodyParser.json());
     }
     configurarRutas() {
+        // this.app.use(cors({
+        //   origin:'http://localhost:4200',
+        //   methods:['GET','POST','PATCH','DELETE','PUT']
+        // }));
         // configurando una ruta por defecto o de prueba
         this.app.get('/', (req, res) => {
             res.status(200).send("BIENVENIDO AL SERVIDOR");
