@@ -69,7 +69,7 @@ export default class Header extends Component {
                         <div className="cont-nav">
                             <nav>
                                 <ul>
-                                    <li><a href="">HOME</a></li>
+                                    <li><NavLink className="nav-link" to={"/"}>HOME</NavLink></li>
                                     <li><NavLink className="nav-link" to={"/promociones"}>PROMOCIONES</NavLink>
                                        
                                     </li>
@@ -86,7 +86,7 @@ export default class Header extends Component {
                                         <NavLink className="nav-link" to={"/coorporativos"}>COORPORATIVOS</NavLink>
                                     </li>
                                     <li><NavLink className="nav-link" to={"/promociones"}>COMPLEMENTOS</NavLink></li>
-                                    <li><a href="">CONTÁCTANOS</a></li>
+                                    <li><NavLink className="nav-link" to={"/formulario"}>CONTÁCTANOS</NavLink></li>
                                 </ul>
                             </nav>
                         </div>
