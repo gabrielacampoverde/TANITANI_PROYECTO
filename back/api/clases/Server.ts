@@ -25,35 +25,14 @@ export class Server {
     // this.app.use(cors());
     // obtener el puerto que nos asignará heroku
     // o establer por defecto el puerto 3000
-<<<<<<< HEAD
     this.puerto = process.env.PORT || 4000;
-=======
-    this.puerto = process.env.PORT || 3000;
->>>>>>> 1566fd51bd9cd4c082d21a308e2409d33dc14ca8
     this.habilitarCORS();
     // la configuracion de body-parser, siempre debe estas
     // antes de configurar las rutas
     this.configurarBodyParser();
     this.configurarRutas();
   }
-<<<<<<< HEAD
-
   habilitarCORS(){
-    // console.log("ingreso");
-    // this.app.use((req, res, next) => {
-    //   res.header('Access-Control-Allow-Origin', '*');
-    //   res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-    //   if(req.method==='OPTIONS'){
-    //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    //     return res.status(200).json({});
-    //   }
-    
-      // res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-      // next();
-    // });
-=======
-  habilitarCORS(){
->>>>>>> 1566fd51bd9cd4c082d21a308e2409d33dc14ca8
     this.app.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -61,13 +40,7 @@ export class Server {
       res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
       next();
     });
-<<<<<<< HEAD
-
-  } 
-
-=======
   }
->>>>>>> 1566fd51bd9cd4c082d21a308e2409d33dc14ca8
   configurarBodyParser() {
     this.app.use(bodyParser.json());
   }

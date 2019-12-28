@@ -10,30 +10,31 @@ exports.getProductos = (req, res) => {
     });
 };
 exports.postProducto = (req, res) => {
-    // validando si el req.body cumple con los parametros minimosde entrada
-    if (!req.body.pro_nom) {
-        res.status(400).json({
-            ok: false,
-            mensaje: "No se recibieron todos los campos en el request"
-        });
-        return;
-    }
-    let objProducto = sequelize_1.Producto.build(req.body);
-    // objPabellon.pab_nom=req.body.pab_nom;
-    // console.log(objPabellon);
-    objProducto.save().then((objProductoCreado) => {
-        res.status(201).json({
-            ok: true,
-            contenido: objProductoCreado,
-            mensaje: "Producto creado correctamente"
-        });
-    }).catch((errorsh) => {
-        res.status(500).json({
-            ok: false,
-            mensaje: "Error interno en servidor",
-            contenido: errorsh
+    console.log("miproducto", req.body);
+    sequelize_1.Producto.build(req.body.producto).save().then((proCreada) => {
+        // Se hace la relacion para las dos tablas
+        let fk_prodcat = proCreada.pro_id;
+        console.log("dd", fk_prodcat);
+        let jsonpcat = req.body.prodcat;
+        console.log("333", jsonpcat);
+        jsonpcat.pro_id = fk_prodcat;
+        let objcatProd = sequelize_1.CategoriaProducto.build(req.body.prodcat);
+        objcatProd.save().then((procCreado) => {
+            sequelize_1.CategoriaProducto.findByPk(procCreado.catprod_id).then((procEncontrado) => {
+                res.status(201).json({
+                    message: 'Usuario creado',
+                    content: procEncontrado
+                });
+            });
+        }).catch((error) => {
+            res.status(501).json({
+                message: 'Error',
+                content: error
+            });
         });
     });
+    // build => CONSTRUYE el objeto usuario, mas NO LO CREA en la base de datos
+    // save()=> promesa que GUARDA el registro en la Base de Datos
 };
 exports.getProductosById = (req, res) => {
     sequelize_1.Producto.findByPk(req.params.id).then((objProducto) => {

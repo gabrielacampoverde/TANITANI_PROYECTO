@@ -1,7 +1,6 @@
 //PABELLON CONTROLLER
 import{Request,Response} from 'express'
-import { Producto } from '../configuracion/sequelize'
-import { producto_model } from '../modelos/Producto'
+import { Producto, CategoriaProducto } from '../configuracion/sequelize'
 
 export let getProductos=(req:Request,res:Response)=>{
     Producto.findAll().then((objProductos:any)=>{
@@ -13,42 +12,37 @@ export let getProductos=(req:Request,res:Response)=>{
     })
 
 }
-export let postProducto=(req:Request,res:Response)=>{
+export let postProducto = (req: Request, res: Response) => {
+    console.log("miproducto",req.body);
+    Producto.build(req.body.producto).save().then((proCreada:any)=>{
+        // Se hace la relacion para las dos tablas
+        let fk_prodcat= proCreada.pro_id
+        console.log("dd",fk_prodcat);
+        
+        let jsonpcat = req.body.prodcat
+        console.log("333",jsonpcat);
+        
+        jsonpcat.pro_id = fk_prodcat
+        let objcatProd = CategoriaProducto.build(req.body.prodcat);
+        objcatProd.save().then((procCreado: any) => {
+            CategoriaProducto.findByPk(procCreado.catprod_id).then((procEncontrado: any) => {
+                res.status(201).json({
+                    message: 'Usuario creado',
+                    content: procEncontrado
+                })
+            })
+        }).catch((error: any) => {
+            res.status(501).json({
+                message: 'Error',
+                content: error
+            })
+        })
 
-
-// validando si el req.body cumple con los parametros minimosde entrada
-
-if(!req.body.pro_nom){
-    res.status(400).json(
-        {
-            ok:false,
-            mensaje:"No se recibieron todos los campos en el request"
-        }
-    );
-    return;
-}
-
-    let objProducto=Producto.build(req.body);
-    // objPabellon.pab_nom=req.body.pab_nom;
-    // console.log(objPabellon);
-    objProducto.save().then((objProductoCreado:any)=>{
-        res.status(201).json(
-            {
-                ok:true,
-                contenido: objProductoCreado,
-                mensaje:"Producto creado correctamente"
-            }
-        );
-    }).catch((errorsh:any)=>{
-        res.status(500).json(
-            {
-                ok:false,
-                mensaje:"Error interno en servidor",
-                contenido: errorsh
-            }
-        );
     })
+    // build => CONSTRUYE el objeto usuario, mas NO LO CREA en la base de datos
+    // save()=> promesa que GUARDA el registro en la Base de Datos
 }
+
 
 
 export let getProductosById=(req:Request,res:Response)=>{
