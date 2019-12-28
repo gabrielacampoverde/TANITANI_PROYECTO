@@ -18,6 +18,7 @@ import { BrowserRouter, Switch, Route, Router } from 'react-router-dom';
 import loginYregistro from './Component/loginYregistro/logi&registro';
 import carritoDeCompras from './Component/carritoDeCompras/carritoDeCompras';
 import Compra from './Component/Compra/compra';
+import Detalle from './Component/DetalleProducto/Detalle';
 
 export default class componentName extends Component {
   render() {
@@ -35,6 +36,7 @@ export default class componentName extends Component {
             <Route exact path="/carritoDeCompras" component={carritoDeCompras} ></Route>
             <Route exact path="/compra" component={Compra}></Route>
             <Route exact path="/registro" component={Registro}></Route>
+            <Route exact path="/detalle" component={Detalle}></Route>
           </Switch>
           <Footer></Footer>
         </BrowserRouter>
