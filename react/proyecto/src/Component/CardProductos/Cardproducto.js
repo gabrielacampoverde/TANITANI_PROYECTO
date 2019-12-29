@@ -13,6 +13,9 @@ export default class Cardproducto extends Component {
                 </div>
                 <div className="sectionProductos">
                     <div className="container">
+                        <div className="titlecard">
+                            <h1>DESTACADOS</h1>
+                        </div>
                         <div className="product-list">
                             <div className="product-item card">
                                 <div className="product-image">
@@ -29,15 +32,12 @@ export default class Cardproducto extends Component {
                                                 <i className="icon-shopping-cart"></i>
                                             </a>
                                         </div>
-                                        <div className="btn-add-to-cart">
-                                            <button className="btn-add">Agregar al carrito</button>
-                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="product-text">
-                                    <h4>Bouquete Rosas Forever</h4>
-                                    <h5>S/ 75.00</h5>
+                                    <div className="product-text">
+                                        <h4>Bouquete Rosas Forever</h4>
+                                        <h5>S/ 75.00</h5>
+                                    </div>
                                 </div>
                             </div>
                             <div className="product-item card">
@@ -173,7 +173,6 @@ export default class Cardproducto extends Component {
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }
