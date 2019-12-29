@@ -20,8 +20,44 @@ import loginYregistro from './Component/loginYregistro/logi&registro';
 import carritoDeCompras from './Component/carritoDeCompras/carritoDeCompras';
 import Compra from './Component/Compra/compra';
 import Detalle from './Component/DetalleProducto/Detalle';
+import AuthService from "./Services/Auth";
 
 export default class componentName extends Component {
+  _sAuth = new AuthService();
+
+  constructor(props) {
+    super(props);
+
+    if (this._sAuth.isLogged()) {
+      this.state = {
+        isLogged: true
+      };
+    } else {
+      this.state = {
+        isLogged: false
+      };
+    }
+    this.signin.bind(this);
+  }
+
+  signin = (email, pass) => {
+    this._sAuth.login(email, pass).then(rpta => {
+      console.log(rpta);
+      if (rpta.status === 200) {
+        this._sAuth.guardarToken(rpta.data.token);
+        this.setState({
+          isLogged: true
+        });
+        console.log(this.state.isLogged);
+      }
+    });
+  };
+
+  signout = () => {
+    this._sAuth.cerrarSesion();
+    this.setState({ isLogged: false });
+  }
+
   render() {
     return (
       <Fragment>

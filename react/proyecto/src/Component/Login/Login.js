@@ -11,7 +11,6 @@ const Login = () => {
     const [pass, setPass] = useState('');
     const { handleSubmit, register, errors } = useForm();
     const onSubmit = values => {
-        console.log(values);
         let misHeaders = {
             "Content-Type": "application/json"
         }
