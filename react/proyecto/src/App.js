@@ -11,6 +11,7 @@ import Cardproducto from './Component/CardProductos/Cardproducto';
 import Coorporativos from './Component/Coorporativos/Coorporativos';
 import Promociones from './Component/Promociones/Promociones';
 import Registro from './Component/Registro/Registro'
+import Login from './Component/Login/Login'
 import Formulario from './Component/Coorporativos/Formulario';
 
 // import Promociones from './Component/Promociones/Promociones';
@@ -35,6 +36,7 @@ export default class componentName extends Component {
             <Route exact path="/carritoDeCompras" component={carritoDeCompras} ></Route>
             <Route exact path="/compra" component={Compra}></Route>
             <Route exact path="/registro" component={Registro}></Route>
+            <Route exact path="/login" component={Login}></Route>
           </Switch>
           <Footer></Footer>
         </BrowserRouter>

@@ -8,7 +8,6 @@ export default class Header extends Component {
         let header = document.getElementById("header")
         if (window.scrollY > 80) {
 
-            console.log(header);
             header.classList.add("change-header");
 
         } else {
@@ -45,21 +44,13 @@ export default class Header extends Component {
                                     <ul>
                                         <li>
                                             <NavLink className="nav-link" to={"/loginYregistro"}><i className="icon-user"></i></NavLink>
-                                            {/* <a href="">
-                                              
-                                            </a> */}
                                         </li>
                                         <li>
-                                            <a href="">
-                                                <NavLink className="nav-link" to={"/compra"}>
-                                                <i className="icon-heart"></i></NavLink>
-                                            </a>
+                                            <NavLink className="nav-link" to={"/compra"}>
+                                            <i className="icon-heart"></i></NavLink>
                                         </li>
                                         <li>
-                                            <a href="">
-                                                <NavLink className="nav-link" to={"/carritoDeCompras"}><i className="icon-shopping-cart"></i></NavLink>
-                                            
-                                            </a>
+                                            <NavLink className="nav-link" to={"/carritoDeCompras"}><i className="icon-shopping-cart"></i></NavLink>
                                         </li>
                                     </ul>
                                     <h6 className="text-color help">Necesita ayuda? 888-308-2636</h6>
