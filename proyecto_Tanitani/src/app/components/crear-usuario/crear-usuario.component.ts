@@ -1,53 +1,60 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FacturasService } from './../../services/facturas.service';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
-  selector: 'app-crear-factura',
-  templateUrl: './crear-factura.component.html',
-  styleUrls: ['./crear-factura.component.css']
+  selector: 'app-crear-usuario',
+  templateUrl: './crear-usuario.component.html',
+  styleUrls: ['./crear-usuario.component.css']
 })
-export class CrearFacturaComponent implements OnInit, OnDestroy {
+
+
+export class CrearUsuarioComponent implements OnInit, OnDestroy {
   subscriptor: Subscription;
 
-  objFactura = {
-    per_nom: '',
-    per_ape: '',
-    per_dir: '',
-    per_cel: ''
+  objUsuario = {
+    per_id:  '',
+    per_nombre: '',
+    per_apellido:'',
+    per_direccion:'',
+    per_celular:'',
+    per_estado:'',
+    usu_email:'',
+    usu_pass:'',  
+
   }
 
-  constructor(private _sFactura: FacturasService,
+  constructor(private _sUsuario: UsuariosService,
     private _sRouter: Router) { }
 
   ngOnInit() {
   }
 
-  crearFactura() {
+  crearUsuario() {
+
     Swal.fire({
-      title: 'Espere un momento',
-      text: 'Estamos registrando la factura',
-      type: 'info',
+      title:'Espere un momento',
+      text:'Estamos registrando el Usuario',
+      icon:'info',
       allowOutsideClick: false,
       showConfirmButton: false
     })
 
-    this.subscriptor = this._sFactura.postFactura(this.objFactura)
+    this.subscriptor = this._sUsuario.postUsuario(this.objUsuario)
       .subscribe((rpta) => {
         if (rpta.id) {
           // si tiene un campo id asignado, implica que el objeto fue creado
           Swal.fire({
             title: 'Éxito!',
-            type: 'success',
-            text: 'El Usuario ha sido creada con éxito!',
+            icon: 'success',
+            text: 'El Usuario ha ha sido creada con éxito!',
             confirmButtonText: 'Ir a Usuarios',
             allowOutsideClick: false
           }).then((result) => {
             if (result.value) {
-              this._sRouter.navigate(['facturas']);
+              this._sRouter.navigate(['Usuarios']);
             }
           })
 

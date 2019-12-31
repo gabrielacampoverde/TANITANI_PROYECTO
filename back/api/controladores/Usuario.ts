@@ -2,6 +2,21 @@ import { Request, Response } from 'express';
 import { Usuario, Persona } from '../configuracion/sequelize';
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op; // Los operadores de comparacion de sequelize
+
+
+export let getUsuarios=(req:Request,res:Response)=>{
+    Usuario.findAll().then((objUsuarios:any)=>{
+        res.status(200).json({
+            message:'Ok',
+            usuario:objUsuarios
+
+        })
+    })
+
+}
+
+
+
 export let crearUsuario = (req: Request, res: Response) => {
     console.log("misuario",req.body);
     Persona.build(req.body.persona).save().then((perCreada:any)=>{

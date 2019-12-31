@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-ver-factura',
-  templateUrl: './ver-factura.component.html',
-  styleUrls: ['./ver-factura.component.css']
+  selector: 'app-ver-usuario',
+  templateUrl: './ver-usuario.component.html',
+  styleUrls: ['./ver-usuario.component.css']
 })
-export class VerFacturaComponent implements OnInit {
+export class VerUsuarioComponent implements OnInit {
+
   id: string;
   constructor(private _sActivatedRoute: ActivatedRoute) { }
   ngOnInit() {

@@ -35,6 +35,17 @@ class Server {
         this.configurarRutas();
     }
     habilitarCORS() {
+        // console.log("ingreso");
+        // this.app.use((req, res, next) => {
+        //   res.header('Access-Control-Allow-Origin', '*');
+        //   res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+        //   if(req.method==='OPTIONS'){
+        //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+        //     return res.status(200).json({});
+        //   }
+        // res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+        // next();
+        // });
         this.app.use((req, res, next) => {
             res.header('Access-Control-Allow-Origin', '*');
             res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');

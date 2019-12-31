@@ -11,8 +11,7 @@ import { metodoPago_router } from '../rutas/metodoPago';
 import { categoria_router } from '../rutas/categoria';
 import {producto_router} from '../rutas/producto';
 import {usuario_router} from '../rutas/Usuario';
-import { method } from 'bluebird';
-import { Resolver } from 'dns';
+
 
 // const cors=require('cors');
 
@@ -32,7 +31,20 @@ export class Server {
     this.configurarBodyParser();
     this.configurarRutas();
   }
+
   habilitarCORS(){
+    // console.log("ingreso");
+    // this.app.use((req, res, next) => {
+    //   res.header('Access-Control-Allow-Origin', '*');
+    //   res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    //   if(req.method==='OPTIONS'){
+    //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    //     return res.status(200).json({});
+    //   }
+    
+      // res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+      // next();
+    // });
     this.app.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -40,7 +52,9 @@ export class Server {
       res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
       next();
     });
-  }
+
+  } 
+
   configurarBodyParser() {
     this.app.use(bodyParser.json());
   }

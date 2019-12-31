@@ -1,0 +1,126 @@
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 animated fadeIn " #formulario="ngForm">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Email:</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objUsuario.usu_email" name="email">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Password</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objUsuario.usu_pass" name="password" placeholder="Ejm: F001-00456">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Tipo</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objUsuario.usu_tipo" name="tipo" placeholder="Ejm: F001-00456">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">Nombres</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objPersona.per_nom" name="nombre" placeholder="Ejm: Binario Consultores S.R.L.">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">Apellidos</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objPersona.per_ape" name="apellido" placeholder="Ejm: Binario Consultores S.R.L.">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Direccion</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objPersona.per_dir" name="direccion">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Teléfono:</label>
+                                    <input type="text" maxlength="9" minlength="9" class="form-control" required [(ngModel)]="objPersona.per_cel" name="per_cel" placeholder="Ejm: 20038573192">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="crearUsuarioPersona()">
+                                <i class="fas fa-save"></i>
+                                Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<main class="container mt-5">
+    <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="crearUsuarioPersona()">
+        <i class="fas fa-save"></i>
+        Crear Usuario
+    </button>
+    <div>
+        <div class="alert alert-success text-center" role="alert" *ngIf="!usuarios">
+            <h4 class="alert-heading">Cargando..</h4>
+            <p>
+                <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
+            </p>
+        </div>
+        <div *ngIf="usuarios" class="animated slideInLeft">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sel.</th>
+                        <th>Id</th>
+                        <th>Razón Social</th>
+                        <th>Numero de Factura</th>
+                        <th>Ruc</th>
+                        <th>Fecha de Compra</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td><input type="checkbox" class="form-control" (change)="seleccionarUsuario($event, usuario)"></td>
+                        <td>{{usuario.usu_id}}</td>
+                        <td>{{usuario.usu_email}}</td>
+                        <td>{{usuario.usu_tipo}}</td>
+                        <td>{{usuario.per_id}}</td>
+                        <td style="display: flex;">
+                            <button class="btn btn-danger" (click)="eliminarUsuario(usuario.id)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(usuario.id)">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <button class="btn btn-dark btnCrear animated bounce infinite slow" (click)="crearUsuario()">
+        <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+    </button>
+
+</main>
