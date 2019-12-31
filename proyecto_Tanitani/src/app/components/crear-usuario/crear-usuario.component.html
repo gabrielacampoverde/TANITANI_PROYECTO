@@ -1,0 +1,83 @@
+<main class="container mt-5">
+    <section>
+        <h2 class="display-4">Crear Usuario</h2>
+        <form class="mt-4 animated slideInLeft " #formulario="ngForm">
+            <div class="form-group">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <label for="">Nombres:</label>
+                        <input type="text" required class="form-control" [(ngModel)]="objPersona" name="per_nom" placeholder="Ejm: Maria Alejandra">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="">Apellidos:</label>
+                        <input type="text" class="form-control" required [(ngModel)]="objUsuario.per_apellido" name="per_ape" placeholder="Ejm: Rivera Carpio">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <label for="">Direccion:</label>
+                        <input type="text" class="form-control" required [(ngModel)]="objUsuario.per_direccion" name="per_dir" placeholder="Ejm: Psje Del Solar 419">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Celular:</label>
+                        <input type="text" maxlength="9" minlength="9" class="form-control" required [(ngModel)]="objUsuario.per_celular" name="per_cel" placeholder="Ejm: 949785765">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <select name="" id="">
+                                <option selected value="0"> Estado del Usuario </option> 
+                                    <option value="1">Activo</option> 
+                                    <option value="2">Inactivo</option> 
+                        </select>
+
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <label for="">Correo:</label>
+                            <input type="email" class="form-control" required [(ngModel)]="objUsuario.usu_email" name="per_dir" placeholder="Ejm: maria@gmail.com">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Contraseña:</label>
+                            <input type="password" maxlength="9" minlength="9" class="form-control" required [(ngModel)]="objUsuario.usu_pass" name="usu_pass">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <select name="" id="">
+                                <option selected value="0"> Tipo de Usuario </option> 
+                                    <option value="1">Cliente</option> 
+                                    <option value="2">Administrador</option> 
+                        </select>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="crearUsuario()">
+                    <i class="fas fa-save"></i>
+                    Registrar Usuario
+                </button>
+            </div>
+        </form>
+    </section>
+</main>
