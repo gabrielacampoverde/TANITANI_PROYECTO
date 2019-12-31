@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FacturasService} from '../../services/facturas.service'
+import {UsuariosService} from '../../services/usuarios.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,10 +8,10 @@ import {FacturasService} from '../../services/facturas.service'
 export class LoginComponent implements OnInit {
   
 
-  constructor(private _sFactura: FacturasService) { }
+  constructor(private _sFactura: UsuariosService) { }
 
   ngOnInit() {
-    this._sFactura.postFactura({
+    this._sFactura.postUsuario({
       email:'a@c.com',
       pass:'123456'
     }).subscribe((rpta:any)=>{

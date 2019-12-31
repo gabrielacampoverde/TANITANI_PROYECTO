@@ -11,8 +11,7 @@ import { metodoPago_router } from '../rutas/metodoPago';
 import { categoria_router } from '../rutas/categoria';
 import {producto_router} from '../rutas/producto';
 import {usuario_router} from '../rutas/Usuario';
-import { method } from 'bluebird';
-import { Resolver } from 'dns';
+
 
 // const cors=require('cors');
 
