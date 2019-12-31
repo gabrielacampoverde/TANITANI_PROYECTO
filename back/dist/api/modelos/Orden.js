@@ -28,3 +28,4 @@ exports.orden_model = (sequelize) => {
     });
     return orden;
 };
+//# sourceMappingURL=Orden.js.map

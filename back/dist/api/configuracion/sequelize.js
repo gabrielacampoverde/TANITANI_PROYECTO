@@ -44,6 +44,8 @@ exports.MetodoPago.hasMany(exports.Compras, { foreignKey: "mpago_id" });
 exports.Compras.belongsTo(exports.MetodoPago, { foreignKey: "mpago_id" });
 exports.Orden.hasMany(exports.Compras, { foreignKey: "orde_id" });
 exports.Compras.belongsTo(exports.Orden, { foreignKey: "orde_id" });
+exports.Orden.hasMany(exports.Ordendetalle, { foreignKey: "orde_id" });
+exports.Ordendetalle.belongsTo(exports.Orden, { foreignKey: "orde_id" });
 exports.Compras.hasMany(exports.Destino, { foreignKey: "compra_id" });
 exports.Destino.belongsTo(exports.Compras, { foreignKey: "compra_id" });
 exports.Persona.hasMany(exports.Usuario, { foreignKey: "per_id" });
@@ -58,3 +60,4 @@ exports.Producto.hasMany(exports.CategoriaProducto, { foreignKey: "pro_id" });
 exports.CategoriaProducto.belongsTo(exports.Producto, { foreignKey: "pro_id" });
 exports.Categoria.hasMany(exports.CategoriaProducto, { foreignKey: "cat_id" });
 exports.CategoriaProducto.belongsTo(exports.Categoria, { foreignKey: "cat_id" });
+//# sourceMappingURL=sequelize.js.map

@@ -44,3 +44,4 @@ exports.producto_model = (sequelize) => {
     });
     return producto;
 };
+//# sourceMappingURL=Producto.js.map

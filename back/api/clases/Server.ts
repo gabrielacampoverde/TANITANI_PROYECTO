@@ -32,7 +32,20 @@ export class Server {
     this.configurarBodyParser();
     this.configurarRutas();
   }
+
   habilitarCORS(){
+    // console.log("ingreso");
+    // this.app.use((req, res, next) => {
+    //   res.header('Access-Control-Allow-Origin', '*');
+    //   res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    //   if(req.method==='OPTIONS'){
+    //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    //     return res.status(200).json({});
+    //   }
+    
+      // res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+      // next();
+    // });
     this.app.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -40,7 +53,9 @@ export class Server {
       res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
       next();
     });
-  }
+
+  } 
+
   configurarBodyParser() {
     this.app.use(bodyParser.json());
   }
@@ -72,7 +87,7 @@ export class Server {
       // force:false, si las tablas no existen en la base de datos
       // las crea. Si las tablas ya existían en la base de datos
       // sólo crea las nuevas tablas en caso de que hubieran
-      conexion.sync({ force:false}).then(() => {
+      conexion.sync({ force:true}).then(() => {
         console.log("Base de datos creada correctamente");
       })
     });

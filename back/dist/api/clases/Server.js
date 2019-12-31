@@ -35,6 +35,17 @@ class Server {
         this.configurarRutas();
     }
     habilitarCORS() {
+        // console.log("ingreso");
+        // this.app.use((req, res, next) => {
+        //   res.header('Access-Control-Allow-Origin', '*');
+        //   res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+        //   if(req.method==='OPTIONS'){
+        //     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+        //     return res.status(200).json({});
+        //   }
+        // res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+        // next();
+        // });
         this.app.use((req, res, next) => {
             res.header('Access-Control-Allow-Origin', '*');
             res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -69,10 +80,11 @@ class Server {
             // force:false, si las tablas no existen en la base de datos
             // las crea. Si las tablas ya existían en la base de datos
             // sólo crea las nuevas tablas en caso de que hubieran
-            sequelize_1.conexion.sync({ force: false }).then(() => {
+            sequelize_1.conexion.sync({ force: true }).then(() => {
                 console.log("Base de datos creada correctamente");
             });
         });
     }
 }
 exports.Server = Server;
+//# sourceMappingURL=Server.js.map

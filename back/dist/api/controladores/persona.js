@@ -80,3 +80,4 @@ exports.putPersona = (req, res) => {
 };
 exports.deletePersonaById = (req, res) => {
 };
+//# sourceMappingURL=persona.js.map

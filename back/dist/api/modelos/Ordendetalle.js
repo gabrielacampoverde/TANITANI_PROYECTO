@@ -24,3 +24,4 @@ exports.ordendetalle_model = (sequelize) => {
     });
     return ordendetalle;
 };
+//# sourceMappingURL=Ordendetalle.js.map

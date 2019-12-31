@@ -27,3 +27,4 @@ exports.comentario_model = (sequelize) => {
     });
     return comentario;
 };
+//# sourceMappingURL=Comentario.js.map

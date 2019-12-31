@@ -20,3 +20,4 @@ exports.metodopago_model = (sequelize) => {
     });
     return metodopago;
 };
+//# sourceMappingURL=MetodoPago.js.map

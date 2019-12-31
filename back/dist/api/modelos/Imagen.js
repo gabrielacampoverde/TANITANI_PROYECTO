@@ -19,3 +19,4 @@ exports.imagen_model = (sequelize) => {
     });
     return imagen;
 };
+//# sourceMappingURL=Imagen.js.map

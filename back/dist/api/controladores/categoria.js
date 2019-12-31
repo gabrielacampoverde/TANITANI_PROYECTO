@@ -53,7 +53,7 @@ exports.postCategoria = (req, res) => {
         });
     });
 };
-exports.putCategoria = (req, res) => {
+exports.updateCategoria = (req, res) => {
     sequelize_1.Categoria.update({
         cat_nom: req.body.cat_nom
     }, {
@@ -74,5 +74,35 @@ exports.putCategoria = (req, res) => {
         });
     });
 };
+exports.categoria_controller = {
+    deleteById: (req, res) => {
+        let { id } = req.params;
+        // console.log("delete",id_empleado)
+        sequelize_1.Categoria.destroy({
+            where: {
+                cat_id: id
+            }
+        }).then((cantidad) => {
+            if (cantidad > 0) {
+                console.log("Cant", cantidad);
+                let respuesta = {
+                    success: true,
+                    message: "Usuario Eliminado",
+                    content: cantidad
+                };
+                res.status(200).send(respuesta);
+            }
+            else {
+                let respuesta = {
+                    success: false,
+                    message: "No se ha eliminado",
+                    content: ''
+                };
+                res.status(500).send(respuesta);
+            }
+        });
+    }
+};
 exports.deleteCategoriaById = (req, res) => {
 };
+//# sourceMappingURL=categoria.js.map

@@ -53,6 +53,9 @@ Compras.belongsTo(MetodoPago,{foreignKey:"mpago_id"});
 Orden.hasMany(Compras,{foreignKey:"orde_id"});
 Compras.belongsTo(Orden,{foreignKey:"orde_id"});
 
+Orden.hasMany(Ordendetalle,{foreignKey:"orde_id"});
+Ordendetalle.belongsTo(Orden,{foreignKey:"orde_id"});
+
 Compras.hasMany(Destino,{foreignKey:"compra_id"});
 Destino.belongsTo(Compras,{foreignKey:"compra_id"});
 

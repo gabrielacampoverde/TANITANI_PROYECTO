@@ -32,3 +32,4 @@ exports.compra_model = (sequelize) => {
     });
     return compra;
 };
+//# sourceMappingURL=Compra.js.map
