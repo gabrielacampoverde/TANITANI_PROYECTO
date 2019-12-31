@@ -26,7 +26,7 @@ export default class AuthService {
         let misHeaders = {
             "Content-Type": "application/json"
         };
-
+        console.log("cont", contenido)
         let rpta = await axios.post(`${URL_BACKEND}/api/usuario/loggin`, contenido, { headers: misHeaders });
 
         return rpta;

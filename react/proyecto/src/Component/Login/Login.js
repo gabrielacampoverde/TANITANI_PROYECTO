@@ -6,50 +6,20 @@ import { useForm } from 'react-hook-form'
 import 'toastr/build/toastr.min.css'
 import { URL_BACKEND } from "./../../environments/environments";
 
-const Login = () => {
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
+const Login = ({signin}) => {
     const { handleSubmit, register, errors } = useForm();
     const onSubmit = values => {
-        let misHeaders = {
-            "Content-Type": "application/json"
-        }
-        let contenido = {
-            usu_email: email,
-            usu_pass: pass
+        console.log(values);
+    }
+    let usuRef = React.createRef();
+    let passRef = React.createRef();
+    console.log("ref",usuRef);
+    
 
-        }
-        axios.post(`${URL_BACKEND}/api/usuario/loggin`, contenido, {
-            headers: misHeaders
-        }).then(rpta => {
-            console.log(rpta.status);
-            if (rpta.status === 201) {
-
-                Swal.fire(
-                    "Usuario Creado",
-                    "Operación Exitosa",
-                    "success"
-                )
-            } else {
-                console.log("error al crear");
-
-            }
-            limpiarCampos();
-        })
-        const limpiarCampos = () => {
-            setEmail('');
-            setPass('');
-            toastr.options = {
-                positionClass: 'toast-bottom-full-width',
-                hideDuration: 300,
-                preventDuplicates: true
-            }
-            toastr.clear()
-            setTimeout(() => toastr.warning(`No deje espacios en blanco`), 500)
-        }
-
-    };
-
+    const iniciarSesion = event => {
+        event.preventDefault();
+        signin(usuRef.current.value, passRef.current.value);
+    }
     return (
 
         <main>
@@ -70,15 +40,14 @@ const Login = () => {
                                         <label>Email *</label>
                                         <input
                                             name="email"
-                                            value={email}
-                                            onChange={(event) => setEmail(event.target.value)}
                                             ref={register({
                                                 required: 'Este campo es requerido', // Error message when field is left empty.
                                                 pattern: { // Validation pattern
                                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                                                     message: 'Email inválido' // Error message when validation fails.
                                                 }
-                                            })}
+                                            },
+                                            usuRef)}
                                         />
                                         {errors.email ? (
                                             //
@@ -93,8 +62,6 @@ const Login = () => {
                                             className="input"
                                             name="password"
                                             type="password"
-                                            value={pass}
-                                            onChange={(event) => setPass(event.target.value)}
                                             ref={register({
                                                 required: 'Este campo es requerido', // Error message when field is left empty.
                                                 pattern: { // Validation pattern
