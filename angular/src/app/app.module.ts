@@ -16,6 +16,7 @@ import { LoggedModule } from './logged/logged.module';
 import { FormsModule } from '@angular/forms';
 
 
+
 // servicios 
 
 
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     LoginComponent,
     NopagefoundComponent,
-    RegisterComponent
+    RegisterComponent,
+  
   
   ],
   imports: [

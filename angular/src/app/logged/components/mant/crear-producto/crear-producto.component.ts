@@ -1,8 +1,12 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ProductosService } from './../../../../services/productos.service';
+import {CategoriasService} from './../../../../services/categorias.service';
+
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { CategoriasComponent } from '../categorias/categorias.component';
+
 
 
 @Component({
@@ -10,22 +14,62 @@ import { Router } from '@angular/router';
   templateUrl: './crear-producto.component.html',
   styleUrls: ['./crear-producto.component.css']
 })
+
 export class CrearProductoComponent implements OnInit, OnDestroy {
 
+  levels:Array<Object> = [
+    {num: 0, name: "AA"},
+    {num: 1, name: "BB"}
+];
+
+selectedLevel = "";
+
+  cargado=false;
+  imgUrl;
   subscriptor: Subscription;
+  categorias;
 
   objProducto = {
     pro_id: '',
     pro_nom: '',
     pro_prec: '',
     pro_est: '',
-    pro_desc: ''
+    pro_det: '',
+    pro_img: '',
+    pro_desc: '',
+    pro_stock: '',
+    cat_id:''
   }
 
-  constructor(private _sProducto: ProductosService, private _sRouter: Router) { }
+  testcat = "";
 
+  constructor(private _sProducto: ProductosService, private _sRouter: Router, private _sCategoria:CategoriasService) { 
+    this.traerCategorias();
+  }
+
+  
   ngOnInit() {
+    
   }
+
+  traerCategorias() {
+    this.subscriptor = this._sCategoria.getCategorias().subscribe((resultado) => {
+      this.categorias = resultado.content;
+      console.log("categorias",this.categorias);
+      this.cargado = true;
+      
+      
+    });
+  }
+
+onUpload(e){
+  // console.log('subir',e.target.files[0]);
+  // const id=Math.random().toString(36).substring(2);
+  // const file=e.target.files[0];
+  // const filePath='imagenes/logo.png';
+  // const ref=this._sProducto.ref(filePath)
+  
+}
 
   crearProducto(){
     Swal.fire({
@@ -37,8 +81,8 @@ export class CrearProductoComponent implements OnInit, OnDestroy {
     })
 
     this._sProducto.postProductos(this.objProducto).subscribe((rpta) => {
-      // console.log(rpta);
-      if (rpta.contenido.pro_id) {
+      console.log(rpta);
+      if (rpta.producto.pro_id) {
         Swal.fire({
           title: 'Exito!!!',
           icon: 'success',
@@ -55,7 +99,13 @@ export class CrearProductoComponent implements OnInit, OnDestroy {
 
 
     })
+    console.log(this.objProducto)
+    
   }
+
+
+
+
   ngOnDestroy() {
     try {
       this.subscriptor.unsubscribe();
@@ -65,3 +115,5 @@ export class CrearProductoComponent implements OnInit, OnDestroy {
 
   }
 }
+
+

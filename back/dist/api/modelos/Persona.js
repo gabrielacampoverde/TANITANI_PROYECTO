@@ -28,7 +28,7 @@ exports.persona_model = (sequelize) => {
         },
         per_est: {
             type: sequelize_1.DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         }
     }, {
         tableName: 't_persona',
@@ -36,3 +36,4 @@ exports.persona_model = (sequelize) => {
     });
     return persona;
 };
+//# sourceMappingURL=Persona.js.map

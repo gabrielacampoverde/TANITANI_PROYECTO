@@ -76,3 +76,4 @@ exports.putmetPago = (req, res) => {
 };
 exports.deleteMetPagoById = (req, res) => {
 };
+//# sourceMappingURL=metodoPago.js.map

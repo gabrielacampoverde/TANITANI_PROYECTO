@@ -7,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoggedComponent } from './logged.component';
 import { ProductosComponent } from './components/mant/productos/productos.component';
 import { CrearProductoComponent} from './components/mant/crear-producto/crear-producto.component'
+import { CategoriasComponent } from './components/mant/categorias/categorias.component';
+import { CrearCategoriaComponent } from './components/mant/crear-categoria/crear-categoria.component';
 
 
 const routes: Routes = [
@@ -17,6 +19,8 @@ const routes: Routes = [
       { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes de Tema' } },
       // mantenimientos
       { path: 'fabricante', component: FabricanteComponent , data: { title: 'Mantenimiento de Usuarios' } },
+      { path: 'categorias', component: CategoriasComponent , data: { title: 'Mantenimiento de Categorias' } },
+      { path: 'categorias/crear', component: CrearCategoriaComponent , data: { title: 'Crear Categoria' } },
       { path: 'productos', component: ProductosComponent , data: { title: 'Mantenimiento de Productos' } },
       { path: 'productos/crear', component: CrearProductoComponent , data: { title: 'Crear Producto' } },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

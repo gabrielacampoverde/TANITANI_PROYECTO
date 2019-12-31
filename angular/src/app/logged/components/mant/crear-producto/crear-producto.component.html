@@ -1,80 +1,125 @@
 <main class="container mt-5">
     <section>
         <h2 class="display-4">Crear Producto</h2>
-        <form class="mt-4 animated slideInLeft " 
-                #formulario="ngForm">
+
+        <h1>Selecting object</h1>
+        <!-- <select type="number" [(ngModel)]="testcat">
+          <option *ngFor="let level of levels" [ngValue]="level">{{level.name}}</option>
+        </select>
+        {{selectedLevel | json}} -->
+
+        <form class="mt-4 animated slideInLeft " #formulario="ngForm">
+            <div class="form-group">
+                <!-- <div class="row"> -->
+                <!-- <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Categoria:                </label>
+                      </div>
+                      <select class="custom-select" id="inputGroupSelect01">
+                        <option  *ngFor="let c of categorias.content">{{c.cat_nom}}</option>
+                                             
+                       </select>  -->
+                <!-- </div> -->
+
+                <!-- <app-list-categorias></app-list-categorias> -->
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    
+                        <select type="text" class="custom-select" [(ngModel)]="objProducto.cat_id" name="categoria">
+                            <option *ngFor="let categoria of categorias" [ngValue]="categoria.cat_id">{{categoria.cat_nom}}
+                            </option>
+                        </select>
+                        
+                    <!-- <div class="col-md-3">
+                        <label for="">Categoria:</label>
+                        <input type="text" required class="form-control" [(ngModel)]="objProducto.cat_id" name="cat_id"
+                            placeholder="Ejm: 1">
+
+                    </div> -->
+                    
+                    <div class="col-md-6">
+                        <label for="">Nombre:</label>
+                        <input type="text" required class="form-control" [(ngModel)]="objProducto.pro_nom"
+                            name="pro_nom" placeholder="Ejm: Oso de peluche">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">Precio:</label>
+                        <input type="text" class="form-control" required [(ngModel)]="objProducto.pro_prec"
+                            name="pro_prec" placeholder="S/. 10.00...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">Estado:</label>
+                        <input type="number" class="form-control" required [(ngModel)]="objProducto.pro_est"
+                            name="pro_est" placeholder="1 / 0">
+                    </div>
+                    <div class="col-md-9">
+                        <label for="">Detalle:</label>
+                        <input type="text" class="form-control" required [(ngModel)]="objProducto.pro_det"
+                            name="pro_det" placeholder="Detalle del producto">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <label for="">Imagen:</label>
+                        <input type="text" class="form-control" required [(ngModel)]="objProducto.pro_img"
+                            name="pro_img" placeholder="http://lorempixel.com/640/480/fashion">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Imagen:</label>
+                <input type="file" accept=".png,.jpg" (change)="onUpload($event)">
+                <!-- <img [src]="imgUrl" *ngIf="imgUrl" width="100">
+
+                <input type="file" class="form-control" #miimg
+                placeholder="Seleccione una imagen"                                
+                formControlName="campo_imagen"
+                (change)="previsualizarFoto($event)">  -->
+                <!-- <small class="text-danger"
+                    *ngIf="!formulario.get('campo_imagen').valid && !formulario.get('campo_imagen').pristine">
+                    El campo nombre es obligatorio
+                </small> -->
+            </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
+                        <label for="">Descuento:</label>
+                        <input type="text" class="form-control" required [(ngModel)]="objProducto.pro_desc"
+                            name="pro_desc" placeholder="Descuento del producto">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Stock:</label>
+                        <input type="text" class="form-control" required [(ngModel)]="objProducto.pro_stock"
+                            name="pro_stock" placeholder="Stock del Producto">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
 
                     </div>
                     <div class="col-md-6">
-                        <label for="">Nombre:</label>
-                        <input type="text"
-                                required
-                                class="form-control"
-                                [(ngModel)]="objProducto.pro_nom"
-                                name="pro_nom"
-                                placeholder="Ejm: Oso de peluche">
+                        <button type="submit" class="btn btn-block btn-lg btn-info" [disabled]="!formulario.valid"
+                            (click)="crearProducto()">
+                            <i class="fas fa-save"></i>
+                            Registrar Producto
+                        </button>
+                    </div>
+                    <div class="col-md-3">
+
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="">Precio:</label>
-                        <input type="text"
-                                class="form-control"
-                                required
-                                [(ngModel)]="objProducto.pro_prec"
-                                name="pro_prec"
-                                placeholder="S/. 10.00...">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Estado:</label>
-                        <input type="text" 
-                                class="form-control" 
-                                required
-                                [(ngModel)]="objProducto.pro_est"
-                                name="pro_est" placeholder="En soles...">
-                    </div>
-                    <!-- <div class="col-md-6">
-                        <label for="">Imagen:</label>
-                        <input type="text"
-                                
-                                class="form-control"
-                                required
-                                [(ngModel)]="objProducto.prod_img"
-                                name="prod_img"
-                                placeholder="Url http://lorempixel.com/640/480/fashion">
-                    </div> -->
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Descripción:</label>
-                        <input type="text" 
-                                class="form-control" 
-                                required
-                                [(ngModel)]="objProducto.pro_desc"
-                                name="pro_desc" placeholder="Cantidad">
-                    </div>
-                  
-                </div>
-            </div>
-            <div class="form-group">
-                <button type="submit"
-                        class="btn btn-block btn-lg btn-info"
-                        [disabled]="!formulario.valid"
-                        (click)="crearProducto()">
-                    <i class="fas fa-save"></i>
-                    Registrar Producto
-                </button>
+
             </div>
         </form>
     </section>

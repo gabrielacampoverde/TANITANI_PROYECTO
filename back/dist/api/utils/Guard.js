@@ -32,3 +32,4 @@ exports.wachiman = (req, res, next) => {
         });
     }
 };
+//# sourceMappingURL=Guard.js.map

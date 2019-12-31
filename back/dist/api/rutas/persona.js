@@ -9,3 +9,4 @@ exports.persona_router.post('/persona', persona_1.postPersona);
 exports.persona_router.put('/persona', persona_1.putPersona);
 // falta delete
 exports.persona_router.delete('/persona/:id', persona_1.deletePersonaById);
+//# sourceMappingURL=persona.js.map
