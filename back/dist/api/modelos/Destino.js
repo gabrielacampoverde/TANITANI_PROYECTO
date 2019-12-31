@@ -24,3 +24,4 @@ exports.destino_model = (sequelize) => {
     });
     return destino;
 };
+//# sourceMappingURL=Destino.js.map

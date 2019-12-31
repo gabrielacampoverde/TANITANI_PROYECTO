@@ -28,7 +28,7 @@ export class ProductosService {
     // creando headers
     let misHeaders = new HttpHeaders().set("Content-Type", "application/json");
     // return this._sHttp.post(`https://5d4b6ade00dbb10014879b1b.mockapi.io/Tiendita`, objProductoString, { headers: misHeaders });
-    return this._sHttp.post(`${URL_BACKEND}/producto`, objProductoString, { headers: misHeaders });
+    return this._sHttp.post(`${URL_BACKEND}/productocat`, objProductoString, { headers: misHeaders });
 
   }
   deleteProducto(id): Observable<any> {

@@ -9,21 +9,22 @@ import {APP_ROUTES} from './app.routes';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { CrearFacturaComponent } from './components/crear-factura/crear-factura.component';
-import { FacturasComponent } from './components/facturas/facturas.component';
-import { VerFacturaComponent } from './components/ver-factura/ver-factura.component';
+
 // importamos el modulo de los formularios
 // para tener la posibilidad de usar [(ngModel)]
 import { FormsModule } from '@angular/forms';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    CrearFacturaComponent,
-    FacturasComponent,
-    VerFacturaComponent,
+    LoginComponent,   
+    UsuariosComponent,
+    VerUsuarioComponent,
+    CrearUsuarioComponent,
    
     
   ],

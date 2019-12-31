@@ -1,11 +1,13 @@
 //PRODUCTO ROUTER
 import { Router } from "express";
 
-import { postProducto, getProductos, getProductosById, updateProducto, producto_controller } from '../controladores/Producto';
+import { postProducto, getProductos, getProductosById, updateProducto, producto_controller,crearProductoCategoria } from '../controladores/Producto';
 
 export let producto_router=Router();
 
 producto_router.post('/producto', postProducto);
+// producto_router.post('/imagen', crearImagen);
+producto_router.post('/productocat', crearProductoCategoria);
 producto_router.get('/producto', getProductos);
 producto_router.get('/producto/:id', getProductosById);
 producto_router.put('/producto/:id', updateProducto);

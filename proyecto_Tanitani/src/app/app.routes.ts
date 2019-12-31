@@ -2,9 +2,9 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
-import { CrearFacturaComponent } from './components/crear-factura/crear-factura.component';
-import { FacturasComponent } from './components/facturas/facturas.component';
-import { VerFacturaComponent } from './components/ver-factura/ver-factura.component';
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
 
 
 
@@ -24,18 +24,18 @@ const appRoutes:Routes = [
         },
   
         {
-            path:'facturas/crear',
-            component:CrearFacturaComponent,
+            path:'usuarios/crear',
+            component:CrearUsuarioComponent,
         },
 
         {
-            path:'facturas',
-            component:FacturasComponent,
+            path:'usuarios',
+            component:UsuariosComponent,
         },
 
         {    
-            path:'facturas/:id',
-            component:VerFacturaComponent,
+            path:'usuarios/:id',
+            component:VerUsuarioComponent,
 
         },
        

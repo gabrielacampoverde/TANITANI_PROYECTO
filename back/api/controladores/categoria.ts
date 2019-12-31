@@ -73,7 +73,7 @@ export let postCategoria = (req: Request, res: Response) => {
 }
 
 
-export let putCategoria = (req:Request, res:Response) =>{
+export let updateCategoria = (req:Request, res:Response) =>{
   Categoria.update(
     {
       cat_nom: req.body.cat_nom
@@ -96,6 +96,36 @@ export let putCategoria = (req:Request, res:Response) =>{
         content:error,
       })
     })
+}
+
+export var categoria_controller = {
+    
+  deleteById: (req:Request, res:Response) => {
+      let {id} = req.params;
+      // console.log("delete",id_empleado)
+      Categoria.destroy({
+          where:{
+              cat_id:id
+          }
+      }).then((cantidad:any) => {
+          if(cantidad > 0){
+              console.log("Cant",cantidad);
+              let respuesta = {
+                  success:true,
+                  message:"Usuario Eliminado",
+                  content:cantidad
+              }
+              res.status(200).send(respuesta);
+          }else{
+              let respuesta = {
+                  success:false,
+                  message:"No se ha eliminado",
+                  content:''
+              }
+              res.status(500).send(respuesta);
+          }
+      })
+  }
 }
 
 export let deleteCategoriaById = (req:Request, res:Response) =>{

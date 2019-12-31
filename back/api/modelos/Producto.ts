@@ -19,13 +19,25 @@ export let producto_model = (sequelize: any) => {
         allowNull: true
       },
       pro_est: {
-        type: DataTypes.STRING(20),
+        type: DataTypes.INTEGER,
         allowNull: true
       }, 
-      pro_desc: {
+      pro_det: {
         type: DataTypes.TEXT,
         allowNull: true
       },
+      pro_img: {
+        type: DataTypes.TEXT,
+        allowNull: true
+      },
+      pro_desc:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      pro_stock:{
+        type: DataTypes.INTEGER,
+        allowNull: true
+      }
 
   }, {
     tableName: 't_producto',

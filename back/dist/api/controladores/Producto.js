@@ -1,6 +1,68 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("../configuracion/sequelize");
+// const Sequelize = require('sequelize');
+// const Op = Sequelize.Op; // Los operadores de comparacion de sequelize
+// export let crearImagen = (req: Request, res: Response) => {
+//     console.log("misuario",req.body);
+//     Producto.build(req.body).save().then((prodCreada:any)=>{
+//         // Se hace la relacion para las dos tablas
+//         let fk_producto= prodCreada.pro_id
+//         let jsonusu = req.body.producto
+//         console.log("prodCreada.pro_id",prodCreada.pro_id)
+//         console.log("req.body",req.body);
+//         console.log("req.body.imagen",jsonusu);
+//         jsonusu.pro_id = fk_producto
+//         console.log("jsonusu.pro_id",jsonusu.pro_id);
+//         let objImagen = Imagen.build(req.body.imagen);
+//         objImagen.setSaltYHash(req.body.imagen.imagen_url);
+//         objImagen.save().then((imagenCreado: any) => {
+//             Imagen.findByPk(imagenCreado.imagen_id).then((usuarioEncontrado: any) => {
+//                 res.status(201).json({
+//                     message: 'Usuario creado',
+//                     content: usuarioEncontrado
+//                 })
+//             })
+//         }).catch((error: any) => {
+//             res.status(501).json({
+//                 message: 'Error',
+//                 content: error
+//             })
+//         })
+//     })
+// build => CONSTRUYE el objeto usuario, mas NO LO CREA en la base de datos
+// save()=> promesa que GUARDA el registro en la Base de Datos
+// }
+exports.crearProductoCategoria = (req, res) => {
+    // let objCP = CategoriaProducto.build(req.body);
+    // console.log(req.body)
+    // console.log(objCP)
+    // objCP.save().then((algo:any)=>{
+    //     // console.log(algo)
+    // })
+    let CategoriaId = req.body.cat_id;
+    console.log(req.body.cat_id);
+    let objProducto = sequelize_1.Producto.build(req.body);
+    objProducto.save().then((productoCreado) => {
+        var ProductoTemp = productoCreado;
+        return sequelize_1.Categoria.findOne({ where: { cat_id: CategoriaId } })
+            .then((cat_encontrada) => {
+            let objCatProd = {
+                pro_id: ProductoTemp.pro_id,
+                cat_id: cat_encontrada.cat_id
+            };
+            let objCP = sequelize_1.CategoriaProducto.build(objCatProd);
+            objCP.save().then((catProdCreado) => {
+                let rpta = {
+                    ok: true,
+                    producto: productoCreado,
+                    CategoriaProducto: catProdCreado
+                };
+                res.status(201).send(rpta);
+            });
+        });
+    });
+};
 exports.getProductos = (req, res) => {
     sequelize_1.Producto.findAll().then((objProductos) => {
         res.status(200).json({
@@ -105,3 +167,4 @@ exports.producto_controller = {
         });
     }
 };
+//# sourceMappingURL=Producto.js.map

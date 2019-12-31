@@ -19,8 +19,7 @@ export default class Coorporativos extends Component {
                   <img src={baseUrl + "/coor1.jpg"} />
                </div>
                <div className="seccion bg">
-                  <div className="titulo">
-                     <h1 className="text">COORPORATIVOS</h1>
+                  <div className="titulo">COORPORATIVOS
                   </div>
                   <div className="descri">
                      <div className="car">

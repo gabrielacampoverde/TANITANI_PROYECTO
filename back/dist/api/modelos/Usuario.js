@@ -18,7 +18,7 @@ exports.usuario_model = (sequelize) => {
         },
         usu_tipo: {
             type: sequelize_1.DataTypes.STRING(15),
-            allowNull: true
+            allowNull: false
         },
         usu_hash: {
             type: sequelize_1.DataTypes.TEXT
@@ -47,3 +47,4 @@ exports.usuario_model = (sequelize) => {
     };
     return usuario;
 };
+//# sourceMappingURL=Usuario.js.map

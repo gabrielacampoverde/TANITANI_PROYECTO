@@ -18,3 +18,4 @@ exports.categoria_model = (sequelize) => {
     });
     return categoria;
 };
+//# sourceMappingURL=Categoria.js.map

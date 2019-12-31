@@ -18,6 +18,9 @@ import { LoggedRoutingModule } from './logged.routes';
 import { ChartsModule } from 'ng2-charts';
 import { ProductosComponent } from './components/mant/productos/productos.component';
 import { CrearProductoComponent } from './components/mant/crear-producto/crear-producto.component';
+import { CategoriasComponent } from './components/mant/categorias/categorias.component';
+import { CrearCategoriaComponent } from './components/mant/crear-categoria/crear-categoria.component';
+import { ListCategoriasComponent } from './components/mant/list-categorias/list-categorias.component';
 
 
 @NgModule({
@@ -30,7 +33,11 @@ import { CrearProductoComponent } from './components/mant/crear-producto/crear-p
     SidebarComponent,
     FabricanteComponent,
     ProductosComponent,
-    CrearProductoComponent
+    CrearProductoComponent,
+    CategoriasComponent,
+    CrearCategoriaComponent,
+    ListCategoriasComponent
+   
   ],
   imports: [
     LoggedRoutingModule,
@@ -40,6 +47,7 @@ import { CrearProductoComponent } from './components/mant/crear-producto/crear-p
   ],
   exports: [
     DashboardComponent,
+    CategoriasComponent
   ],
   providers: [],
 })

@@ -80,10 +80,11 @@ class Server {
             // force:false, si las tablas no existen en la base de datos
             // las crea. Si las tablas ya existían en la base de datos
             // sólo crea las nuevas tablas en caso de que hubieran
-            sequelize_1.conexion.sync({ force: false }).then(() => {
+            sequelize_1.conexion.sync({ force: true }).then(() => {
                 console.log("Base de datos creada correctamente");
             });
         });
     }
 }
 exports.Server = Server;
+//# sourceMappingURL=Server.js.map

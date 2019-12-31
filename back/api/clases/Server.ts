@@ -11,8 +11,7 @@ import { metodoPago_router } from '../rutas/metodoPago';
 import { categoria_router } from '../rutas/categoria';
 import {producto_router} from '../rutas/producto';
 import {usuario_router} from '../rutas/Usuario';
-import { method } from 'bluebird';
-import { Resolver } from 'dns';
+
 
 // const cors=require('cors');
 
@@ -25,18 +24,13 @@ export class Server {
     // this.app.use(cors());
     // obtener el puerto que nos asignará heroku
     // o establer por defecto el puerto 3000
-<<<<<<< HEAD
     this.puerto = process.env.PORT || 4000;
-=======
-    this.puerto = process.env.PORT || 3000;
->>>>>>> 1566fd51bd9cd4c082d21a308e2409d33dc14ca8
     this.habilitarCORS();
     // la configuracion de body-parser, siempre debe estas
     // antes de configurar las rutas
     this.configurarBodyParser();
     this.configurarRutas();
   }
-<<<<<<< HEAD
 
   habilitarCORS(){
     // console.log("ingreso");
@@ -51,9 +45,6 @@ export class Server {
       // res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
       // next();
     // });
-=======
-  habilitarCORS(){
->>>>>>> 1566fd51bd9cd4c082d21a308e2409d33dc14ca8
     this.app.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -61,13 +52,9 @@ export class Server {
       res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
       next();
     });
-<<<<<<< HEAD
 
   } 
 
-=======
-  }
->>>>>>> 1566fd51bd9cd4c082d21a308e2409d33dc14ca8
   configurarBodyParser() {
     this.app.use(bodyParser.json());
   }
@@ -99,7 +86,7 @@ export class Server {
       // force:false, si las tablas no existen en la base de datos
       // las crea. Si las tablas ya existían en la base de datos
       // sólo crea las nuevas tablas en caso de que hubieran
-      conexion.sync({ force:false}).then(() => {
+      conexion.sync({ force:true}).then(() => {
         console.log("Base de datos creada correctamente");
       })
     });
