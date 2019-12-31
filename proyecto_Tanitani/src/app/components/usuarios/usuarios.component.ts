@@ -68,7 +68,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   crearUsuario() {
     $("#modalCrear").modal("show");
   }
-  postUsuario(){
+  usu_crear(){
     console.log("sfsdff");
     
     this.subscriptor = this._sUsuarios.postUsuario(this.obejusuPer)
