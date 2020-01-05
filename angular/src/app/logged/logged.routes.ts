@@ -9,6 +9,7 @@ import { ProductosComponent } from './components/mant/productos/productos.compon
 import { CrearProductoComponent} from './components/mant/crear-producto/crear-producto.component'
 import { CategoriasComponent } from './components/mant/categorias/categorias.component';
 import { CrearCategoriaComponent } from './components/mant/crear-categoria/crear-categoria.component';
+import { UsuariosComponent } from './components/mant/usuarios/usuarios.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'categorias/crear', component: CrearCategoriaComponent , data: { title: 'Crear Categoria' } },
       { path: 'productos', component: ProductosComponent , data: { title: 'Mantenimiento de Productos' } },
       { path: 'productos/crear', component: CrearProductoComponent , data: { title: 'Crear Producto' } },
+      { path: 'usuarios', component: UsuariosComponent, data: { title: 'Mantenimiento de Productos' } },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     ]
   },

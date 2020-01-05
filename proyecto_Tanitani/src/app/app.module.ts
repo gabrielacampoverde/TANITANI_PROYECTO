@@ -13,9 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 // importamos el modulo de los formularios
 // para tener la posibilidad de usar [(ngModel)]
 import { FormsModule } from '@angular/forms';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
-import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
-import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+import { UsuariosComponent } from './components/mantenimientos/usuarios/usuarios.component';
 
 
 @NgModule({
@@ -23,9 +21,6 @@ import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.
     AppComponent,
     LoginComponent,   
     UsuariosComponent,
-    VerUsuarioComponent,
-    CrearUsuarioComponent,
-   
     
   ],
   imports: [

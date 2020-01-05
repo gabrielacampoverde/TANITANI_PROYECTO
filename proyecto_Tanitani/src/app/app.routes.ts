@@ -2,9 +2,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
-import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
-import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
+import { UsuariosComponent } from './components/mantenimientos/usuarios/usuarios.component';
 
 
 
@@ -22,22 +20,12 @@ const appRoutes:Routes = [
             component:LoginComponent,
 
         },
-  
-        {
-            path:'usuarios/crear',
-            component:CrearUsuarioComponent,
-        },
 
         {
             path:'usuarios',
             component:UsuariosComponent,
         },
 
-        {    
-            path:'usuarios/:id',
-            component:VerUsuarioComponent,
-
-        },
        
         {
             path:'**',

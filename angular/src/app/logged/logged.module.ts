@@ -21,6 +21,7 @@ import { CrearProductoComponent } from './components/mant/crear-producto/crear-p
 import { CategoriasComponent } from './components/mant/categorias/categorias.component';
 import { CrearCategoriaComponent } from './components/mant/crear-categoria/crear-categoria.component';
 import { ListCategoriasComponent } from './components/mant/list-categorias/list-categorias.component';
+import { UsuariosComponent } from './components/mant/usuarios/usuarios.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ListCategoriasComponent } from './components/mant/list-categorias/list-
     CrearProductoComponent,
     CategoriasComponent,
     CrearCategoriaComponent,
-    ListCategoriasComponent
+    ListCategoriasComponent,
+    UsuariosComponent
    
   ],
   imports: [

@@ -27,7 +27,7 @@ exports.persona_model = (sequelize) => {
             allowNull: false
         },
         per_est: {
-            type: sequelize_1.DataTypes.INTEGER,
+            type: sequelize_1.DataTypes.STRING(45),
             allowNull: false
         }
     }, {

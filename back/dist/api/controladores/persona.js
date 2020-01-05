@@ -54,30 +54,55 @@ exports.postPersona = (req, res) => {
     });
 };
 exports.putPersona = (req, res) => {
+    console.log(req);
     sequelize_1.Persona.update({
-        per_nom: req.body.per_nom,
-        per_ape: req.body.per_ape,
-        per_dir: req.body.per_dir,
-        per_cel: req.body.per_cel,
-        per_est: req.body.per_est
+        per_nom: req.body.Persona.per_nom,
+        per_ape: req.body.Persona.per_ape,
+        per_dir: req.body.Persona.per_dir,
+        per_cel: req.body.Persona.per_cel,
+        per_est: req.body.Persona.per_est
     }, {
         where: {
-            per_id: req.body.per_id
+            per_id: req.body.Persona.per_id
         }
-    }).then((perActualizado) => {
-        sequelize_1.Persona.findByPk(perActualizado[0]).then((objPersona) => {
+    }).then(() => {
+        sequelize_1.Persona.findByPk(req.body.Persona.per_id).then((objPersona) => {
             res.status(200).json({
                 message: 'ok',
-                content: perActualizado,
+                content: objPersona
             });
         });
     }).catch((error) => {
         res.status(501).json({
             message: 'error',
-            content: error,
+            content: error
         });
     });
 };
-exports.deletePersonaById = (req, res) => {
+exports.deletePersona = (req, res) => {
+    let { id } = req.params;
+    console.log(res);
+    sequelize_1.Persona.destroy({
+        where: {
+            per_id: id
+        }
+    }).then((cantidad) => {
+        if (cantidad > 0) {
+            let rpta = {
+                success: true,
+                message: "Usuario Eliminado",
+                id: id
+            };
+            res.status(200).send(rpta);
+        }
+        else {
+            let rpta = {
+                success: false,
+                message: 'No se ha Eliminado',
+                id: ''
+            };
+            res.status(500).send(rpta);
+        }
+    });
 };
 //# sourceMappingURL=persona.js.map
