@@ -22,8 +22,11 @@ export class ProductosComponent implements OnInit, OnDestroy {
     pro_nom: '',
     pro_prec: '',
     pro_est: '',
-    pro_desc: ''
-    // prod_stock: ''
+    pro_det: '',
+    pro_img: '',
+    pro_desc: '',
+    pro_stock: '',
+    cat_id:''
   }
 
   productosSeleccionadas: Array<any> = [];
@@ -106,6 +109,8 @@ export class ProductosComponent implements OnInit, OnDestroy {
       Swal.close();
       // console.timeEnd("demoreishon");
       console.log(rpta);
+      console.log("respuesta"+rpta.Producto.pro_img);
+      
       if (rpta.Producto.pro_id) {
 
         // la factura existe y ya llego

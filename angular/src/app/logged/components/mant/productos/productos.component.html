@@ -9,11 +9,11 @@
 <!-- Modal -->
 
 
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
                 <div class="modal-header">
-                        <h5 class="modal-title">EDITAR REGISTRO</h5>
+                        <h5 class="modal-title text-info title-popup">EDITAR REGISTRO</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -50,7 +50,7 @@
                                     class="form-control"
                                     required
                                     [(ngModel)]="ObjProducto.pro_prec"
-                                    name="pro_desc"
+                                    name="pro_prec"
                                    >
                         </div>
                         <div class="col-md-6">
@@ -75,13 +75,21 @@
                                     [(ngModel)]="ObjProducto.pro_det"
                                     name="pro_det">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label for="">Descuento:</label>
                             <input type="text" 
                                     class="form-control" 
                                     required
                                     [(ngModel)]="ObjProducto.pro_desc"
                                     name="pro_desc" >
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">Stock:</label>
+                            <input type="text" 
+                                    class="form-control" 
+                                    required
+                                    [(ngModel)]="ObjProducto.pro_stock"
+                                    name="pro_stock" >
                         </div>
                     </div>
                 </div>
@@ -104,10 +112,15 @@
                                 <img src= {{ObjProducto.pro_img}} class="card-img-top"   required name="pro_img">
                                 
                             </div>
-                          
-                        
+                         
+                         
                     </div>
-                   
+                    <div class="row">
+                       
+                        <div class="user-img"> <img src="../fakepath/logo.png" alt="user"
+                            height="50px"> <span class="profile-status away pull-right"></span>
+                    </div>
+                    </div>
                     
                 </div>
                 <div class="form-group">
@@ -119,6 +132,7 @@
                         Guardar Cambios
                     </button>
                 </div>
+                
             </form>
                 </div>
             </div>
@@ -143,6 +157,18 @@
                 Cargando...</h4>
               </button>
         </div>
+        <div class="row">
+            <div class="input-group-prepend">
+                <h2>  <label class="input-group-text" for="inputGroupSelect01">LISTA DE PRODUCTOS</label></h2>
+              </div>
+           
+        </div>
+        <!-- <div class="row">
+                       
+            <div class="col-md-6 container-fluid"> <img src="./../../../../../assets/images/logo-icon.png" alt="user"
+                height="50px"> 
+        </div>
+        </div> -->
         <div *ngIf="productos" class="animated slideInLeft">
             <table class="table table-hover" >
                 <thead >

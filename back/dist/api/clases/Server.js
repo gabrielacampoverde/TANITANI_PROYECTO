@@ -20,6 +20,7 @@ const metodoPago_1 = require("../rutas/metodoPago");
 const categoria_1 = require("../rutas/categoria");
 const producto_1 = require("../rutas/producto");
 const Usuario_1 = require("../rutas/Usuario");
+const ordenDetalle_1 = require("../rutas/ordenDetalle");
 // const cors=require('cors');
 class Server {
     constructor() {
@@ -72,6 +73,7 @@ class Server {
         this.app.use('/api', producto_1.producto_router);
         this.app.use('/api', categoria_1.categoria_router);
         this.app.use('/api', Usuario_1.usuario_router);
+        this.app.use('/api', ordenDetalle_1.ordenDetalle_router);
     }
     start() {
         this.app.listen(this.puerto, () => {
