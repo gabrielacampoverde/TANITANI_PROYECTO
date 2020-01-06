@@ -5,7 +5,7 @@ import {CategoriasService} from './../../../../services/categorias.service';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { CategoriasComponent } from '../categorias/categorias.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -16,6 +16,9 @@ import { CategoriasComponent } from '../categorias/categorias.component';
 })
 
 export class CrearProductoComponent implements OnInit, OnDestroy {
+
+  fileData: File = null;
+previewUrl:any = null;
 
   levels:Array<Object> = [
     {num: 0, name: "AA"},
@@ -51,6 +54,26 @@ selectedLevel = "";
   ngOnInit() {
     
   }
+
+  fileProgress(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+    console.log(this.fileData);
+    
+    this.preview();
+}
+preview() {
+  // Show preview 
+  var mimeType = this.fileData.type;
+  if (mimeType.match(/image\/*/) == null) {
+    return;
+  }
+
+  var reader = new FileReader();      
+  reader.readAsDataURL(this.fileData); 
+  reader.onload = (_event) => { 
+    this.previewUrl = reader.result; 
+  }
+}
 
   traerCategorias() {
     this.subscriptor = this._sCategoria.getCategorias().subscribe((resultado) => {

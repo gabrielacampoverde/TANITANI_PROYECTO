@@ -11,7 +11,7 @@ import { metodoPago_router } from '../rutas/metodoPago';
 import { categoria_router } from '../rutas/categoria';
 import {producto_router} from '../rutas/producto';
 import {usuario_router} from '../rutas/Usuario';
-
+import {ordenDetalle_router} from '../rutas/ordenDetalle'
 
 // const cors=require('cors');
 
@@ -75,7 +75,7 @@ export class Server {
     this.app.use('/api', producto_router);
     this.app.use('/api', categoria_router);
     this.app.use('/api', usuario_router);
-    
+    this.app.use('/api', ordenDetalle_router);
     
   }
 
