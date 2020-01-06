@@ -86,7 +86,7 @@ export class Server {
       // force:false, si las tablas no existen en la base de datos
       // las crea. Si las tablas ya existían en la base de datos
       // sólo crea las nuevas tablas en caso de que hubieran
-      conexion.sync({ force:false}).then(() => {
+      conexion.sync({ force: false}).then(() => {
         console.log("Base de datos creada correctamente");
       })
     });

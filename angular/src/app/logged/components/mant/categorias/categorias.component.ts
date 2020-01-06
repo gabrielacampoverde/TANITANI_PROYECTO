@@ -1,184 +1,148 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
-import { CategoriasService } from './../../../../services/categorias.service';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { CategoriaService } from '../../../../services/categoria.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 declare var $: any;
-
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
   styleUrls: ['./categorias.component.css']
 })
-export class CategoriasComponent implements OnInit, OnDestroy {
- 
- categorias;
-  susbscriptor: Subscription;
+export class CategoriasComponent implements OnInit,OnDestroy {
 
-  ObjCategoria = {
+  categorias;
+  subscripcion: Subscription;
+
+  objCategoriaPost = {
+    cat_nom: '',
+  }
+  objCategoria = {
     cat_id: '',
-    cat_nom: ''
+    cat_nom: '',
   }
 
-  categoriasSeleccionadas: Array<any> = [];
-  constructor(private _sCategorias: CategoriasService, private _sRouter: Router) { }
+  constructor(private _sCategorias: CategoriaService, private _sRouter: Router) { }
 
+  
   ngOnInit() {
     this.traerCategorias();
   }
-
   traerCategorias() {
-    this.susbscriptor = this._sCategorias.getCategorias().subscribe((resultado) => {
-      this.categorias = resultado;
-      console.log(this.categorias);
-      
-    });
+    this.subscripcion = this._sCategorias.getCategoria()
+      .subscribe((resultado) => { 
+        this.categorias = resultado.content;
+      });
   }
 
   ngOnDestroy() {
-    this.susbscriptor.unsubscribe();
-  }
+    //this.subscripcion.unsubscribe();
+    try {
+      this.subscripcion.unsubscribe();
+    } catch (error) {
 
-  crearCategoria() {
-    this._sRouter.navigate(['categorias', 'crear']);
+    }
   }
-
-  eliminarCategoria(id) {
+  CrearCategoria() {
     Swal.fire({
-      title: 'Estas seguro de Eliminar?',
-      text: 'El proceso no tiene vuelta atrás!!!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'No, Cancelar!',
-      confirmButtonText: 'Si, borrar'
-    }).then((result) => {
-      console.log(result);
-      
-      if (result.value) {
-        console.log(`Elimando el id ${id}`);
-        this._sCategorias.deleteCategoria(id).subscribe((rpta) => {
-          console.log(`Elimando categoria ${id}`);
-          // si la rsta tiene un id, quiere decir que fue completamente borrado
-          console.log(rpta);
-          
-          if (rpta.success) {
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'La Categoria ha sido borrada con éxito',
-              showConfirmButton: false,
-              timer: 1500
-
-            })
-            // luego llamamos a la funcion para volver a cargar el component
-            this.traerCategorias();
-          }
-        })
-      }
+      title: 'Espere un momento',
+      text: 'Estamos guardando el producto',
+      allowOutsideClick: false,
+      showConfirmButton: false
     })
 
+    this.subscripcion = this._sCategorias.postCategoria(this.objCategoriaPost)
+      .subscribe((rpta) => {
+        console.log(rpta);
+        if (rpta.contenido.cat_id) {
+          // si tiene un campo id asignado, implica que el objeto fue creado
+          Swal.fire({
+            title: 'Éxito!',
+            text: 'El Categoria se ha creado exitosamente!!',
+            confirmButtonText: 'Ir a Categoria',
+            allowOutsideClick: false
+          }).then((result) => {
+            if (result.value) {
+              this.traerCategorias();
+              this.objCategoriaPost = {
+                cat_nom: '',
+              }
+            }
+          })
+
+        }
+      })
+    $("#modalCrear").modal("hide");
+  }
+  Cancelar() {
+    $("#modalEditar").modal("hide");
+    $("#modalCrear").modal("hide");
   }
 
   abrirModalEditar(id) {
-    console.log("probando "+id);
-    // usamos jquery, typescript no reconoce el signo $ de jquery, show para mostrar hide para ocultar
-    // traer la factura dada su id
-    Swal.fire({
-      icon: 'info',
-      // title: 'Espere un momentooooooooooooooooo',
-      // text: 'Esperando al servidor...',
-      html: '<h2 class="display-4">Espere un momento</h2> <i class="fa fa-refresh fa-3x fa-spin"></i><br/> <p>Esperando al servidor...</p>',
-      allowOutsideClick: false,
-      showConfirmButton: false
-    });
-
-
-    // console.time("demoreishon");
     this._sCategorias.getCategoriaById(id).subscribe((rpta) => {
-      Swal.close();
-      // console.timeEnd("demoreishon");
       console.log(rpta);
-      if (rpta.categoria.cat_id) {
 
-        // la factura existe y ya llego
-        this.ObjCategoria = rpta.categoria;
-        console.log("paso");
-        
-        console.log(this.ObjCategoria);
-        // console.log(id);
+
+      if (rpta.categoria.cat_id) {
+        this.objCategoria = rpta.categoria;
+
         $("#modalEditar").modal("show");
       }
     })
   }
 
-
-  seleccionarCategoria(evento, categoria) {
-    // si esque mi checkboc esta seleccionado haremos algo
-    if (evento.target.checked) {
-      this.categoriasSeleccionadas.push(categoria);
-      console.log(this.categoriasSeleccionadas);
-    } else { 
-      for (let i = 0; i < this.categoriasSeleccionadas.length; i++) {
-        if (categoria.id === this.categoriasSeleccionadas[i].id) {
-          // array.splice(posicion,cont_elementos);
-          this.categoriasSeleccionadas.splice(i, 1);
-          console.log(this.categoriasSeleccionadas);
-        }
-      }
-    }
+  AbrirModalCrearCategoria() {
+    $("#modalCrear").modal("show");
   }
-  guardarCambios() {
-    // consumir el servicio para editar la factura
-    this._sCategorias.putCategoriaById(this.ObjCategoria).subscribe((rpta) => {
-      console.log(rpta);
-      
-      if (rpta.message) {
-        // factura correctamente editada
-        // volvemos a actualizar la lista de facturas  this.traerFacturas();
-        this.traerCategorias();
 
+  Guardar() {
+    console.log('categoria');
+    let objCat2 = {
+      Categoria: this.objCategoria
+    }
+    this._sCategorias.putCategoriaById(objCat2).subscribe((rpta) => {
+      console.log(objCat2);
+      if (rpta.content.cat_id) {
+        this.traerCategorias();
         $("#modalEditar").modal("hide");
       }
     })
-
   }
+ 
 
-  eliminarCategorias(){
-    console.log("eliminarProductos", this.categoriasSeleccionadas)
+  eliminarCategoria(id) {
+    console.log(id);
+
     Swal.fire({
-      title: 'Estas seguro de cargarse estas facturas',
-      text: 'El proceso no tiene vuelta atrás!!!',
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      cancelButtonText: 'No, Cancelar!',
-      confirmButtonText: 'Si, borrar'
+      confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
+      console.log(result);
+      
       if (result.value) {
-        
-        this._sCategorias.deleteCategorias(this.categoriasSeleccionadas).subscribe((rpta) => {
 
-          // si la rsta tiene un id, quiere decir que fue completamente borrado
-          if (rpta[0].cat_id) {
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Las categorias han sido borradas con éxito',
-              showConfirmButton: false,
-              timer: 1500
+        console.log("ddd");
 
-            })
-            // luego llamamos a la funcion para volver a cargar el component
+        this._sCategorias.deleteCategoria(id).subscribe((rpta) => {
+          console.log(rpta);
+
+          if (rpta.id) {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            );
             this.traerCategorias();
           }
-          console.log(rpta);
         })
       }
     })
-
   }
 }
