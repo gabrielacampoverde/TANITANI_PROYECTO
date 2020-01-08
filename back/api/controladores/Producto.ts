@@ -139,7 +139,10 @@ export let updateProducto=(req:Request,res:Response)=>{
             pro_nom: req.body.pro_nom,
             pro_prec: req.body.pro_prec,
             pro_est: req.body.pro_est,
-            pro_desc: req.body.pro_desc
+            pro_desc: req.body.pro_desc,
+            pro_img:req.body.pro_img,
+            pro_stock:req.body.pro_stock,
+            pro_det:req.body.pro_det,
 
         },{
             where:{
