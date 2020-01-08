@@ -43,16 +43,23 @@ export let crearOrdenProducto = (req: Request, res: Response) => {
         })
     })
 };
-export let getProductos=(req:Request,res:Response)=>{
-    Producto.findAll().then((objProductos:any)=>{
+export let getDetalles=(req:Request,res:Response)=>{
+    Usuario.findAll({ 
+        include:[{
+        model: Orden
+    }]
+}).then((objUsuarios:any)=>{
         res.status(200).json({
             message:'Ok',
-            Producto:objProductos
+            Producto:objUsuarios
 
         })
     })
 
 }
+
+
+
 export let postProducto=(req:Request,res:Response)=>{
 
 

@@ -38,8 +38,17 @@ export class ProductosComponent implements OnInit, OnDestroy {
 
   traerProductos() {
     this.susbscriptor = this._sProductos.getProductos().subscribe((resultado) => {
+      console.log("res",resultado)
+
+      // resultado.Producto.map(item => {
+      //   let itemTmp = Object.assign({}, item);
+      //   // str.substring(str.lastIndexOf('/') + 1); 
+      //   let texto = itemTmp.pro_img.substring(itemTmp.pro_img.lastIndexOf('\\')+1)
+      //   console.log("text",texto)
+      //   console.log("tmp",itemTmp.pro_img);
+      // })
       this.productos = resultado;
-      console.log(this.productos);
+      console.log("res imagen",this.productos);
       
     });
   }
