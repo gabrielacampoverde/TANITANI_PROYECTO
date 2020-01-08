@@ -18,6 +18,18 @@ export let compra_model = (sequelize: Sequelize) => {
       type: DataTypes.STRING(45),
       allowNull: true
     },
+    comp_dep: {
+      type: DataTypes.STRING(9),
+      allowNull: true,
+    },
+    comp_prov: {
+      type: DataTypes.STRING(9),
+      allowNull: true,
+    },
+    comp_dist: {
+      type: DataTypes.STRING(9),
+      allowNull: true,
+    },
     comp_direc_ref: {
       type: DataTypes.STRING(100),
       allowNull: true,

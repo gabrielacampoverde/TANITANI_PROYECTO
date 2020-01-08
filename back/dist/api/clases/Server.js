@@ -21,6 +21,7 @@ const categoria_1 = require("../rutas/categoria");
 const producto_1 = require("../rutas/producto");
 const Usuario_1 = require("../rutas/Usuario");
 const ordenDetalle_1 = require("../rutas/ordenDetalle");
+const compras_1 = require("../rutas/compras");
 // const cors=require('cors');
 class Server {
     constructor() {
@@ -74,6 +75,7 @@ class Server {
         this.app.use('/api', categoria_1.categoria_router);
         this.app.use('/api', Usuario_1.usuario_router);
         this.app.use('/api', ordenDetalle_1.ordenDetalle_router);
+        this.app.use('/api', compras_1.compras_router);
     }
     start() {
         this.app.listen(this.puerto, () => {
