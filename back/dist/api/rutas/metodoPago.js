@@ -7,5 +7,5 @@ exports.metodoPago_router.get('/metpago', metodoPago_1.getMetPago);
 exports.metodoPago_router.get('/metpago/:id', metodoPago_1.getMetPagoById);
 exports.metodoPago_router.post('/metpago', metodoPago_1.postMetPago);
 exports.metodoPago_router.put('/metpago', metodoPago_1.putmetPago);
-// metodoPago_router.delete('/metpago' , deleteMetPagoById);
+exports.metodoPago_router.delete('/metpago/:id', metodoPago_1.deleteMetPagoById);
 //# sourceMappingURL=metodoPago.js.map

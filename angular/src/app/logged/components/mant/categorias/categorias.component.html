@@ -1,114 +1,119 @@
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<!-- Crear Categoria -->
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">EDITAR REGISTRO</h5>
+                <h5 class="modal-title text-info title-popup" id="modelTitleId">Crear Categoria</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form class="mt-4 animated pulse " #formulario="ngForm">
+                    <form class="mt-1" #formulario="ngForm">
                         <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-
-                                    <label for="">ID de Categoria</label>
-                                    <input type="text" requered class="form-control" required
-                                        [(ngModel)]="ObjCategoria.cat_id" name="cat_id" disabled>
-                                    <!-- tiene quye tener el atributo name si o si, no importa el nombre que se le ponga  -->
-
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="">Nombre:</label>
-                                    <input type="text" required class="form-control" [(ngModel)]="ObjCategoria.cat_nom"
-                                        name="cat_nom">
-                                </div>
-
-                            </div>
-                            <div>
-
-                            </div>
-                            
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-block btn-lg btn-info" [disabled]="!formulario.valid"
-                                (click)="guardarCambios()">
-                                <i class="fas fa-save"></i>
-                                Guardar Cambios
-                            </button>
+                            <label for="">Nombre de la Categoria:</label>
+                            <input type="text" class="form-control" required [(ngModel)]="objCategoriaPost.cat_nom" name="cat_nom" placeholder="">
                         </div>
                     </form>
                 </div>
             </div>
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-            </div> -->
+            <div class="modal-footer">
+                <div class="div-flex">
+                    <button type="submit" class="btn btn-success" [disabled]="!formulario.valid" (click)="CrearCategoria()">
+                        <i class="far fa-save"></i>
+                        Guardar
+                    </button>
+                    <button type="submit" class="btn btn-danger ml-2" (click)="Cancelar()">
+                        <i class="fas fa-close"></i> Cancelar
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<main class="container mt-5">
 
-    <button class="btn btn-outline-danger" *ngIf="categoriasSeleccionadas.length>0"
-        (click)="eliminarCategorias()">Eliminar Categorias</button>
-        
+<!-- Modificar Datos Categoria -->
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-info title-popup" id="modelTitleId">Editar Categoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-1" #formularios="ngForm">
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label for="">Id de la Categoria:</label>
+                                <input type="text" required class="form-control" [(ngModel)]="objCategoria.cat_id" name="cat_id" disabled>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="">Nombre:</label>
+                                <input type="text" class="form-control" required [(ngModel)]="objCategoria.cat_nom" name="cat_nom" placeholder="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="div-flex">
+                    <button type="submit" class="btn btn-success" [disabled]="!formularios.valid" (click)="Guardar()"> <i class="far fa-save"></i>
+                                    Guardar
+                                </button>
+                    <button type="submit" class="btn btn-danger ml-2" (click)="Cancelar()">
+                        <i class="fas fa-close"></i> Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
     <div>
-        <div class="alert alert-info text-center" role="alert" *ngIf="!categorias">
-            <!-- <h4 class="alert-heading">Cargando..</h4> -->
-            <!-- <p>
+        <div class="alert alert-success text-center" role="alert" *ngIf="!categorias">
+            <h4 class="alert-heading">Cargando..</h4>
+            <p>
                 <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
-            </p> -->
-            <button class="btn btn-info" type="button" disabled>
-                <h4><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                    Cargando...</h4>
-            </button>
+            </p>
         </div>
-        <div class="row">
-            <div class="input-group-prepend">
-                <h2>  <label class="input-group-text" for="inputGroupSelect01">LISTA DE CATEGORIAS</label></h2>
-              </div>
-           
-        </div>
-          
-        <div *ngIf="categorias" class="animated slideInLeft" >
-            <table class="table table-hover">
+        <div *ngIf="categorias" class="animated slideInLeft">
+            <table class="table">
                 <thead>
-                    <!-- class="bg-info" -->
                     <tr>
-                        <th>SEL. BORRAR</th>
-                        <th>ID</th>
-                        <th>NOMBRE</th>
-                        <th>ACTIONS</th>
-                        
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Update</th>
+                        <th>Creado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let c of categorias.content">
-                        <td><input type="checkbox" class="form-control" id=[{{c.cat_id}}]
-                                (change)="seleccionarCategoria($event, c)"><label for=[{{c.cat_id}}]></label></td>
-                        <td>{{c.cat_id}}</td>
-                        <td>{{c.cat_nom}}</td>
-                        <!-- <td><img src={{p.prod_img}} style="width: 45px" class="card-img-top" alt="..." ></td>
-                        <td>{{p.prod_stock}}</td> -->
-                        <td style="display: flex;"> <button class="btn btn-outline-danger"
-                                (click)="eliminarCategoria(c.cat_id)"><i class="fas fa-trash-alt"
-                                    aria-hidden="true"></i> </button>
-                            <button class="btn btn-outline-info ml-2" (click)="abrirModalEditar(c.cat_id)"><i
-                                    class="fas fa-user-edit"></i> </button></td>
+                    <tr *ngFor="let cat of categorias">
+                        <td>{{cat.cat_id}}</td>
+                        <td>{{cat.cat_nom}}</td>
+                        <td>{{cat.updatedAt}}</td>
+                        <td>{{cat.createdAt}}</td>
+                        <td style="display: flex;">
+                            <button class="btn btn-danger" (click)="eliminarCategoria(cat.cat_id)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(cat.cat_id)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
+        <button class="btn btn-dark btnCrear animated tada infinite slow" (click)="AbrirModalCrearCategoria()">
+            <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+        </button>
     </div>
-
-    <button class="btn btn-info btnCrear animated bounce slow" (click)="crearCategoria()">
-        <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-    </button>
-
-</main>
+</div>

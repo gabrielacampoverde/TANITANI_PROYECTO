@@ -10,6 +10,8 @@ import { CrearProductoComponent} from './components/mant/crear-producto/crear-pr
 import { CategoriasComponent } from './components/mant/categorias/categorias.component';
 import { CrearCategoriaComponent } from './components/mant/crear-categoria/crear-categoria.component';
 import { UsuariosComponent } from './components/mant/usuarios/usuarios.component';
+import { MetodopagoComponent } from './components/mant/metodopago/metodopago.component';
+import { ComprasComponent } from './components/mant/compras/compras.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,8 @@ const routes: Routes = [
       { path: 'productos', component: ProductosComponent , data: { title: 'Mantenimiento de Productos' } },
       { path: 'productos/crear', component: CrearProductoComponent , data: { title: 'Crear Producto' } },
       { path: 'usuarios', component: UsuariosComponent, data: { title: 'Mantenimiento de Productos' } },
+      { path: 'metpago', component: MetodopagoComponent , data: { title: 'Mantenimiento de Metodos de Pago' } },
+      { path: 'compras', component: ComprasComponent , data: { title: 'Mantenimiento de Compras' } },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     ]
   },

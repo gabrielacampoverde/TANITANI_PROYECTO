@@ -1,0 +1,202 @@
+<!-- Crear Compra -->
+
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crear Compra</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formulario="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Descuento:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objComprasNew.comp_descuento" name="comp_descuento" placeholder="Ejm: 20%, 30%,40%,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Comp_total_cup:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objComprasNew.comp_total_cup" name="comp_total_cup" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">comp_prov:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objComprasNew.comp_prov" name="comp_total_cup" placeholder="Ejm: 20%, 30%,40%,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">comp_dep:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objComprasNew.comp_dep" name="comp_dep" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">comp_dist:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objComprasNew.comp_dist" name="comp_total_cup" placeholder="Ejm: 20%, 30%,40%,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">comp_direc_ref:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objComprasNew.comp_direc_ref" name="comp_dep" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">comp_tel_ref:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objComprasNew.comp_tel_ref" name="comp_total_cup" placeholder="Ejm: 20%, 30%,40%,etc">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formulario.valid" (click)="CrearCompras()">
+                        <i class="fas fa-save"></i>
+                        Crear Compra
+                    </button>
+                    <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                        <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modificar Datos Metodo de Pago -->
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bienvenido al menu editar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-4 " #formularios="ngForm">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Id de Compra:</label>
+                                    <input type="text" required class="form-control" [(ngModel)]="objCompras.comp_id" name="comp_id" disabled>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Descuento:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objCompras.comp_descuento" name="comp_descuento" placeholder="Ejm: 20%, 30%,40%,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Comp_total_cup:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objCompras.comp_total_cup" name="comp_total_cup" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">comp_prov:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objCompras.comp_prov" name="comp_total_cup" placeholder="Ejm: 20%, 30%,40%,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">comp_dep:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objCompras.comp_dep" name="comp_dep" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">comp_dist:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objCompras.comp_dist" name="comp_total_cup" placeholder="Ejm: 20%, 30%,40%,etc">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">comp_direc_ref:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objCompras.comp_direc_ref" name="comp_dep" placeholder="Ejm: Computadora,Television,etc">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">comp_tel_ref:</label>
+                                    <input type="text" class="form-control" required [(ngModel)]="objCompras.comp_tel_ref" name="comp_total_cup" placeholder="Ejm: 20%, 30%,40%,etc">
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <hr>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" [disabled]="!formularios.valid" (click)="Guardar()">
+                                            <i class="fas fa-save"></i>
+                                            Guardar Compra
+                                        </button>
+                            <br>
+                            <button type="submit" class="btn btn-block btn-lg btn-dark" (click)="Cancelar()">
+                                <i class="fas fa-arrow-alt-circle-left"></i> Volver
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <div class="alert alert-success text-center" role="alert" *ngIf="!compras">
+            <h4 class="alert-heading">Cargando..</h4>
+            <p>
+                <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
+            </p>
+        </div>
+        <div *ngIf="compras" class="animated slideInLeft">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Comp_total_cup</th>
+                        <th>Descuento</th>
+                        <th>Comp_dep</th>
+                        <th>Comp_prov</th>
+                        <th>Comp_dist</th>
+                        <th>Comp_direc_ref</th>
+                        <th>Comp_tel_ref</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let comp of compras.contenido">
+                        <td>{{comp.comp_id}}</td>
+                        <td>{{comp.comp_total_cup}}</td>
+                        <td>{{comp.comp_descuento}}</td>
+                        <td>{{comp.comp_dep}}</td>
+                        <td>{{comp.comp_prov}}</td>
+                        <td>{{comp.comp_dist}}</td>
+                        <td>{{comp.comp_direc_ref}}</td>
+                        <td>{{comp.comp_tel_ref}}</td>
+                        <td style="display: flex;">
+                            <button class="btn btn-danger" (click)="eliminarCompras(comp.comp_id)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(comp.comp_id)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-dark btnCrear animated tada infinite slow" (click)="AbrirModalCrearCompras()">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </button>
+    </div>
+</div>

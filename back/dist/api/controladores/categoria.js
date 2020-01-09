@@ -55,54 +55,76 @@ exports.postCategoria = (req, res) => {
 };
 exports.updateCategoria = (req, res) => {
     sequelize_1.Categoria.update({
-        cat_nom: req.body.cat_nom
+        cat_nom: req.body.Categoria.cat_nom
     }, {
         where: {
-            cat_id: req.body.cat_id
+            cat_id: req.body.Categoria.cat_id
         }
-    }).then((catActualizado) => {
-        sequelize_1.Categoria.findByPk(catActualizado[0]).then((objCategoria) => {
+    }).then(() => {
+        sequelize_1.Categoria.findByPk(req.body.Categoria.cat_id).then((objCategoria) => {
             res.status(200).json({
                 message: 'ok',
-                content: catActualizado,
+                content: objCategoria
             });
         });
     }).catch((error) => {
         res.status(501).json({
             message: 'error',
-            content: error,
+            content: error
         });
     });
 };
-exports.categoria_controller = {
-    deleteById: (req, res) => {
-        let { id } = req.params;
-        // console.log("delete",id_empleado)
-        sequelize_1.Categoria.destroy({
-            where: {
-                cat_id: id
-            }
-        }).then((cantidad) => {
-            if (cantidad > 0) {
-                console.log("Cant", cantidad);
-                let respuesta = {
-                    success: true,
-                    message: "Usuario Eliminado",
-                    content: cantidad
-                };
-                res.status(200).send(respuesta);
-            }
-            else {
-                let respuesta = {
-                    success: false,
-                    message: "No se ha eliminado",
-                    content: ''
-                };
-                res.status(500).send(respuesta);
-            }
-        });
-    }
-};
+// export var categoria_controller = {
+//   deleteById: (req:Request, res:Response) => {
+//       let {id} = req.params;
+//       // console.log("delete",id_empleado)
+//       Categoria.destroy({
+//           where:{
+//               cat_id:id
+//           }
+//       }).then((cantidad:any) => {
+//           if(cantidad > 0){
+//               console.log("Cant",cantidad);
+//               let respuesta = {
+//                   success:true,
+//                   message:"Usuario Eliminado",
+//                   content:cantidad
+//               }
+//               res.status(200).send(respuesta);
+//           }else{
+//               let respuesta = {
+//                   success:false,
+//                   message:"No se ha eliminado",
+//                   content:''
+//               }
+//               res.status(500).send(respuesta);
+//           }
+//       })
+//   }
+// }
 exports.deleteCategoriaById = (req, res) => {
+    let { id } = req.params;
+    sequelize_1.Categoria.destroy({
+        where: {
+            cat_id: id
+        }
+    }).then((cantidad) => {
+        if (cantidad > 0) {
+            let rpta = {
+                success: true,
+                message: "Categoria Eliminado",
+                id: id
+            };
+            res.status(200).send(rpta);
+        }
+        else {
+            let rpta = {
+                success: false,
+                message: 'No se ha Eliminado',
+                id: ''
+            };
+            res.status(500).send(rpta);
+        }
+    });
 };
 //# sourceMappingURL=categoria.js.map

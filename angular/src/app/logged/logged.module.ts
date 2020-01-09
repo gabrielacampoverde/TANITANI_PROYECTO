@@ -22,6 +22,8 @@ import { CategoriasComponent } from './components/mant/categorias/categorias.com
 import { CrearCategoriaComponent } from './components/mant/crear-categoria/crear-categoria.component';
 import { ListCategoriasComponent } from './components/mant/list-categorias/list-categorias.component';
 import { UsuariosComponent } from './components/mant/usuarios/usuarios.component';
+import { MetodopagoComponent } from './components/mant/metodopago/metodopago.component';
+import { ComprasComponent } from './components/mant/compras/compras.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { UsuariosComponent } from './components/mant/usuarios/usuarios.component
     CategoriasComponent,
     CrearCategoriaComponent,
     ListCategoriasComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    MetodopagoComponent,
+    ComprasComponent
    
   ],
   imports: [

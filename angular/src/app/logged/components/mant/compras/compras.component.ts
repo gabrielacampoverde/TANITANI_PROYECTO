@@ -1,38 +1,49 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { CategoriaService } from '../../../../services/categoria.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ComprasService } from '../../../../services/compras.service';
 
-declare var $: any;
+declare var $: any; 
 @Component({
-  selector: 'app-categorias',
-  templateUrl: './categorias.component.html',
-  styleUrls: ['./categorias.component.css']
+  selector: 'app-compras',
+  templateUrl: './compras.component.html',
+  styleUrls: ['./compras.component.css']
 })
-export class CategoriasComponent implements OnInit,OnDestroy {
+export class ComprasComponent implements OnInit {
 
-  categorias;
+  compras;
   subscripcion: Subscription;
 
-  objCategoriaPost = {
-    cat_nom: '',
+  objComprasNew = {
+    comp_descuento: '',
+    comp_total_cup: '',
+    comp_dep: '',
+    comp_prov: '',
+    comp_dist: '',
+    comp_direc_ref: '',
+    comp_tel_ref: ''
   }
-  objCategoria = {
-    cat_id: '',
-    cat_nom: '',
+  objCompras = {
+    comp_id: '',
+    comp_descuento: '',
+    comp_total_cup: '',
+    comp_dep: '',
+    comp_prov: '',
+    comp_dist: '',
+    comp_direc_ref: '',
+    comp_tel_ref: ''
   }
-
-  constructor(private _sCategorias: CategoriaService, private _sRouter: Router) { }
+  constructor(private _sCompras: ComprasService, private _sRouter: Router) { }
 
   
   ngOnInit() {
-    this.traerCategorias();
+    this.traerCompras();
   }
-  traerCategorias() {
-    this.subscripcion = this._sCategorias.getCategoria()
+  traerCompras() {
+    this.subscripcion = this._sCompras.getCompras()
       .subscribe((resultado) => { 
-        this.categorias = resultado.content;
+        this.compras = resultado;
       });
   }
 
@@ -44,30 +55,28 @@ export class CategoriasComponent implements OnInit,OnDestroy {
 
     }
   }
-  CrearCategoria() {
+  CrearCompras() {
     Swal.fire({
       title: 'Espere un momento',
-      text: 'Estamos guardando el producto',
+      text: 'Estamos guardando la compra',
       allowOutsideClick: false,
       showConfirmButton: false
     })
 
-    this.subscripcion = this._sCategorias.postCategoria(this.objCategoriaPost)
+    this.subscripcion = this._sCompras.postCompras(this.objComprasNew)
       .subscribe((rpta) => {
         console.log(rpta);
-        if (rpta.contenido.cat_id) {
+        if (rpta.contenido.comp_id) {
           // si tiene un campo id asignado, implica que el objeto fue creado
           Swal.fire({
             title: 'Éxito!',
-            text: 'El Categoria se ha creado exitosamente!!',
-            confirmButtonText: 'Ir a Categoria',
+            text: 'El Metodo de Pago se ha creado exitosamente!!',
+            confirmButtonText: 'Ir a Mantenimiento Metodos de Pago',
             allowOutsideClick: false
           }).then((result) => {
             if (result.value) {
-              this.traerCategorias();
-              this.objCategoriaPost = {
-                cat_nom: '',
-              }
+              this.traerCompras();
+              
             }
           })
 
@@ -81,38 +90,40 @@ export class CategoriasComponent implements OnInit,OnDestroy {
   }
 
   abrirModalEditar(id) {
-    this._sCategorias.getCategoriaById(id).subscribe((rpta) => {
+    this._sCompras.getComprasById(id).subscribe((rpta) => {
       console.log(rpta);
 
 
-      if (rpta.categoria.cat_id) {
-        this.objCategoria = rpta.categoria;
+      if (rpta.Compras.comp_id) {
+        console.log("logrado");
+        
+        this.objCompras = rpta.Compras;
 
         $("#modalEditar").modal("show");
       }
     })
   }
 
-  AbrirModalCrearCategoria() {
+  AbrirModalCrearCompras() {
     $("#modalCrear").modal("show");
   }
 
   Guardar() {
-    console.log('categoria');
-    let objCat2 = {
-      Categoria: this.objCategoria
+    console.log('Compras');
+    let obj2 = {
+      Compras: this.objCompras
     }
-    this._sCategorias.putCategoriaById(objCat2).subscribe((rpta) => {
-      console.log(objCat2);
-      if (rpta.content.cat_id) {
-        this.traerCategorias();
+    this._sCompras.putComprasById(obj2).subscribe((rpta) => {
+      console.log(obj2);
+      if (rpta.content.comp_id) {
+        this.traerCompras();
         $("#modalEditar").modal("hide");
       }
     })
   }
  
 
-  eliminarCategoria(id) {
+  eliminarCompras(id) {
     console.log(id);
 
     Swal.fire({
@@ -130,7 +141,7 @@ export class CategoriasComponent implements OnInit,OnDestroy {
 
         console.log("ddd");
 
-        this._sCategorias.deleteCategoria(id).subscribe((rpta) => {
+        this._sCompras.deleteCompras(id).subscribe((rpta) => {
           console.log(rpta);
 
           if (rpta.id) {
@@ -139,7 +150,7 @@ export class CategoriasComponent implements OnInit,OnDestroy {
               'Your file has been deleted.',
               'success'
             );
-            this.traerCategorias();
+            this.traerCompras();
           }
         })
       }

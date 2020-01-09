@@ -1,38 +1,37 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { CategoriaService } from '../../../../services/categoria.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { MetodoPagoService } from '../../../../services/metododepago.service';
 
 declare var $: any;
 @Component({
-  selector: 'app-categorias',
-  templateUrl: './categorias.component.html',
-  styleUrls: ['./categorias.component.css']
+  selector: 'app-metodopago',
+  templateUrl: './metodopago.component.html',
+  styleUrls: ['./metodopago.component.css']
 })
-export class CategoriasComponent implements OnInit,OnDestroy {
+export class MetodopagoComponent implements OnInit ,OnDestroy{
 
-  categorias;
+  metpagos;
   subscripcion: Subscription;
 
-  objCategoriaPost = {
-    cat_nom: '',
+  objMetPagoNew = {
+    mpago_nom: '',
   }
-  objCategoria = {
-    cat_id: '',
-    cat_nom: '',
+  objMetPago = {
+    mpago_id: '',
+    mpago_nom: '',
   }
-
-  constructor(private _sCategorias: CategoriaService, private _sRouter: Router) { }
+  constructor(private _sMetodoPago: MetodoPagoService, private _sRouter: Router) { }
 
   
   ngOnInit() {
     this.traerCategorias();
   }
   traerCategorias() {
-    this.subscripcion = this._sCategorias.getCategoria()
+    this.subscripcion = this._sMetodoPago.getMetodoPago()
       .subscribe((resultado) => { 
-        this.categorias = resultado.content;
+        this.metpagos = resultado;
       });
   }
 
@@ -52,21 +51,21 @@ export class CategoriasComponent implements OnInit,OnDestroy {
       showConfirmButton: false
     })
 
-    this.subscripcion = this._sCategorias.postCategoria(this.objCategoriaPost)
+    this.subscripcion = this._sMetodoPago.postMetodoPago(this.objMetPagoNew)
       .subscribe((rpta) => {
         console.log(rpta);
-        if (rpta.contenido.cat_id) {
+        if (rpta.contenido.mpago_id) {
           // si tiene un campo id asignado, implica que el objeto fue creado
           Swal.fire({
             title: 'Éxito!',
-            text: 'El Categoria se ha creado exitosamente!!',
-            confirmButtonText: 'Ir a Categoria',
+            text: 'El Metodo de Pago se ha creado exitosamente!!',
+            confirmButtonText: 'Ir a Mantenimiento Metodos de Pago',
             allowOutsideClick: false
           }).then((result) => {
             if (result.value) {
               this.traerCategorias();
-              this.objCategoriaPost = {
-                cat_nom: '',
+              this.objMetPagoNew = {
+                mpago_nom: '',
               }
             }
           })
@@ -81,30 +80,32 @@ export class CategoriasComponent implements OnInit,OnDestroy {
   }
 
   abrirModalEditar(id) {
-    this._sCategorias.getCategoriaById(id).subscribe((rpta) => {
+    this._sMetodoPago.getMetodoPagoById(id).subscribe((rpta) => {
       console.log(rpta);
 
 
-      if (rpta.categoria.cat_id) {
-        this.objCategoria = rpta.categoria;
+      if (rpta.metPago.mpago_id) {
+        console.log("logrado");
+        
+        this.objMetPago = rpta.metPago;
 
         $("#modalEditar").modal("show");
       }
     })
   }
 
-  AbrirModalCrearCategoria() {
+  AbrirModalCrearMetPago() {
     $("#modalCrear").modal("show");
   }
 
   Guardar() {
-    console.log('categoria');
-    let objCat2 = {
-      Categoria: this.objCategoria
+    console.log('Metodo de Pago');
+    let obj2 = {
+      MetodoPago: this.objMetPago
     }
-    this._sCategorias.putCategoriaById(objCat2).subscribe((rpta) => {
-      console.log(objCat2);
-      if (rpta.content.cat_id) {
+    this._sMetodoPago.putMetodoPagoById(obj2).subscribe((rpta) => {
+      console.log(obj2);
+      if (rpta.content.mpago_id) {
         this.traerCategorias();
         $("#modalEditar").modal("hide");
       }
@@ -112,7 +113,7 @@ export class CategoriasComponent implements OnInit,OnDestroy {
   }
  
 
-  eliminarCategoria(id) {
+  eliminarMetPago(id) {
     console.log(id);
 
     Swal.fire({
@@ -130,7 +131,7 @@ export class CategoriasComponent implements OnInit,OnDestroy {
 
         console.log("ddd");
 
-        this._sCategorias.deleteCategoria(id).subscribe((rpta) => {
+        this._sMetodoPago.deleteMetodoPago(id).subscribe((rpta) => {
           console.log(rpta);
 
           if (rpta.id) {
