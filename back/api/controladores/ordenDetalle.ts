@@ -44,18 +44,49 @@ export let crearOrdenProducto = (req: Request, res: Response) => {
     })
 };
 export let getDetalles=(req:Request,res:Response)=>{
-    Usuario.findAll({ 
-        include:[{
-        model: Orden
+//     Usuario.findAll({ 
+//         include:[{
+//         model: Producto
+//     }]
+// }).then((objUsuarios:any, objOrdenDet:any)=>{
+//         res.status(200).json({
+//             message:'Ok',
+//             conetent:objUsuarios,
+//             Ordendetalle:objOrdenDet,
+
+
+//         })
+//     })
+
+
+Usuario.findAll({
+    include:[{
+        model: Orden, 
+            include:[{
+                model: Ordendetalle,
+                include:[{
+                    model: Producto
+                }]
+            }]
+        
+        
     }]
-}).then((objUsuarios:any)=>{
-        res.status(200).json({
-            message:'Ok',
-            Producto:objUsuarios
-
-        })
+}).then((resultado:any)=>{
+    res.status(200).json({
+        message: 'ok',
+        content: resultado
     })
+})
 
+// Producto.findAll({  include:[{
+//     model: Ordendetalle
+// }]}).then((objProductos:any)=>{
+//     res.status(200).json({
+//         message:'Ok',
+//         Producto:objProductos,
+
+//     })
+// })
 }
 
 
