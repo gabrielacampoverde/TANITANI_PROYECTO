@@ -24,6 +24,7 @@ import { ListCategoriasComponent } from './components/mant/list-categorias/list-
 import { UsuariosComponent } from './components/mant/usuarios/usuarios.component';
 import { MetodopagoComponent } from './components/mant/metodopago/metodopago.component';
 import { ComprasComponent } from './components/mant/compras/compras.component';
+import { OrdenesComponent } from './components/mant/ordenes/ordenes.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ComprasComponent } from './components/mant/compras/compras.component';
     ListCategoriasComponent,
     UsuariosComponent,
     MetodopagoComponent,
-    ComprasComponent
+    ComprasComponent,
+    OrdenesComponent
    
   ],
   imports: [
