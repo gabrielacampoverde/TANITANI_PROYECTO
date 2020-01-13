@@ -71,12 +71,12 @@
     </div>
 </div> -->
 <!-- Modificar Datos Usuarios -->
-<!-- 
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+ 
+<!-- <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle2">EDITAR USUARIO</h5>
+                <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle2">EDITAR ORDEN</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -147,43 +147,60 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>  -->
 
 
 <div class="container">
     <div>
-        <div class="alert alert-success text-center" role="alert" *ngIf="!ordenes">
+        <div class="alert alert-success text-center" role="alert" *ngIf="!UsuOrdenes">
             <h4 class="alert-heading">Cargando..</h4>
             <p>
                 <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
             </p>
         </div>
-        <div *ngIf="ordenes" class="animated slideInLeft">
+        <div class="row">
+            <div class="input-group-prepend">
+                <h2>  <label class="input-group-text" for="inputGroupSelect01">LISTA DE ORDENES</label></h2>
+              </div>
+           
+        </div>
+        <div *ngIf="UsuOrdenes" class="animated slideInLeft">
             <table class="table">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Email</th>
-                        <th>Tipo</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <!-- <th>Tipo</th>
                         <th>Dirección</th>
-                        <th>Celular</th>
-                        <th>Estados</th>
-                        <th>Acciones</th>
+                        <th>Celular</th>-->
+                        <th>Detalles</th> 
+                        <th>Acciones</th> 
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let ord of ordenes">
-                        <td>{{ord.usu_id}}</td>
-                        <td>{{ord.usu_email}}</td>
-                        <td>{{ord.t_ordens[0].orde_estado}}</td>
-                        <td>{{ord.t_ordens[0].t_ordendetalles[0].odet_prec}}</td>
+                <tbody >
+                    
+                    <tr *ngFor="let ord of UsuOrdenesDet" >
+                        <!-- <tr *ngFor="let ord of UsuOrdenes"> -->
+                       
+                        <td>{{ord.t_usuarios[0].t_ordens[0].orde_id}}</td>
+                        <td>{{ord.per_nom}} {{ord.per_ape}}</td>
+                       <td>{{ord.t_usuarios[0].t_ordens[0].orde_fecha}}</td>
+                       <td>{{ord.t_usuarios[0].t_ordens[0].orde_estado}}</td>
+
+                        <!-- <td>{{ord.t_ordens[0].orde_estado}}</td> -->
+                        <!-- <td>{{ord.t_ordens[0].t_ordendetalles[0].odet_prec}}</td>  -->
                         <!-- <td>{{ord.}}</td>
                         <td>{{ord.}}</td>
                         <td>{{ord.}}</td>
                         <td>{{ord.}}</td> -->
                         <!-- <td class="pass">{{usu.usu_hash}}</td> -->
+                        <td>
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(usu.usu_id)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
                         <td style="display: flex;">
                             <button class="btn btn-danger" (click)="eliminarUsuario(usu.usu_id)">
                                 <i class="fas fa-trash"></i>

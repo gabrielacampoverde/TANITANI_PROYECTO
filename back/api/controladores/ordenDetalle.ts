@@ -1,6 +1,6 @@
 //ORDENDETALLE CONTROLLER
 import{Request,Response} from 'express'
-import { Producto,Ordendetalle,Orden,Usuario} from '../configuracion/sequelize'
+import { Producto,Ordendetalle,Orden,Usuario,Persona} from '../configuracion/sequelize'
 import { producto_model } from '../modelos/Producto'
 
 
@@ -44,39 +44,48 @@ export let crearOrdenProducto = (req: Request, res: Response) => {
     })
 };
 export let getDetalles=(req:Request,res:Response)=>{
-//     Usuario.findAll({ 
-//         include:[{
-//         model: Producto
-//     }]
-// }).then((objUsuarios:any, objOrdenDet:any)=>{
-//         res.status(200).json({
-//             message:'Ok',
-//             conetent:objUsuarios,
-//             Ordendetalle:objOrdenDet,
-
-
-//         })
-//     })
-
-
-Usuario.findAll({
-    include:[{
-        model: Orden, 
-            include:[{
-                model: Ordendetalle,
+Persona.findAll({
+    include:[{model:Usuario,
+        include:[{
+            model: Orden, 
                 include:[{
-                    model: Producto
+                    model: Ordendetalle,
+                    include:[{
+                        model: Producto
+                    }]
                 }]
-            }]
-        
-        
+            
+            
+        }]
     }]
+ 
 }).then((resultado:any)=>{
     res.status(200).json({
         message: 'ok',
         content: resultado
     })
 })
+
+
+}
+
+export let getOrdenes=(req:Request,res:Response)=>{
+    Orden.findAll({
+      
+        include:[{
+            
+              model:Ordendetalle,
+                         include:[{
+                              model: Producto
+        }]
+       
+    }]
+}).then((resultado:any)=>{
+        res.status(200).json({
+            message: 'ok',
+            content: resultado
+        })
+    })
 
 // Producto.findAll({  include:[{
 //     model: Ordendetalle
@@ -88,8 +97,6 @@ Usuario.findAll({
 //     })
 // })
 }
-
-
 
 export let postProducto=(req:Request,res:Response)=>{
 

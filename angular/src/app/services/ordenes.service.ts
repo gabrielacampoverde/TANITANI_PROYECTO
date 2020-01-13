@@ -14,13 +14,19 @@ export class OrdenesService {
   arregloTmp: Array<any> = [];
   constructor(private _sHttp: HttpClient) { }
 
+  getOrdenesdet(): Observable<any> {
+    // return this._sHttp.get(`https://5d4b6ade00dbb10014879b1b.mockapi.io/Tiendita`);
+    return this._sHttp.get(`${URL_BACKEND}/ordendet`);
+  console.log(`${URL_BACKEND}/ordendet`);
+ 
+    
+  }
+
   getOrdenes(): Observable<any> {
     // return this._sHttp.get(`https://5d4b6ade00dbb10014879b1b.mockapi.io/Tiendita`);
-    return this._sHttp.get(`${URL_BACKEND}/orden`);
-  console.log(`${URL_BACKEND}/orden`);
+    return this._sHttp.get(`${URL_BACKEND}/ordenes`);
+  console.log(`${URL_BACKEND}/ordenes`);
  
-  
-  
     
   }
   // postProductos(objProducto): Observable<any> {
