@@ -1,0 +1,49 @@
+body {
+    font-size: .8rem;
+}
+
+.modal .container-fluid {
+    padding: 0 15px;
+}
+
+input,
+select {
+    font-size: .8rem !important;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.title-popup {
+    font-weight: 600;
+}
+
+.modal-header {
+    padding: 15px 30px;
+}
+
+.div-flex {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.btnCrear {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 50px;
+    right: 40px;
+}
+
+.pass {
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

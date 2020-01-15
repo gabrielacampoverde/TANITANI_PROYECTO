@@ -9,6 +9,10 @@ import { ProductosComponent } from './components/mant/productos/productos.compon
 import { CrearProductoComponent} from './components/mant/crear-producto/crear-producto.component'
 import { CategoriasComponent } from './components/mant/categorias/categorias.component';
 import { CrearCategoriaComponent } from './components/mant/crear-categoria/crear-categoria.component';
+import { UsuariosComponent } from './components/mant/usuarios/usuarios.component';
+import { MetodopagoComponent } from './components/mant/metodopago/metodopago.component';
+import { ComprasComponent } from './components/mant/compras/compras.component';
+import { OrdenesComponent } from './components/mant/ordenes/ordenes.component';
 
 
 const routes: Routes = [
@@ -22,7 +26,10 @@ const routes: Routes = [
       { path: 'categorias', component: CategoriasComponent , data: { title: 'Mantenimiento de Categorias' } },
       { path: 'categorias/crear', component: CrearCategoriaComponent , data: { title: 'Crear Categoria' } },
       { path: 'productos', component: ProductosComponent , data: { title: 'Mantenimiento de Productos' } },
-      { path: 'productos/crear', component: CrearProductoComponent , data: { title: 'Crear Producto' } },
+      { path: 'ordenes', component: OrdenesComponent , data: { title: 'Mantenimiento de Ordenes' } },
+      { path: 'usuarios', component: UsuariosComponent, data: { title: 'Mantenimiento de Productos' } },
+      { path: 'metpago', component: MetodopagoComponent , data: { title: 'Mantenimiento de Metodos de Pago' } },
+      { path: 'compras', component: ComprasComponent , data: { title: 'Mantenimiento de Compras' } },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     ]
   },

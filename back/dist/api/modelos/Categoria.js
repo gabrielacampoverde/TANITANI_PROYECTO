@@ -14,7 +14,7 @@ exports.categoria_model = (sequelize) => {
         },
     }, {
         tableName: 't_categoria',
-        timestamps: false
+        timestamps: true
     });
     return categoria;
 };

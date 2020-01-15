@@ -18,6 +18,18 @@ exports.compra_model = (sequelize) => {
             type: sequelize_1.DataTypes.STRING(45),
             allowNull: true
         },
+        comp_dep: {
+            type: sequelize_1.DataTypes.STRING(9),
+            allowNull: true,
+        },
+        comp_prov: {
+            type: sequelize_1.DataTypes.STRING(9),
+            allowNull: true,
+        },
+        comp_dist: {
+            type: sequelize_1.DataTypes.STRING(9),
+            allowNull: true,
+        },
         comp_direc_ref: {
             type: sequelize_1.DataTypes.STRING(100),
             allowNull: true,

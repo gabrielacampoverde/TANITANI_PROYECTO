@@ -5,11 +5,14 @@ const Op = Sequelize.Op; // Los operadores de comparacion de sequelize
 
 
 export let getUsuarios=(req:Request,res:Response)=>{
-    Usuario.findAll().then((objUsuarios:any)=>{
+    Usuario.findAll({
+        include:[{
+            model: Persona
+        }]
+    }).then((resultado:any)=>{
         res.status(200).json({
-            message:'Ok',
-            usuario:objUsuarios
-
+            message: 'ok',
+            content: resultado
         })
     })
 
@@ -97,3 +100,71 @@ export let iniciarSesion = (req: Request, res: Response) => {
         }
     })
  }
+ export let deleteUsuario = (req: Request, res: Response) => {
+    let { id } = req.params;
+    console.log(res);
+    
+    Usuario.destroy({
+        where: {
+            usu_id: id
+        }
+    }).then((cantidad: any) => {
+        if (cantidad > 0) {
+            let rpta = {
+                success: true,
+                message: "Usuario Eliminado",
+                id: id
+            }
+            res.status(200).send(rpta);
+        } else {
+            let rpta = {
+                success: false,
+                message: 'No se ha Eliminado',
+                id: ''
+            }
+            res.status(500).send(rpta);
+        }
+    })
+}
+export let updateUsuario = (req: Request, res: Response) => {
+    Usuario.update(
+        {
+            usu_email: req.body.Usuario.usu_email
+        },
+        {
+            where: {
+                usu_id: req.body.Usuario.usu_id
+            }
+        }).then(() => {
+
+            Usuario.findByPk(req.body.Usuario.usu_id).then((objUsuario: any) => {
+                res.status(200).json({
+                    message: 'ok',
+                    content: objUsuario
+                })
+            })
+        }).catch((error: any) => {
+            res.status(501).json({
+                message: 'error',
+                content: error
+            })
+        })
+}
+export let getUsuarioById = (req: Request, res: Response) => {
+    console.log(res);
+    
+    Usuario.findAll({
+        where:{
+           usu_id: req.params.id
+        },
+        include: [{
+            model:Persona,
+            
+        }]
+    }).then((resultado: any)=>{
+        res.status(200).json({
+            message: 'ok',
+            content: resultado
+        })
+    })
+}

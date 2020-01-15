@@ -55,16 +55,16 @@ exports.postMetPago = (req, res) => {
 };
 exports.putmetPago = (req, res) => {
     sequelize_1.MetodoPago.update({
-        mpago_nom: req.body.mpago_nom
+        mpago_nom: req.body.MetodoPago.mpago_nom
     }, {
         where: {
-            mpago_id: req.body.mpago_id
+            mpago_id: req.body.MetodoPago.mpago_id
         }
-    }).then((pagActualizado) => {
-        sequelize_1.MetodoPago.findByPk(pagActualizado[0]).then((objmetPago) => {
+    }).then(() => {
+        sequelize_1.MetodoPago.findByPk(req.body.MetodoPago.mpago_id).then((objmetPago) => {
             res.status(200).json({
                 message: 'ok, pago actualizado',
-                content: pagActualizado,
+                content: objmetPago,
             });
         });
     }).catch((error) => {
@@ -75,5 +75,28 @@ exports.putmetPago = (req, res) => {
     });
 };
 exports.deleteMetPagoById = (req, res) => {
+    let { id } = req.params;
+    sequelize_1.MetodoPago.destroy({
+        where: {
+            mpago_id: id
+        }
+    }).then((cantidad) => {
+        if (cantidad > 0) {
+            let rpta = {
+                success: true,
+                message: "Metodo de Pago Eliminado",
+                id: id
+            };
+            res.status(200).send(rpta);
+        }
+        else {
+            let rpta = {
+                success: false,
+                message: 'No se ha Eliminado',
+                id: ''
+            };
+            res.status(500).send(rpta);
+        }
+    });
 };
 //# sourceMappingURL=metodoPago.js.map

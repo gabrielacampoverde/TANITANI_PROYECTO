@@ -15,7 +15,7 @@ export let categoria_model = (sequelize: Sequelize) => {
         
     },{
         tableName:'t_categoria',
-        timestamps: false
+        timestamps: true
     });
     return categoria;
 }

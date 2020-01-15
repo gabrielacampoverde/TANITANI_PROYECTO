@@ -73,37 +73,59 @@ export let postPersona = (req: Request, res: Response) => {
 
 
 export let putPersona = (req:Request, res:Response) =>{
-  Persona.update(
-    {
-      per_nom: req.body.per_nom,
-      per_ape: req.body.per_ape,
-      per_dir: req.body.per_dir,
-      per_cel: req.body.per_cel,
-      per_est: req.body.per_est
-
-
-    },
-    {
-      where:{
-        per_id: req.body.per_id
-      }
-    }).then((perActualizado:any) => {
-      Persona.findByPk(perActualizado[0]). then((objPersona:any) => {
-        res.status(200).json({
-          message:'ok',
-          content:perActualizado,
-        })
-      })
-      
-    }).catch ((error : any)=>{
-      res.status(501).json({
-        message:'error',
-        content:error,
-      })
-    })
-}
-
-export let deletePersonaById = (req:Request, res:Response) =>{
-    
-}
+  console.log(req);
   
+  Persona.update(
+      {
+        per_nom: req.body.Persona.per_nom,
+        per_ape: req.body.Persona.per_ape,
+        per_dir: req.body.Persona.per_dir,
+        per_cel: req.body.Persona.per_cel,
+        per_est: req.body.Persona.per_est
+      },
+      {
+          where: {
+              per_id: req.body.Persona.per_id
+          }
+      }).then(() => {
+
+          Persona.findByPk(req.body.Persona.per_id).then((objPersona: any) => {
+              res.status(200).json({
+                  message: 'ok',
+                  content: objPersona
+              })
+          })
+      }).catch((error: any) => {
+          res.status(501).json({
+              message: 'error',
+              content: error
+          })
+      })
+}
+
+export let deletePersona = (req: Request, res: Response) => {
+  let { id } = req.params;
+  console.log(res);
+  
+  Persona.destroy({
+      where: {
+          per_id: id
+      }
+  }).then((cantidad: any) => {
+      if (cantidad > 0) {
+          let rpta = {
+              success: true,
+              message: "Usuario Eliminado",
+              id: id
+          }
+          res.status(200).send(rpta);
+      } else {
+          let rpta = {
+              success: false,
+              message: 'No se ha Eliminado',
+              id: ''
+          }
+          res.status(500).send(rpta);
+      }
+  })
+}

@@ -11,7 +11,8 @@ import { metodoPago_router } from '../rutas/metodoPago';
 import { categoria_router } from '../rutas/categoria';
 import {producto_router} from '../rutas/producto';
 import {usuario_router} from '../rutas/Usuario';
-
+import {ordenDetalle_router} from '../rutas/ordenDetalle'
+import { compras_router } from '../rutas/compras';
 
 // const cors=require('cors');
 
@@ -75,7 +76,8 @@ export class Server {
     this.app.use('/api', producto_router);
     this.app.use('/api', categoria_router);
     this.app.use('/api', usuario_router);
-    
+    this.app.use('/api', ordenDetalle_router);
+    this.app.use('/api', compras_router);
     
   }
 
@@ -86,7 +88,7 @@ export class Server {
       // force:false, si las tablas no existen en la base de datos
       // las crea. Si las tablas ya existían en la base de datos
       // sólo crea las nuevas tablas en caso de que hubieran
-      conexion.sync({ force:true}).then(() => {
+      conexion.sync({ force: false}).then(() => {
         console.log("Base de datos creada correctamente");
       })
     });

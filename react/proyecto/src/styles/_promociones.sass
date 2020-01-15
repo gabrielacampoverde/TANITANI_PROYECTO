@@ -19,11 +19,19 @@
         .product-list
             display: flex
             flex-wrap: wrap
+            padding: 0 1.5rem
 
             .product-item 
-                width: calc(100% / 3)
+                width: calc((100% / 3) - 2rem)
                 display: block
-                margin-bottom: 5rem
+                margin: 0 1rem 2rem
+                position: relative
+                .cont-card
+                    height: 100%
+                    padding: 1rem
+                    display: flex
+                    flex-direction: column
+                    justify-content: space-between
                 &:hover
                     position: relative
                     box-shadow: 0 5px 30px rgba(31,31,31,.17)
@@ -33,25 +41,43 @@
                         transition: all .5s ease
                     .product-image
                         position: relative
+                    .cont-btn
                         .buttons-actions
                             opacity: 1
-                            background: white
-                            top: 100%
+                            background: transparent
                             z-index: 99
                             transition: all .5s ease
                             padding-bottom: 30px
+                            .icons
+                                bottom: 0
+
                 
                 .product-image
-                    position: relative
+                    height: 100%
+                    width: 100%
+                    display: flex
+                    justify-content: center
+                    padding-bottom: 1.5rem
                     img
-                        width: 100%
+                        width: 60%
+                        height: auto
+                        object-fit: contain
+                .cont-btn
+                    position: absolute
+                    height: 100%
+                    width: 100%  
+                    top: 0
                     .buttons-actions
                         opacity: 0
+                        height: 100%
                         width: 100%
-                        position: absolute
+                        position: relative
                         top: 0
                         transition: all .5s ease
                         .icons
+                            width: 100%
+                            position: absolute
+                            bottom: 100%
                             display: flex
                             justify-content: center
                             margin: 1rem 0
@@ -81,7 +107,7 @@
                                 height: 40px
                                 cursor: pointer
                                 &:hover
-                                    background: white
+                                    background: transparent
                                     color: $red
                 .product-text
                     text-align: center

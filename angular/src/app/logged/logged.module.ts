@@ -21,6 +21,10 @@ import { CrearProductoComponent } from './components/mant/crear-producto/crear-p
 import { CategoriasComponent } from './components/mant/categorias/categorias.component';
 import { CrearCategoriaComponent } from './components/mant/crear-categoria/crear-categoria.component';
 import { ListCategoriasComponent } from './components/mant/list-categorias/list-categorias.component';
+import { UsuariosComponent } from './components/mant/usuarios/usuarios.component';
+import { MetodopagoComponent } from './components/mant/metodopago/metodopago.component';
+import { ComprasComponent } from './components/mant/compras/compras.component';
+import { OrdenesComponent } from './components/mant/ordenes/ordenes.component';
 
 
 @NgModule({
@@ -36,7 +40,11 @@ import { ListCategoriasComponent } from './components/mant/list-categorias/list-
     CrearProductoComponent,
     CategoriasComponent,
     CrearCategoriaComponent,
-    ListCategoriasComponent
+    ListCategoriasComponent,
+    UsuariosComponent,
+    MetodopagoComponent,
+    ComprasComponent,
+    OrdenesComponent
    
   ],
   imports: [

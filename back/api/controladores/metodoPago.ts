@@ -75,17 +75,17 @@ export let postMetPago = (req: Request, res: Response) => {
 export let putmetPago = (req:Request, res:Response) =>{
   MetodoPago.update(
     {
-      mpago_nom: req.body.mpago_nom
+      mpago_nom: req.body.MetodoPago.mpago_nom
     },
     {
       where:{
-        mpago_id: req.body.mpago_id
+        mpago_id: req.body.MetodoPago.mpago_id
       }
-    }).then((pagActualizado:any) => {
-      MetodoPago.findByPk(pagActualizado[0]). then((objmetPago:any) => {
+    }).then(() => {
+      MetodoPago.findByPk(req.body.MetodoPago.mpago_id). then((objmetPago:any) => {
         res.status(200).json({
           message:'ok, pago actualizado',
-          content:pagActualizado,
+          content:objmetPago,
         })
       })
       
@@ -98,6 +98,27 @@ export let putmetPago = (req:Request, res:Response) =>{
 }
 
 export let deleteMetPagoById = (req:Request, res:Response) =>{
-    
+  let {id} = req.params;
+
+  MetodoPago.destroy({
+      where:{
+        mpago_id:id
+      }
+  }).then((cantidad:any)=>{
+      if(cantidad>0){
+          let rpta = {
+              success:true,
+              message:"Metodo de Pago Eliminado",
+              id:id
+          }
+          res.status(200).send(rpta);
+      }else{
+          let rpta = {
+              success:false,
+              message:'No se ha Eliminado',
+              id:''
+          }
+          res.status(500).send(rpta);
+      }
+  })
 }
-  

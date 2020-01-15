@@ -1,0 +1,205 @@
+<!-- Crear Usuario Cliente -->
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle">CREAR USUARIO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-1 " #formulario="ngForm">
+                        <div class="form-group">
+                            <label for="">Nombre:</label>
+                            <input type="text" class="form-control" required [(ngModel)]="objNewPersona.per_nom" name="per_nom" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Apellido:</label>
+                            <input type="text" class="form-control" required [(ngModel)]="objNewPersona.per_ape" name="per_ape" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email:</label>
+                            <input type="text" class="form-control" required [(ngModel)]="objNewUsuario.usu_email" name="cat_nom" placeholder="email@gmail.com">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="">Password:</label>
+                                <input type="text" class="form-control" required [(ngModel)]="objNewUsuario.usu_pass" name="usu_pass" placeholder="Ejm: 1234abcd">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="">Tipo:</label>
+                                <select name="tipo" class="form-control" required [(ngModel)]="objNewUsuario.usu_tipo">
+                                    <option value="" default>Seleccionar</option>
+                                    <option value="Usuario">Usuario</option>
+                                    <option value="Administrador">Administrador</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Direccion:</label>
+                            <input type="text" class="form-control" required [(ngModel)]="objNewPersona.per_dir" name="per_ape" placeholder="">
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label for="">Telefono:</label>
+                                <input type="text" class="form-control" required [(ngModel)]="objNewPersona.per_cel" name="per_nom" placeholder="">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="">Estado:</label>
+                                <select name="estado" class="form-control" required [(ngModel)]="objNewPersona.per_est">
+                                    <option value="" default>Seleccionar</option>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="div-flex">
+                    <button type="submit" class="btn btn-success" [disabled]="!formulario.valid" (click)="crearUsuarioPersona()">
+                        <i class="far fa-save"></i> Guardar
+                    </button>
+                    <button type="submit" class="btn ml-2 btn-danger" (click)="Cancelar()">
+                        <i class="fas fa-close"></i> Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modificar Datos Usuarios -->
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle2">EDITAR USUARIO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="mt-1" #formularios="ngForm">
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label for="">Id Usuario:</label>
+                                <input type="text" required class="form-control" [(ngModel)]="objUsuario.usu_id" name="usu_id" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nombre:</label>
+                            <input type="text" class="form-control" required [(ngModel)]="objPersona.per_nom" name="per_nom" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Apellido:</label>
+                            <input type="text" class="form-control" required [(ngModel)]="objPersona.per_ape" name="per_ape" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email:</label>
+                            <input type="text" class="form-control" required [(ngModel)]="objUsuario.usu_email" name="usu_nom" placeholder="Ejm: Computadora,Television,etc">
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label for="">Tipo:</label>
+                                <select name="tipo" class="form-control" required [(ngModel)]="objUsuario.usu_tipo">
+                                    <option value="" default>Seleccionar</option>
+                                    <option value="Usuario">Usuario</option>
+                                    <option value="Administrador">Administrador</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="">Estado:</label>
+                                <select name="estado" class="form-control" required [(ngModel)]="objPersona.per_est">
+                                    <option value="" default>Seleccionar</option>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Direccion:</label>
+                            <input type="text" class="form-control" required [(ngModel)]="objPersona.per_dir" name="per_DIR" placeholder="">
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label for="">Telefono:</label>
+                                <input type="text" class="form-control" required [(ngModel)]="objPersona.per_cel" name="per_CEL" placeholder="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="div-flex">
+                    <button type="submit" class="btn btn-success" [disabled]="!formularios.valid" (click)="Guardar()">
+                        <i class="far fa-save"></i>
+                        Guardar
+                    </button>
+                    <br>
+                    <button type="submit" class="btn ml-2 btn-danger" (click)="Cancelar()">
+                        <i class="fas fa-close"></i> Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div>
+        <div class="alert alert-success text-center" role="alert" *ngIf="!usuarios">
+            <h4 class="alert-heading">Cargando..</h4>
+            <p>
+                <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
+            </p>
+        </div>
+        <div *ngIf="usuarios" class="animated slideInLeft">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Tipo</th>
+                        <th>Dirección</th>
+                        <th>Celular</th>
+                        <th>Estados</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usu of usuarios">
+                        <td>{{usu.usu_id}}</td>
+                        <td>{{usu.t_persona.per_nom}}</td>
+                        <td>{{usu.t_persona.per_ape}}</td>
+                        <td>{{usu.usu_email}}</td>
+                        <td>{{usu.usu_tipo}}</td>
+                        <td>{{usu.t_persona.per_dir}}</td>
+                        <td>{{usu.t_persona.per_cel}}</td>
+                        <td>{{usu.t_persona.per_est}}</td>
+                        <!-- <td class="pass">{{usu.usu_hash}}</td> -->
+                        <td style="display: flex;">
+                            <button class="btn btn-danger" (click)="eliminarUsuario(usu.usu_id)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(usu.usu_id)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-dark btnCrear animated tada infinite slow" (click)="AbrirModalCrearUsuario()">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </button>
+    </div>
+</div>

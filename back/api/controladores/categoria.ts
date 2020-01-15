@@ -76,59 +76,82 @@ export let postCategoria = (req: Request, res: Response) => {
 export let updateCategoria = (req:Request, res:Response) =>{
   Categoria.update(
     {
-      cat_nom: req.body.cat_nom
+        cat_nom: req.body.Categoria.cat_nom
     },
     {
-      where:{
-        cat_id: req.body.cat_id
-      }
-    }).then((catActualizado:any) => {
-        Categoria.findByPk(catActualizado[0]). then((objCategoria:any) => {
-        res.status(200).json({
-          message:'ok',
-          content:catActualizado,
+        where:{
+            cat_id:req.body.Categoria.cat_id
+        }
+    }).then(()=>{
+        
+        Categoria.findByPk(req.body.Categoria.cat_id).then((objCategoria:any)=>{
+            res.status(200).json({
+                message:'ok',
+                content:objCategoria
+            })
         })
-      })
-      
-    }).catch ((error : any)=>{
-      res.status(501).json({
-        message:'error',
-        content:error,
-      })
+    }).catch((error:any)=>{
+        res.status(501).json({
+            message:'error',
+            content:error
+        })
     })
 }
 
-export var categoria_controller = {
+// export var categoria_controller = {
     
-  deleteById: (req:Request, res:Response) => {
-      let {id} = req.params;
-      // console.log("delete",id_empleado)
-      Categoria.destroy({
-          where:{
-              cat_id:id
-          }
-      }).then((cantidad:any) => {
-          if(cantidad > 0){
-              console.log("Cant",cantidad);
-              let respuesta = {
-                  success:true,
-                  message:"Usuario Eliminado",
-                  content:cantidad
-              }
-              res.status(200).send(respuesta);
-          }else{
-              let respuesta = {
-                  success:false,
-                  message:"No se ha eliminado",
-                  content:''
-              }
-              res.status(500).send(respuesta);
-          }
-      })
-  }
-}
+//   deleteById: (req:Request, res:Response) => {
+//       let {id} = req.params;
+//       // console.log("delete",id_empleado)
+//       Categoria.destroy({
+//           where:{
+//               cat_id:id
+//           }
+//       }).then((cantidad:any) => {
+//           if(cantidad > 0){
+//               console.log("Cant",cantidad);
+//               let respuesta = {
+//                   success:true,
+//                   message:"Usuario Eliminado",
+//                   content:cantidad
+//               }
+//               res.status(200).send(respuesta);
+//           }else{
+//               let respuesta = {
+//                   success:false,
+//                   message:"No se ha eliminado",
+//                   content:''
+//               }
+//               res.status(500).send(respuesta);
+//           }
+//       })
+//   }
+// }
 
 export let deleteCategoriaById = (req:Request, res:Response) =>{
-    
+  
+  let {id} = req.params;
+
+  Categoria.destroy({
+      where:{
+          cat_id:id
+      }
+  }).then((cantidad:any)=>{
+      if(cantidad>0){
+          let rpta = {
+              success:true,
+              message:"Categoria Eliminado",
+              id:id
+          }
+          res.status(200).send(rpta);
+      }else{
+          let rpta = {
+              success:false,
+              message:'No se ha Eliminado',
+              id:''
+          }
+          res.status(500).send(rpta);
+      }
+  })
 }
   
