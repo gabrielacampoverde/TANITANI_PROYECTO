@@ -39,9 +39,10 @@ export default class Coorporativos extends Component {
                      todo un éxito.</p>
                         <br></br>
                         <p>Para mayor información llamar al 080-56455588-555</p>
-                        <button className="BotonCoor" onClick={activaForm}>
-                        
-                           Contactanos</button>
+                        <button className="BotonCoor" onClick={activaForm} href="formulario">
+                        <a href="formulario">
+                              Contactanos</a>
+                           </button>
                      </div>
 
                   </div>
