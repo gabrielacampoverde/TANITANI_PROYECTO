@@ -1,9 +1,44 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import { baseUrl } from "./../../config";
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import toastr from 'toastr';
+import { useForm } from 'react-hook-form'
+import 'toastr/build/toastr.min.css'
+import { URL_BACKEND } from "./../../environments/environments";
+
 
 // REFERERENCIA: https://gist.github.com/gndx/b2be340d6697dd796dfd12659a5110c6
 
 export default class Formulario extends Component {
+   constructor(props) {
+      super(props);
+      // this.state = { feedback: '', name: 'Gabriela', email: 'gabriela.campoverde@gmail.com' };
+      const [name, setName] = useState('');
+      const [email, setEmail] = useState('');
+      const [cel, setCel] = useState('');
+      const [ciu, setCiu] = useState('');
+      const [men, setMen] = useState('');
+      const { handleChange, handleSubmit, form, errors } = useForm();
+      // this.handleChange = this.handleChange.bind(this);
+      // this.handleSubmit = this.handleSubmit.bind(this);
+   }
+
+   // handleChange(event) {
+   //    this.setState({ feedback: event.target.value })
+   // }
+
+   // handleSubmit() {
+   //    const templateId = 'template_id';
+   //    this.feedback(templateId, { message_html: this.state.feedback, from_name: this.state.name, reply_to: this.state.email });
+   // }
+
+   // sendFeedback(templateId, variables) {
+   //    window.emailjs.send('gmail', templateId, variables).then(res => {
+   //       console.log('Correo enviando correctamente!')
+   //    }).cath(err => console.error('Ocurrio un error'))
+   // }
+
    render() {
       return (
          <main className="bg">
@@ -34,25 +69,38 @@ export default class Formulario extends Component {
 
                <form ref='contactForm' form className="subContainer2" >
                   <div>
-                     <label className="label1">Nombre y Apellido: </label>
-                     <input type='text' className='form-control' id='name'
-                        placeholder='Nombre y Apellido' ref={name => this.inputName = name} />
+                     <span className="asterisco">* </span><label className="label1">Nombre y Apellido: </label>
+                     <input className='form-control'
+                        placeholder='Nombre y Apellido'
+                        name="name"
+                        type="text"
+                        value={name}
+                        onChange={(event) => setName(event.target.value)}
+                        ref={form({
+                           required: 'Este campo es requerido', // Error message when field is left empty.
+                           pattern: { // Validation pattern
+                              value: /^[a-z-A-Z\D]+$/i,
+                              message: 'Nombre Inválido' // Error message when validation fails.
+                           }
+                        })}
+                        aria-describedby="nameError"
+                       />
                   </div>
                   <br />
                   <div className='form-group'>
-                     <label className="label1">Email: </label>
+                     <span className="asterisco">* </span><label className="label1">Email: </label>
                      <input type='email' className='form-control' id='email'
                         placeholder='Email' ref={email => this.inputEmail = email} />
                   </div>
                   <br />
                   <div className='form-group'>
-                     <label className="label1">Telefono: </label>
+                     <span className="asterisco">* </span><label className="label1">Telefono: </label>
                      <input type='number' className='form-control' id='phone'
                         placeholder='999 999 999' ref={phone => this.inputPhone = phone} />
                   </div>
                   <br />
                   <div className='form-group'>
-                     <label className="label1">Ciudad: </label>
+                     <span className="asterisco">* </span><label className="label1">Ciudad: </label>
                      <select className='form-control' id='city' ref={city => this.inputCity = city}>
                         <option value='Arequipa'>Arequipa</option>
                         <option value='Lima'>Lima</option>
@@ -63,10 +111,10 @@ export default class Formulario extends Component {
                   </div>
                   <br />
                   <div className='form-group'>
-                     <label className="label1">Message: </label>
+                     <span className="asterisco">* </span><label className="label1">Message: </label>
                      <br />
                      <textarea className='form-control' id='message'
-                        rows='10' cols="50" ref={message => this.textAreaMessage = message}>
+                        rows='10' cols="40" ref={message => this.textAreaMessage = message}>
                      </textarea>
                   </div>
                   <br />
@@ -79,14 +127,15 @@ export default class Formulario extends Component {
                   </div>
                </form>
             </div>
-            
-            <button type='submit' className="BotonFor">Contactanos</button>
-            
+
+            <button type='submit' className="BotonFor" onClick={this.handleSubmit}>Contactanos</button>
+
             <div className="img-content">
                <img src={baseUrl + "/rose.jpg"} />
                <div className="bg-transparent"></div>
             </div>
          </main >
+
       );
    }
 }
