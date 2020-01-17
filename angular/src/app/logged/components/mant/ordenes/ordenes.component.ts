@@ -20,9 +20,11 @@ export class OrdenesComponent implements OnInit,OnDestroy {
 
   ObjOrdenes = {
     pro_id: '',
-    pro_nom: '',
+    per_nom: '',
+    per_cel:'',
     pro_prec: '',
     pro_est: '',
+    t_usuarios:'',
     pro_det: '',
     pro_img: '',
     pro_desc: '',
@@ -72,20 +74,22 @@ export class OrdenesComponent implements OnInit,OnDestroy {
   }
 
 
-  // abrirModalEditar(id) {
-  //   this._sUsuarios.getUsuarioById(id).subscribe((rpta) => {
+  abrirModalEditar(id) {
+    this._sOrdenes.getOrdenById(id).subscribe((rpta) => {
 
-  //     if (rpta.content[0].usu_id) {
-  //       this.objUsuario = rpta.content[0];
-  //       console.log(this.objUsuario);
+      if (rpta.content[0].per_id) {
+        this.ObjOrdenes = rpta.content[0];
+        console.log("modal",this.ObjOrdenes);
+        console.log("nombre",this.ObjOrdenes.per_nom);
+        console.log("modal",this.ObjOrdenes.t_usuarios[0]);
         
-  //       this.objPersona = rpta.content[0].t_persona
-  //       console.log(this.objPersona);
+        // this.objPersona = rpta.content[0].t_persona
+        // console.log(this.objPersona);
         
-  //       $("#modalEditar").modal("show");
-  //     }
-  //   })
-  // }
+        $("#modalEditar").modal("show");
+      }
+    })
+  }
 
   ngOnDestroy() {
     this.susbscriptor.unsubscribe();

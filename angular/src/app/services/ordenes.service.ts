@@ -43,11 +43,11 @@ export class OrdenesService {
   //   return this._sHttp.delete(`${URL_BACKEND}/producto/${id}`);
   // }
 
-  // getProductoById(id): Observable<any> {
-  //   // funcion para obtener datos de un solo objeto
-  //   // return this._sHttp.get(`https://5d4b6ade00dbb10014879b1b.mockapi.io/Tiendita/${id}`);
-  //   return this._sHttp.get(`${URL_BACKEND}/producto/${id}`);
-  // }
+  getOrdenById(id): Observable<any> {
+    // funcion para obtener datos de un solo objeto
+    // return this._sHttp.get(`https://5d4b6ade00dbb10014879b1b.mockapi.io/Tiendita/${id}`);
+    return this._sHttp.get(`${URL_BACKEND}/orden/${id}`);
+  }
   // putProductoById(objProducto): Observable<any> {
   //   // para actualizar la informacion editada
 

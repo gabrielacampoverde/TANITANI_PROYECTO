@@ -136,20 +136,47 @@ if(!req.body.pro_nom){
 }
 
 
-export let getProductosById=(req:Request,res:Response)=>{
-    Producto.findByPk(req.params.id).then((objProducto:any)=>{
-        if(objProducto){
-            res.status(200).json({
-                message:'Ok',
-                Producto:objProducto
-            })
-        }else{
-            res.status(500).json({
-                message:'error',
-                content:'No se encontro el producto'
-            })
-        }
+export let getOrdenById=(req:Request,res:Response)=>{
+    console.log(res);
+  
+    Persona.findAll({
+        where:{
+            per_id: req.params.id
+         },
+        include:[{model:Usuario,
+            include:[{
+                model: Orden, 
+                    include:[{
+                        model: Ordendetalle,
+                        include:[{
+                            model: Producto
+                        }]
+                    }]
+                
+                
+            }]
+        }]
+     
+    }).then((resultado:any)=>{
+        res.status(200).json({
+            message: 'ok',
+            content: resultado
+        })
     })
+    
+    // Producto.findByPk(req.params.id).then((objProducto:any)=>{
+    //     if(objProducto){
+    //         res.status(200).json({
+    //             message:'Ok',
+    //             Producto:objProducto
+    //         })
+    //     }else{
+    //         res.status(500).json({
+    //             message:'error',
+    //             content:'No se encontro el producto'
+    //         })
+    //     }
+    // })
 }
 
 export let updateProducto=(req:Request,res:Response)=>{

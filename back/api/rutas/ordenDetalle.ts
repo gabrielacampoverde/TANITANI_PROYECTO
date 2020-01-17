@@ -1,7 +1,7 @@
 //PRODUCTO ROUTER
 import { Router } from "express";
 
-import { crearOrdenProducto,getDetalles,getOrdenes } from '../controladores/ordenDetalle';
+import { crearOrdenProducto,getDetalles,getOrdenes,getOrdenById } from '../controladores/ordenDetalle';
 
 export let ordenDetalle_router=Router();
 
@@ -10,7 +10,7 @@ export let ordenDetalle_router=Router();
 ordenDetalle_router.post('/creorden',crearOrdenProducto);
 ordenDetalle_router.get('/ordendet', getDetalles);
 ordenDetalle_router.get('/ordenes', getOrdenes);
-// producto_router.get('/producto/:id', getProductosById);
+ordenDetalle_router.get('/orden/:id', getOrdenById);
 // producto_router.put('/producto/:id', updateProducto);
 // producto_router.delete('/producto/:id',producto_controller.deleteById);
 
