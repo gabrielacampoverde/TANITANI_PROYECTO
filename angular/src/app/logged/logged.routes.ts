@@ -26,6 +26,7 @@ const routes: Routes = [
       { path: 'categorias', component: CategoriasComponent , data: { title: 'Mantenimiento de Categorias' } },
       { path: 'categorias/crear', component: CrearCategoriaComponent , data: { title: 'Crear Categoria' } },
       { path: 'productos', component: ProductosComponent , data: { title: 'Mantenimiento de Productos' } },
+      { path: 'productos/crear', component: CrearProductoComponent , data: { title: 'Crear Productos' } },
       { path: 'ordenes', component: OrdenesComponent , data: { title: 'Mantenimiento de Ordenes' } },
       { path: 'usuarios', component: UsuariosComponent, data: { title: 'Mantenimiento de Productos' } },
       { path: 'metpago', component: MetodopagoComponent , data: { title: 'Mantenimiento de Metodos de Pago' } },
