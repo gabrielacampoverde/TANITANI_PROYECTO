@@ -104,7 +104,7 @@ onUpload(e){
     })
 
     this._sProducto.postProductos(this.objProducto).subscribe((rpta) => {
-      console.log(rpta);
+      console.log("producto creado",rpta);
       if (rpta.producto.pro_id) {
         Swal.fire({
           title: 'Exito!!!',
