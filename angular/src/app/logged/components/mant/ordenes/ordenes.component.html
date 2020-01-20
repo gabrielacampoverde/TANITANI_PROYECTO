@@ -138,6 +138,7 @@
                                        
                                         <th>TOTAL</th>
                                     </tr>
+                           
                                 </thead>
                                 <tbody>
                 
@@ -174,6 +175,9 @@
                                             </button>
                                         </td> -->
                                     </tr>
+                                    <tr>
+                                        <!-- <td> IMAGEN:</td> -->
+                                       <td colspan="6"><img src={{ObjOrdenes.t_usuarios[0].t_ordens[0].t_ordendetalles[0].t_producto.pro_img}} style="width: 400px" class="card-img-top" alt="..." ></td></tr>
                                     <tr>
                                         <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle2">TOTAL: {{ObjOrdenes.t_usuarios[0].t_ordens[0].orde_total}}</h5>
                                     </tr>
@@ -216,7 +220,7 @@
                 <div class="div-flex">
                     <button type="submit" class="btn btn-success" [disabled]="!formularios.valid" (click)="Guardar()">
                         <i class="far fa-save"></i>
-                        Guardar
+                        Realizar Venta
                     </button>
                     <br>
                     <button type="submit" class="btn ml-2 btn-danger" (click)="Cancelar()">
@@ -277,7 +281,7 @@
                         <!-- <td class="pass">{{usu.usu_hash}}</td> -->
                         <td>
                             <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(ord.per_id)">
-                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-book-reader"></i>
                             </button>
                         </td>
                         <td style="display: flex;">
@@ -287,6 +291,9 @@
 
                             <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(usu.usu_id)">
                                 <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(usu.usu_id)">
+                                <i class="far fa-credit-card"></i>
                             </button>
                         </td>
                     </tr>
