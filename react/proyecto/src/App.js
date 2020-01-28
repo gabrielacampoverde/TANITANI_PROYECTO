@@ -13,7 +13,7 @@ import Promociones from './Component/Promociones/Promociones';
 import Registro from './Component/Registro/Registro'
 import Login from './Component/Login/Login'
 import Formulario from './Component/Coorporativos/Formulario';
-
+import Especiales from './Component/Especiales/Especiales';
 // import Promociones from './Component/Promociones/Promociones';
 import { BrowserRouter, Switch, Route, Router } from 'react-router-dom';
 import loginYregistro from './Component/loginYregistro/logi&registro';
@@ -21,6 +21,11 @@ import carritoDeCompras from './Component/carritoDeCompras/carritoDeCompras';
 import Compra from './Component/Compra/compra';
 import Detalle from './Component/DetalleProducto/Detalle';
 import AuthService from "./Services/Auth";
+import Aniversarios from './Component/Aniversarios/Aniversarios';
+import Cumple from './Component/Cumple/Cumple';
+import Inaguraciones from './Component/Inaguraciones/Inaguraciones';
+import Nacimientos from './Component/Nacimientos/Nacimientos';
+import Complementos from './Component/Complementos/Complementos'
 
 export default class componentName extends Component {
   _sAuth = new AuthService();
@@ -75,6 +80,12 @@ export default class componentName extends Component {
             <Route exact path="/registro" component={Registro}></Route>
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/detalle" component={Detalle}></Route>
+            <Route exact path="/especiales" component={Especiales}></Route>
+            <Route exact path="/aniversarios" component={Aniversarios}></Route>
+            <Route exact path="/cumpleaños" component={Cumple}></Route>
+            <Route exact path="/inauguraciones" component={Inaguraciones}></Route>
+            <Route exact path="/nacimientos" component={Nacimientos}></Route>
+            <Route exact path="/complementos" component={Complementos}></Route>
           </Switch>
           <Footer></Footer>
         </BrowserRouter>

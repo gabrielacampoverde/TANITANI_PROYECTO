@@ -1,10 +1,10 @@
 import React, { Component, Fragment} from 'react';
 import logo from "./../../logo.png";
-import SimpleSlider from './../SliderView/slider'
+import SimpleSlider from '../SliderView/slider'
 import { URL_BACKEND } from '../../environments/environments';
-import Cardproducto from './../CardProductos/Cardproducto'
+import Cardproducto from '../CardProductos/Cardproducto'
 
-export default class Home extends Component {
+export default class Complementos extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -44,9 +44,9 @@ export default class Home extends Component {
                 <div className="sectionProductos">
                     <div className="container">
                         <div className="titlecard">
-                            <h1>DESTACADOS</h1>
+                            <h1>Complementos</h1>
                         </div>
-                        <Cardproducto productos = { productos } num = {1}></Cardproducto>
+                        <Cardproducto productos = { productos } num = {8}></Cardproducto>
                         </div>
                         </div>
                         </div>

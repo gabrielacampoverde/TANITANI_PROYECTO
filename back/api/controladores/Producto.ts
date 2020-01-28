@@ -69,7 +69,11 @@ export let crearProductoCategoria = (req: Request, res: Response) => {
     // save()=> promesa que GUARDA el registro en la Base de Datos
 };
 export let getProductos=(req:Request,res:Response)=>{
-    Producto.findAll().then((objProductos:any)=>{
+    Producto.findAll({
+        include:[{
+            model: CategoriaProducto
+        }]
+    }).then((objProductos:any)=>{
         res.status(200).json({
             message:'Ok',
             Producto:objProductos

@@ -1,8 +1,8 @@
 import React, { Component, Fragment} from 'react';
 import logo from "./../../logo.png";
-import SimpleSlider from './../SliderView/slider'
+import SimpleSlider from '../SliderView/slider'
 import { URL_BACKEND } from '../../environments/environments';
-import Cardproducto from './../CardProductos/Cardproducto'
+import Cardproducto from '../CardProductos/Cardproducto'
 
 export default class Home extends Component {
     constructor(props) {
@@ -33,23 +33,18 @@ export default class Home extends Component {
 
     render() {
         const { productos } = this.state;
-
         return (
                <main>
                 <SimpleSlider></SimpleSlider>
                 <div>
-                <div className="banner-product">
-                    <h4>“El amor espera en el borde de un pétalo.”</h4>
-                </div>
                 <div className="sectionProductos">
                     <div className="container">
                         <div className="titlecard">
-                            <h1>DESTACADOS</h1>
+                            <h1>ESPECIALES</h1>
                         </div>
-                        <Cardproducto productos = { productos } num = {1}></Cardproducto>
-                        </div>
-                        </div>
-                        </div>
+                <Cardproducto productos = { productos } num = {7}></Cardproducto>
+                </div>
+                </div></div>
                </main>
                 
         )

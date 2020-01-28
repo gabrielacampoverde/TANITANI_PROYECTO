@@ -10,16 +10,17 @@ const Login = ({signin}) => {
     const { handleSubmit, register, errors } = useForm();
     const onSubmit = values => {
         console.log(values);
+        const iniciarSesion = event => {
+            event.preventDefault();
+            signin(values.email, values.password);
+        }
     }
     let usuRef = React.createRef();
     let passRef = React.createRef();
     console.log("ref",usuRef);
     
 
-    const iniciarSesion = event => {
-        event.preventDefault();
-        signin(usuRef.current.value, passRef.current.value);
-    }
+    
     return (
 
         <main>
@@ -46,8 +47,7 @@ const Login = ({signin}) => {
                                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                                                     message: 'Email inválido' // Error message when validation fails.
                                                 }
-                                            },
-                                            usuRef)}
+                                            })}
                                         />
                                         {errors.email ? (
                                             //
@@ -68,7 +68,8 @@ const Login = ({signin}) => {
                                                     value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/i,
                                                     message: 'Contraseña inválida. Mínimo ocho caracteres, al menos una letra y un número' // Error message when validation fails.
                                                 }
-                                            })}
+                                            })
+                                        }
                                             aria-describedby="passwordError"
                                         />
                                         {errors.password ? (
