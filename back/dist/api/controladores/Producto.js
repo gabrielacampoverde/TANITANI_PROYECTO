@@ -33,32 +33,62 @@ const sequelize_1 = require("../configuracion/sequelize");
 // build => CONSTRUYE el objeto usuario, mas NO LO CREA en la base de datos
 // save()=> promesa que GUARDA el registro en la Base de Datos
 // }
+// export let crearProductoCategoria = (req: Request, res: Response) => {
+//      console.log("miproducto",req.body);
+//     Producto.build(req.body.producto).save().then((proCreada:any)=>{
+//         // Se hace la relacion para las dos tablas
+//         let fk_prodcat= proCreada.pro_id
+//         console.log("dd",fk_prodcat);
+//         let jsonpcat = req.body.prodcat
+//         console.log("333",jsonpcat);
+//         jsonpcat.pro_id = fk_prodcat
+//         let objcatProd = CategoriaProducto.build(req.body.prodcat);
+//         objcatProd.save().then((procCreado: any) => {
+//             CategoriaProducto.findByPk(procCreado.catprod_id).then((procEncontrado: any) => {
+//                 res.status(201).json({
+//                     message: 'Producto creado',
+//                     content: procEncontrado
+//                 })
+//             })
+//         }).catch((error: any) => {
+//             res.status(501).json({
+//                 message: 'Error',
+//                 content: error
+//             })
+//         })
+//     })
+//     // build => CONSTRUYE el objeto usuario, mas NO LO CREA en la base de datos
+//     // save()=> promesa que GUARDA el registro en la Base de Datos
+// };
 exports.crearProductoCategoria = (req, res) => {
-    console.log("miproducto", req.body);
-    sequelize_1.Producto.build(req.body.producto).save().then((proCreada) => {
-        // Se hace la relacion para las dos tablas
-        let fk_prodcat = proCreada.pro_id;
-        console.log("dd", fk_prodcat);
-        let jsonpcat = req.body.prodcat;
-        console.log("333", jsonpcat);
-        jsonpcat.pro_id = fk_prodcat;
-        let objcatProd = sequelize_1.CategoriaProducto.build(req.body.prodcat);
-        objcatProd.save().then((procCreado) => {
-            sequelize_1.CategoriaProducto.findByPk(procCreado.catprod_id).then((procEncontrado) => {
-                res.status(201).json({
-                    message: 'Producto creado',
-                    content: procEncontrado
-                });
-            });
-        }).catch((error) => {
-            res.status(501).json({
-                message: 'Error',
-                content: error
+    // let objCP = CategoriaProducto.build(req.body);
+    // console.log(req.body)
+    // console.log(objCP)
+    // objCP.save().then((algo:any)=>{
+    //     // console.log(algo)
+    // })
+    let CategoriaId = req.body.cat_id;
+    console.log(req.body.cat_id);
+    let objProducto = sequelize_1.Producto.build(req.body);
+    objProducto.save().then((productoCreado) => {
+        var ProductoTemp = productoCreado;
+        return sequelize_1.Categoria.findOne({ where: { cat_id: CategoriaId } })
+            .then((cat_encontrada) => {
+            let objCatProd = {
+                pro_id: ProductoTemp.pro_id,
+                cat_id: cat_encontrada.cat_id
+            };
+            let objCP = sequelize_1.CategoriaProducto.build(objCatProd);
+            objCP.save().then((catProdCreado) => {
+                let rpta = {
+                    ok: true,
+                    producto: productoCreado,
+                    CategoriaProducto: catProdCreado
+                };
+                res.status(201).send(rpta);
             });
         });
     });
-    // build => CONSTRUYE el objeto usuario, mas NO LO CREA en la base de datos
-    // save()=> promesa que GUARDA el registro en la Base de Datos
 };
 exports.getProductos = (req, res) => {
     sequelize_1.Producto.findAll({

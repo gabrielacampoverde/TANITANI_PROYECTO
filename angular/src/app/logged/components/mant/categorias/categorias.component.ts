@@ -33,6 +33,8 @@ export class CategoriasComponent implements OnInit,OnDestroy {
     this.subscripcion = this._sCategorias.getCategoria()
       .subscribe((resultado) => { 
         this.categorias = resultado.content;
+        console.log("categorias",this.categorias);
+        
       });
   }
 

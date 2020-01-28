@@ -71,12 +71,13 @@
     </div>
 </div> -->
 <!-- Modificar Datos Usuarios -->
-<!-- 
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle2">EDITAR USUARIO</h5>
+                <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle2">ORDEN {{ObjOrdenes.t_usuarios[0].t_ordens[0].orde_id}} </h5>
+           
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -85,24 +86,105 @@
                 <div class="container-fluid">
                     <form class="mt-1" #formularios="ngForm">
                         <div class="form-row">
-                            <div class="col-md-6 form-group">
-                                <label for="">Id Usuario:</label>
-                                <input type="text" required class="form-control" [(ngModel)]="objUsuario.usu_id" name="usu_id" disabled>
+                            <div class="form-group col-md-7 ">
+                                <label for="">CLIENTE:</label>
+                                <input type="text" required class="form-control col-md-9 list-group-item list-group-item-action"
+                                    [(ngModel)]="ObjOrdenes.per_nom +' ' + ObjOrdenes.per_ape" name="per_nom" disabled>
+                            </div>
+                            <div class="form-group col-md-5 ">
+                                <label for="">CELULAR:</label>
+                                <input type="text" class="form-control col-md-7 list-group-item list-group-item-action" required [(ngModel)]="ObjOrdenes.per_cel"
+                                    name="per_cel" disabled>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="">Nombre:</label>
-                            <input type="text" class="form-control" required [(ngModel)]="objPersona.per_nom" name="per_nom" placeholder="">
+                            <label for="" class="col-md-3">EMAIL:</label>
+                            <input type="text" class="form-control col-md-9 list-group-item list-group-item-action" required
+                                [(ngModel)]="ObjOrdenes.t_usuarios.usu_email"
+                                value="{{ObjOrdenes.t_usuarios[0].usu_email}}" name="usu_email" disabled>
+
                         </div>
                         <div class="form-group">
-                            <label for="">Apellido:</label>
-                            <input type="text" class="form-control" required [(ngModel)]="objPersona.per_ape" name="per_ape" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Email:</label>
-                            <input type="text" class="form-control" required [(ngModel)]="objUsuario.usu_email" name="usu_nom" placeholder="Ejm: Computadora,Television,etc">
+                            <label for="" class="col-md-3">DIRECCIÓN:</label>
+                            <input type="text" class="form-control col-md-9 list-group-item list-group-item-action" required [(ngModel)]="ObjOrdenes.per_dir"
+                                name="per_dir" disabled>
                         </div>
                         <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                                <label for=""  class="col-md-5">ESTADO:</label>
+                                <input type="text" required class="form-control col-md-6 list-group-item list-group-item-action"
+                                     value="{{ObjOrdenes.t_usuarios[0].t_ordens[0].orde_estado}}" name="per_nom" disabled>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="" class="col-md-5">FECHA:</label>
+                                <input type="text" class="form-control col-md-7 list-group-item list-group-item-action" required  value="{{ObjOrdenes.t_usuarios[0].t_ordens[0].orde_fecha}}"
+                                    name="per_cel" disabled>
+                            </div>
+                        </div>
+                        <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle2">DETALLES</h5>
+                        <div class="animated slideIn">
+                            <!-- <div *ngIf="UsuOrdenes" class="animated slideInLeft"> -->
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>PRODUCTO</th>
+                                        <th>DETALLES</th>
+                                        <th>CANT.</th>
+                                        <th>PRECIO</th>
+                                        <!-- <th>Tipo</th>
+                                        <th>Dirección</th>
+                                        <th>Celular</th>-->
+                                       
+                                        <th>TOTAL</th>
+                                    </tr>
+                           
+                                </thead>
+                                <tbody>
+                
+                                    <!-- <tr *ngFor="let ord of UsuOrdenesDet"> -->
+                                        <tr>
+                                        <!-- <tr *ngFor="let ord of UsuOrdenes"> -->
+                
+                                        <td>{{ObjOrdenes.t_usuarios[0].t_ordens[0].t_ordendetalles[0].pro_id}}</td>
+                                        <td>{{ObjOrdenes.t_usuarios[0].t_ordens[0].t_ordendetalles[0].t_producto.pro_nom}}</td>
+                                        <td>{{ObjOrdenes.t_usuarios[0].t_ordens[0].t_ordendetalles[0].t_producto.pro_det}}</td>
+                                        <td>{{ObjOrdenes.t_usuarios[0].t_ordens[0].t_ordendetalles[0].odet_cant}}</td>
+                                        <td>{{ObjOrdenes.t_usuarios[0].t_ordens[0].t_ordendetalles[0].odet_prec}}</td>
+                                       <td>{{ObjOrdenes.t_usuarios[0].t_ordens[0].orde_total}}</td>
+                                     
+                                        <!-- <td>{{ord.t_ordens[0].orde_estado}}</td> -->
+                                        <!-- <td>{{ord.t_ordens[0].t_ordendetalles[0].odet_prec}}</td>  -->
+                                        <!-- <td>{{ord.}}</td>
+                                        <td>{{ord.}}</td>
+                                        <td>{{ord.}}</td>
+                                        <td>{{ord.}}</td> -->
+                                        <!-- <td class="pass">{{usu.usu_hash}}</td> -->
+                                        <!-- <td>
+                                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(ord.per_id)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td> -->
+                                        <!-- <td style="display: flex;">
+                                            <button class="btn btn-danger" (click)="eliminarUsuario(usu.usu_id)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                
+                                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(usu.usu_id)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td> -->
+                                    </tr>
+                                    <tr>
+                                        <!-- <td> IMAGEN:</td> -->
+                                       <td colspan="6"><img src={{ObjOrdenes.t_usuarios[0].t_ordens[0].t_ordendetalles[0].t_producto.pro_img}} style="width: 400px" class="card-img-top" alt="..." ></td></tr>
+                                    <tr>
+                                        <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle2">TOTAL: {{ObjOrdenes.t_usuarios[0].t_ordens[0].orde_total}}</h5>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <div class="form-row">
                             <div class="col-md-6 form-group">
                                 <label for="">Tipo:</label>
                                 <select name="tipo" class="form-control" required [(ngModel)]="objUsuario.usu_tipo">
@@ -129,7 +211,8 @@
                                 <label for="">Telefono:</label>
                                 <input type="text" class="form-control" required [(ngModel)]="objPersona.per_cel" name="per_CEL" placeholder="">
                             </div>
-                        </div>
+                        </div>   -->
+
                     </form>
                 </div>
             </div>
@@ -137,7 +220,7 @@
                 <div class="div-flex">
                     <button type="submit" class="btn btn-success" [disabled]="!formularios.valid" (click)="Guardar()">
                         <i class="far fa-save"></i>
-                        Guardar
+                        Realizar Venta
                     </button>
                     <br>
                     <button type="submit" class="btn ml-2 btn-danger" (click)="Cancelar()">
@@ -147,43 +230,60 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 
 <div class="container">
     <div>
-        <div class="alert alert-success text-center" role="alert" *ngIf="!ordenes">
+        <div class="alert alert-success text-center" role="alert" *ngIf="!UsuOrdenes">
             <h4 class="alert-heading">Cargando..</h4>
             <p>
                 <i class="fa fa-refresh fa-3x fa-spin" aria-hidden="true"></i>
             </p>
         </div>
-        <div *ngIf="ordenes" class="animated slideInLeft">
+        <div class="row">
+            <div class="input-group-prepend">
+                <h2> <label class="input-group-text" for="inputGroupSelect01">LISTA DE ORDENES</label></h2>
+            </div>
+
+        </div>
+        <div *ngIf="UsuOrdenes" class="animated slideInLeft">
             <table class="table">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Email</th>
-                        <th>Tipo</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <!-- <th>Tipo</th>
                         <th>Dirección</th>
-                        <th>Celular</th>
-                        <th>Estados</th>
+                        <th>Celular</th>-->
+                        <th>Detalles</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let ord of ordenes">
-                        <td>{{ord.usu_id}}</td>
-                        <td>{{ord.usu_email}}</td>
-                        <td>{{ord.t_ordens[0].orde_estado}}</td>
-                        <td>{{ord.t_ordens[0].t_ordendetalles[0].odet_prec}}</td>
+
+                    <tr *ngFor="let ord of UsuOrdenesDet">
+                        <!-- <tr *ngFor="let ord of UsuOrdenes"> -->
+
+                        <td>{{ord.t_usuarios[0].t_ordens[0].orde_id}}</td>
+                        <td>{{ord.per_nom}} {{ord.per_ape}}</td>
+                        <td>{{ord.t_usuarios[0].t_ordens[0].orde_fecha}}</td>
+                        <td>{{ord.t_usuarios[0].t_ordens[0].orde_estado}}</td>
+
+                        <!-- <td>{{ord.t_ordens[0].orde_estado}}</td> -->
+                        <!-- <td>{{ord.t_ordens[0].t_ordendetalles[0].odet_prec}}</td>  -->
                         <!-- <td>{{ord.}}</td>
                         <td>{{ord.}}</td>
                         <td>{{ord.}}</td>
                         <td>{{ord.}}</td> -->
                         <!-- <td class="pass">{{usu.usu_hash}}</td> -->
+                        <td>
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(ord.per_id)">
+                                <i class="fas fa-book-reader"></i>
+                            </button>
+                        </td>
                         <td style="display: flex;">
                             <button class="btn btn-danger" (click)="eliminarUsuario(usu.usu_id)">
                                 <i class="fas fa-trash"></i>
@@ -192,13 +292,16 @@
                             <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(usu.usu_id)">
                                 <i class="fas fa-edit"></i>
                             </button>
+                            <button class="btn btn-secondary ml-2" (click)="abrirModalEditar(usu.usu_id)">
+                                <i class="far fa-credit-card"></i>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <button class="btn btn-dark btnCrear animated tada infinite slow" (click)="AbrirModalCrearUsuario()">
-                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-            </button>
+            <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+        </button>
     </div>
 </div>
