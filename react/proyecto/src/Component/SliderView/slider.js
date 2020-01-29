@@ -12,7 +12,7 @@ export default class Banner extends Component {
     const settings = {
       dots: true,
       infinite: false,
-      speed: 500,
+      speed: 1000,
       autoplay: true,
       slidesToShow: 1,
       slidesToScroll: 1
