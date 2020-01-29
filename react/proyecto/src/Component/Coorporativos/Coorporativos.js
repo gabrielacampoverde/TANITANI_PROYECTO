@@ -39,15 +39,13 @@ export default class Coorporativos extends Component {
                      todo un éxito.</p>
                         <br></br>
                         <p>Para mayor información llamar al 080-56455588-555</p>
-                        <button className="BotonCoor" onClick={activaForm} href="formulario">
-                        <a href="formulario">
+                        <a className="BotonCoor" href="formulario">
                               Contactanos</a>
-                           </button>
                      </div>
 
                   </div>
                   <div className="img-content">
-                     <img src={baseUrl + "/rose.jpg"} />
+                     <img src={baseUrl + "/background.jpg"} />
                      <div className="bg-transparent"></div>
                   </div>
                </div>
