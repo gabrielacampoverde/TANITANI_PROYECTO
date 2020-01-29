@@ -100,7 +100,13 @@ export default class Detalle extends Component {
 
                                     </div>
                                     <div className="cont-btn">
-                                        <Link id="button-detalle" to={{pathname:`/carritoDeCompras`}}>
+                                        <Link id="button-detalle" to={{pathname:`/carritoDeCompras`, proProps:{
+                                                                            name: this.props.location.proProps.name,
+                                                                            img: this.props.location.proProps.img,
+                                                                            precio: this.props.location.proProps.precio,
+                                                                            det: this.props.location.proProps.det,
+                                                                            categoria: this.props.location.proProps.categoria
+                                                                        } }}>
                                             Añadir al carrito
                                         </Link>
                                         <div className="icons">

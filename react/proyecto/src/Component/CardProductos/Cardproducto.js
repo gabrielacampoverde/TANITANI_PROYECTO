@@ -47,9 +47,16 @@ const Cardproducto = (props) => {
                                                                             categoria: m.cat_id
                                                                         } 
                                                                         }}><i className="icon-eye1"></i></Link>
-                                                                    <a href="#" className="item">
+                                                                    <Link href="compra" className="item" to={{pathname:`/compra`,
+                                                                        proProps:{
+                                                                            name: producto.pro_nom,
+                                                                            img: producto.pro_img,
+                                                                            precio: producto.pro_prec,
+                                                                            det: producto.pro_det,
+                                                                            categoria: m.cat_id
+                                                                        } }}>
                                                                         <i className="icon-shopping-cart"></i>
-                                                                    </a>
+                                                                        </Link>
                                                                 </div>
                                                             </div>
                                                         </div>

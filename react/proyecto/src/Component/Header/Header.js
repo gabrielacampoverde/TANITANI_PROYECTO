@@ -37,7 +37,7 @@ export default class Header extends Component {
                                 </div>
                             </div>
                             <div className="logo">
-                                <a href=""><img src={logo} /></a>
+                                <NavLink className="nav-link" to={"/"}><img src={logo} /></NavLink>
                             </div>
                             <div className="icons">
                                 <div className="cont-icons">

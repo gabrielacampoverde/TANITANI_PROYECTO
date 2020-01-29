@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {baseUrl} from "./../../config";
-
+import { NavLink } from "react-router-dom";
 export default class Footer extends Component {
   render() {
     return (
@@ -14,7 +14,7 @@ export default class Footer extends Component {
                 </div>
                 <div className="item-footer">
                     <ul>
-                        <li><a href="">CONTÁCTANOS</a></li>
+                        <li><NavLink className="nav-link" to={"/formulario"}>CONTÁCTANOS</NavLink></li>
                         <li><a href="">FORMAS DE PAGO</a></li>
                         <li><a href="">ORDEN DE PEDIDO</a></li>
                     </ul>
