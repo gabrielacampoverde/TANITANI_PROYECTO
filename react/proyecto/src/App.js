@@ -79,7 +79,7 @@ export default class componentName extends Component {
             <Route exact path="/compra" component={Compra}></Route>
             <Route exact path="/registro" component={Registro}></Route>
             <Route exact path="/login" component={Login}></Route>
-            <Route exact path="/detalle" component={Detalle}></Route>
+            <Route exact path="/detalle:userId" component={Detalle}></Route>
             <Route exact path="/especiales" component={Especiales}></Route>
             <Route exact path="/aniversarios" component={Aniversarios}></Route>
             <Route exact path="/cumpleaños" component={Cumple}></Route>

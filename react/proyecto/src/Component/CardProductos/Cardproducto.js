@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { baseUrl } from "./../../config";
 import { URL_BACKEND } from '../../environments/environments';
 import logo from "./../../logo.png"
+import { Link } from "react-router-dom";
 const Cardproducto = (props) => {
 
     let llamarAlPadre = (e) => {
@@ -19,7 +20,7 @@ const Cardproducto = (props) => {
                                             {producto.t_categoriaproductos.map((m, indice) => {
                                                 console.log(props.num);
                                                 
-                                                if (m.cat_id === props.num) {
+                                                if (m.cat_id === props.num && indice <3) {
                                                     return (<div className="product-item card">
                                                         <div className="cont-card">
                                                             <div className="product-image">
@@ -36,9 +37,16 @@ const Cardproducto = (props) => {
                                                                     <a href="#" className="item">
                                                                         <i className="icon-heart"></i>
                                                                     </a>
-                                                                    <a href="#" className="item">
-                                                                        <i className="icon-magnifier"></i>
-                                                                    </a>
+                                                                    <Link className="item" to={{
+                                                                        pathname:`/detalle:${producto.pro_id}`,
+                                                                        proProps:{
+                                                                            name: producto.pro_nom,
+                                                                            img: producto.pro_img,
+                                                                            precio: producto.pro_prec,
+                                                                            det: producto.pro_det,
+                                                                            categoria: m.cat_id
+                                                                        } 
+                                                                        }}><i className="icon-magnifier"></i></Link>
                                                                     <a href="#" className="item">
                                                                         <i className="icon-shopping-cart"></i>
                                                                     </a>
