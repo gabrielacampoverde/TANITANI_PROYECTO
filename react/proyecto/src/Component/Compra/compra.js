@@ -7,8 +7,10 @@ import { NavLink } from "react-router-dom";
 export default class Compra extends Component {
   render() {
     return (
+        <main>
+            <div className="cont-form">
       <div> 
-        <div>
+        <div className="container">
         <table className="lista">
         <tr>
             <td><img src={baseUrl + "/compra-img/check.png"} height='90px' width="90px" id="img3"/></td>
@@ -211,6 +213,8 @@ export default class Compra extends Component {
     <br/> </div>
         
          </div>
+         </div>
+         </main>
     );
   }
 }

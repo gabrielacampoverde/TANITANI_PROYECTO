@@ -46,7 +46,7 @@ const Cardproducto = (props) => {
                                                                             det: producto.pro_det,
                                                                             categoria: m.cat_id
                                                                         } 
-                                                                        }}><i className="icon-magnifier"></i></Link>
+                                                                        }}><i className="icon-eye1"></i></Link>
                                                                     <a href="#" className="item">
                                                                         <i className="icon-shopping-cart"></i>
                                                                     </a>

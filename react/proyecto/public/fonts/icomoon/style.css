@@ -22,40 +22,36 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-social-facebook:before {
+.icon-eye1:before {
     content: "\e900";
 }
 
-.icon-instagram:before {
+.icon-eye:before {
+    content: "\e9ce";
+}
+
+.icon-social-facebook:before {
     content: "\e901";
 }
 
-.icon-shopping-cart:before {
+.icon-instagram:before {
     content: "\e902";
 }
 
-.icon-heart:before {
+.icon-shopping-cart:before {
     content: "\e903";
 }
 
-.icon-user:before {
+.icon-heart:before {
     content: "\e904";
 }
 
+.icon-user:before {
+    content: "\e905";
+}
+
 .icon-search:before {
-    content: "\e905";
-}
-
-.icon-find:before {
-    content: "\e905";
-}
-
-.icon-lookup:before {
-    content: "\e905";
-}
-
-.icon-magnifier:before {
-    content: "\e905";
+    content: "\e906";
 }
 
 .icon-whatsapp:before {

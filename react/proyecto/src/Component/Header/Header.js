@@ -43,10 +43,10 @@ export default class Header extends Component {
                                 <div className="cont-icons">
                                     <ul>
                                         <li>
-                                            <NavLink className="nav-link" to={"/loginYregistro"}><i className="icon-user"></i></NavLink>
+                                            <NavLink className="nav-link" to={"/registro"}><i className="icon-user"></i></NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to={"/compra"}>
+                                            <NavLink className="nav-link" to={"/"}>
                                             <i className="icon-heart"></i></NavLink>
                                         </li>
                                         <li>

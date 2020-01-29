@@ -3,8 +3,9 @@ import { baseUrl } from "./../../config";
 import NumericInput from 'react-numeric-input';
 import logo from "./../../logo.png"
 import ProductosRelacionados from '../ProductosRelacionados/ProductosRelacionados';
-import Cardproducto from '../CardProductos/Cardproducto'
+import Cardproducto from '../CardProductos/Cardproducto';
 import { URL_BACKEND } from '../../environments/environments';
+import { Link } from "react-router-dom";
 export default class Detalle extends Component {
     constructor(props) {
         super(props);
@@ -49,31 +50,66 @@ export default class Detalle extends Component {
                             <div className="caption">
                                 <div>
                                     <h1>{this.props.location.proProps.name}</h1>
-                                    <h2>{this.props.location.proProps.precio}</h2>
+                                    <h2>S/. {this.props.location.proProps.precio}</h2>
                                     <p>{this.props.location.proProps.det}</p>
                                     <div className="colores">
                                         <h3>Color</h3>
-                                        <input type="radio" name="color" value="male" /> rojo
-                                    <input type="radio" name="color" value="female" /> amarillo
-                                    <input type="radio" name="color" value="other" /> verde
-                                </div>
+                                        <ul class="colors">
+                                            <li class="c-red">
+                                                <div class="checkbox-field">
+                                                    <input type="radio" name="colors" value="color1" id="color1" />
+                                                    <label class="checkbox-mask-container" for="color1">
+                                                        <span class="checkbox-box"></span>
+                                                        <span class="checked"></span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="c-orange">
+                                                <div class="checkbox-field">
+                                                    <input type="radio" name="colors" value="color2" id="color2" />
+                                                    <label class="checkbox-mask-container" for="color2">
+                                                        <span class="checkbox-box"></span>
+                                                        <span class="checked"></span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="c-purple">
+                                                <div class="checkbox-field">
+                                                    <input type="radio" name="colors" value="color3" id="color3" />
+                                                    <label class="checkbox-mask-container" for="color3">
+                                                        <span class="checkbox-box"></span>
+                                                        <span class="checked"></span>
+                                                    </label>
+                                                </div>
 
-                                <div className="quantity">
-                                    <NumericInput className="contador" min={0} max={100} value={50} />
+                                            </li>
+                                            <li class="c-yellow">
+                                                <div class="checkbox-field">
+                                                    <input type="radio" name="colors" value="color4" id="color4" />
+                                                    <label class="checkbox-mask-container" for="color4">
+                                                        <span class="checkbox-box"></span>
+                                                        <span class="checked"></span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                </div>
-                                <div className="cont-btn">
-                                    <button id="button-detalle">
-                                        Añadir al carrito
-                                </button>
-                                    <div className="icons">
-                                        <a href="#" className="item">
-                                            <i className="icon-heart"></i>
-                                        </a>
+                                    <div className="quantity">
+                                        <NumericInput className="contador" min={0} max={100} value={50} />
 
                                     </div>
+                                    <div className="cont-btn">
+                                        <Link id="button-detalle" to={{pathname:`/carritoDeCompras`}}>
+                                            Añadir al carrito
+                                        </Link>
+                                        <div className="icons">
+                                            <a href="#" className="item">
+                                                <i className="icon-heart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
 
                             </div>

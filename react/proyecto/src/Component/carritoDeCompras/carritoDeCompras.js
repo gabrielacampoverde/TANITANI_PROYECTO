@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { baseUrl } from "../../config";
 import compra from './../Compra/compra';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default class carritoDeCompras extends Component {
    render() {
      return (
- <div> 
+       <main>
+          <div> 
     <div className="container">
-        <h1>HOLA</h1>
-        <h2>hola</h2>
     
 <table className="tabla">
  <tr>
@@ -79,14 +78,14 @@ export default class carritoDeCompras extends Component {
 </table>
 <br/>
 <button id="button">
-   <a href="compra">
-     COMPRAR</a>
+   <Link href="compra" to={{pathname:`/compra`}}>
+     COMPRAR</Link>
 </button>
 	</div>
     <br/>
 <br/>
 </div>
-
+</main>
 );
    }
 }
