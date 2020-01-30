@@ -72,8 +72,8 @@
 </div> -->
 <!-- Modificar Datos Usuarios -->
 
-<div class="modal fade" id="modalDetalle" tabindex="-1" role="dialog" >
-    <div class="modal-dialog" role="document">
+<div class="modal fade " id="modalDetalle" tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle2">ORDEN {{ObjOrdenes.t_usuarios[0].t_ordens[0].orde_id}} </h5>
@@ -233,7 +233,7 @@
 </div>
 
 <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-info title-popup" id="exampleModalCenterTitle2">ORDEN {{ObjOrdenes.t_usuarios[0].t_ordens[0].orde_id}} </h5>
@@ -381,7 +381,7 @@
                 <div class="div-flex">
                     <button type="submit" class="btn btn-success" [disabled]="!formularios.valid" (click)="Guardar()">
                         <i class="far fa-save"></i>
-                        Realizar Venta
+                        Guardar Cambios
                     </button>
                     <br>
                     <button type="submit" class="btn ml-2 btn-danger" (click)="Cancelar()">
