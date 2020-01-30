@@ -174,7 +174,7 @@ export default class Compra extends Component {
             <td><b> PRECIO TOTAL.</b></td>
         </tr>
         <tr>
-            <td><img src={this.props.location.proProps.img} height='130px' width="130px" id="img2"/></td>
+            {/* <td><img src={this.props.location.proProps.img} height='130px' width="130px" id="img2"/></td> */}
             <td> <br/> {this.props.location.proProps.name}</td>
             <td> <br/> {this.props.location.proProps.det}</td>
             <td>M</td>
