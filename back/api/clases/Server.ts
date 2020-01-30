@@ -2,7 +2,7 @@ import { conexion } from './../configuracion/sequelize';
 import express, { Request, Response } from 'express';
 let bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
-
+let nodemailer = require('nodemailer');
 import * as swaggerDocument from './../apidocs/documentacion.json';
 
 
@@ -11,10 +11,21 @@ import { metodoPago_router } from '../rutas/metodoPago';
 import { categoria_router } from '../rutas/categoria';
 import {producto_router} from '../rutas/producto';
 import {usuario_router} from '../rutas/Usuario';
-import {ordenDetalle_router} from '../rutas/ordenDetalle'
+import {ordenDetalle_router} from '../rutas/ordenDetalle';
 import { compras_router } from '../rutas/compras';
+import { request } from 'http';
 
 // const cors=require('cors');
+
+let transportador = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+      // pones el correo que enviara el email
+      user: "gabriela.campoverde@gmail.com  ",
+      //pones la contraseña del email
+      pass: "gabych2401"
+  }
+});
 
 export class Server {
   public app: express.Application;
@@ -78,7 +89,23 @@ export class Server {
     this.app.use('/api', usuario_router);
     this.app.use('/api', ordenDetalle_router);
     this.app.use('/api', compras_router);
-    
+    this.app.post('/correo' ,(req:Request, res:Response )=>{
+      let email = {
+        from:'gabriela.campoverde@gmail.com',
+        to:req.body.email,
+        subject:"Solicitud Nueva",
+        text:`Ha llegado una nueva solicitud de TaniTani de: ${req.body.nombre} con los datos ${req.body.email}, ${req.body.telefono}, ${req.body.ciudad}, ${req.body.mensaje}`
+      }
+
+      transportador.sendMail(email, (error:any, info:any)=>{
+        if(error){
+          console.log(error)
+        }else{
+          console.log("exito");
+          res.status(200).send("Correo Enviados")
+        }
+      })
+    })
   }
 
   start() {
