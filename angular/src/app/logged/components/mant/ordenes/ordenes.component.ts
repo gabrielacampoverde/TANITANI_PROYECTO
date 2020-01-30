@@ -32,12 +32,26 @@ export class OrdenesComponent implements OnInit,OnDestroy {
     cat_id:''
   }
 
+  // NewPersonas = {
+  //   pro_id: '',
+  //   per_nom: '',
+  //   per_cel:'',
+  //   pro_prec: '',
+  //   pro_est: '',
+  //   t_usuarios:'',
+  //   pro_det: '',
+  //   pro_img: '',
+  //   pro_desc: '',
+  //   pro_stock: '',
+  //   cat_id:''
+  // }
   ordenesSeleccionadas: Array<any> = [];
   constructor(private _sOrdenes: OrdenesService, private _sRouter: Router) { }
 
   ngOnInit() {
     this.traerOrdenes();
     this.traerOrdenesDet();
+    
   }
 
   traerOrdenesDet() {
@@ -56,6 +70,11 @@ export class OrdenesComponent implements OnInit,OnDestroy {
       console.log("final",this.UsuOrdenes);
     });
   }
+
+
+
+
+
   traerOrdenes() {
     this.susbscriptor = this._sOrdenes.getOrdenes().subscribe((resultado) => {
       console.log("res",resultado)
@@ -73,7 +92,77 @@ export class OrdenesComponent implements OnInit,OnDestroy {
     });
   }
 
+  crearUsuarioPersona()
+  {
+    //   Swal.fire({
+    //   title: 'Espere un momento',
+    //   text: 'Estamos guardando el Usuario',
+    //   allowOutsideClick: false,
+    //   showConfirmButton: false
+    // })
+    // let objUnion = {
+    //   usuario: this.objNewUsuario,
+    //   persona:this.objNewPersona
+    // }
+    
+    // this.subscripcion = this._sUsuarios.postUsuario(objUnion)
+    //   .subscribe((rpta) => {
+        
+    //     if (rpta.content.usu_id) {
+    //       // si tiene un campo id asignado, implica que el objeto fue creado
+    //       Swal.fire({
+    //         title: 'Éxito!',
+    //         text: 'El Usuario se ha creado exitosamente!',
+    //         confirmButtonText: 'Ir a Usuario',
+    //         allowOutsideClick: false
+    //       }).then((result) => {
+    //         if (result.value) {
+    //           this.traerUsuarios();
 
+    //         }
+    //       })
+
+    //     }
+    //   })
+    //   this.objNewUsuario=
+    //   {
+    //     usu_email:'',
+    //     usu_pass:'',
+    //     usu_tipo:''
+    //   };
+    //   this.objNewPersona=
+    //   {
+    //     per_nom: '',
+    //     per_ape: '',
+    //     per_dir: '',
+    //     per_cel: '',
+    //     per_est: '',
+          
+    //   }
+    $("#modalCrear").modal("hide");  
+  }
+
+  AbrirModalCrearUsuario() {
+    $("#modalCrear").modal("show");
+    
+  }
+
+  abrirModalDetalle(id) {
+    this._sOrdenes.getOrdenById(id).subscribe((rpta) => {
+
+      if (rpta.content[0].per_id) {
+        this.ObjOrdenes = rpta.content[0];
+        console.log("modal",this.ObjOrdenes);
+        console.log("nombre",this.ObjOrdenes.per_nom);
+        console.log("modal",this.ObjOrdenes.t_usuarios[0]);
+        
+        // this.objPersona = rpta.content[0].t_persona
+        // console.log(this.objPersona);
+        
+        $("#modalDetalle").modal("show");
+      }
+    })
+  }
   abrirModalEditar(id) {
     this._sOrdenes.getOrdenById(id).subscribe((rpta) => {
 
@@ -90,7 +179,6 @@ export class OrdenesComponent implements OnInit,OnDestroy {
       }
     })
   }
-
   ngOnDestroy() {
     this.susbscriptor.unsubscribe();
   }

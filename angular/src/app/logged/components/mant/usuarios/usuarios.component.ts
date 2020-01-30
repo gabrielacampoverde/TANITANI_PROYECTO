@@ -121,9 +121,11 @@ export class UsuariosComponent implements OnInit,OnDestroy {
         per_est: '',
           
       }
-    $("#modalCrear").modal("hide");
-    
+    $("#modalCrear").modal("hide");  
   }
+
+
+
   Cancelar() {
     $("#modalEditar").modal("hide");
     $("#modalCrear").modal("hide");
