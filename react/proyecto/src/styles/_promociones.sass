@@ -8,7 +8,6 @@
         font-weight: normal
         font-size: 2rem
 .sectionProductos
-    background-image: url(/img/floresyyo.jpg)
     background-repeat: no-repeat
     background-attachment: fixed
     padding: 3rem 0
@@ -19,7 +18,7 @@
         .product-list
             display: flex
             flex-wrap: wrap
-            padding: 0 1.5rem
+            padding: 2.5rem 1.5rem 0
 
             .product-item 
                 width: calc((100% / 3) - 2rem)
@@ -49,7 +48,7 @@
                             transition: all .5s ease
                             padding-bottom: 30px
                             .icons
-                                bottom: 0
+                                bottom: 0%
 
                 
                 .product-image
@@ -81,6 +80,8 @@
                             display: flex
                             justify-content: center
                             margin: 1rem 0
+                            background: $white
+                            transition: 1s all
                             a.item
                                 border: 1px solid $red
                                 width: 40px
@@ -130,3 +131,10 @@
                         background-color: #C20018
                         color: white
                         padding-top: 0.3rem 
+
+.img-hover
+    img
+        transition: all .35s ease;
+    &:hover
+        img
+            transform: scale3d(1.15, 1.15, 1)

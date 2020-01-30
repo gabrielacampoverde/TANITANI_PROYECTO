@@ -7,8 +7,10 @@ import { NavLink } from "react-router-dom";
 export default class Compra extends Component {
   render() {
     return (
+        <main>
+            <div className="cont-form">
       <div> 
-        <div>
+        <div className="container">
         <table className="lista">
         <tr>
             <td><img src={baseUrl + "/compra-img/check.png"} height='90px' width="90px" id="img3"/></td>
@@ -172,13 +174,13 @@ export default class Compra extends Component {
             <td><b> PRECIO TOTAL.</b></td>
         </tr>
         <tr>
-            <td><img src={baseUrl + "/compra-img/vacaFlores.png"} height='130px' width="130px" id="img2"/></td>
-            <td> <br/> Arreglo de rosas <br/> con peluche </td>
-            <td> <br/> Rosas rojas con <br/> peluche vaquita</td>
+            <td><img src={this.props.location.proProps.img} height='130px' width="130px" id="img2"/></td>
+            <td> <br/> {this.props.location.proProps.name}</td>
+            <td> <br/> {this.props.location.proProps.det}</td>
             <td>M</td>
-            <td style={{textAlign: 'center'}}>S/.89.90</td>
+            <td style={{textAlign: 'center'}}>S/. {this.props.location.proProps.precio}</td>
             <td style={{textAlign: 'center'}}>0</td>
-            <td style={{textAlign: 'center'}}>S/.89.90</td>
+            <td style={{textAlign: 'center'}}>S/. {this.props.location.proProps.precio}</td>
         </tr>
         <tr>
             <td><img src={baseUrl + "/compra-img/globoPincesa.png"} height='130px' width="130px" id="img2"/></td>
@@ -211,6 +213,8 @@ export default class Compra extends Component {
     <br/> </div>
         
          </div>
+         </div>
+         </main>
     );
   }
 }

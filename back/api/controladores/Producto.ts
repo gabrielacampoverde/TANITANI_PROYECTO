@@ -101,7 +101,11 @@ export let crearProductoCategoria = (req: Request, res: Response) => {
     })
 };
 export let getProductos=(req:Request,res:Response)=>{
-    Producto.findAll().then((objProductos:any)=>{
+    Producto.findAll({
+        include:[{
+            model: CategoriaProducto
+        }]
+    }).then((objProductos:any)=>{
         res.status(200).json({
             message:'Ok',
             Producto:objProductos

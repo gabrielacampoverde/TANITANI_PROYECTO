@@ -12,6 +12,8 @@ export default class AuthService {
     cargarToken() {
         if (localStorage.getItem("token")) {
             this.token = localStorage.getItem("token");
+
+
         }
     }
 
@@ -28,6 +30,9 @@ export default class AuthService {
         };
         console.log("cont", contenido)
         let rpta = await axios.post(`${URL_BACKEND}/api/usuario/loggin`, contenido, { headers: misHeaders });
+        console.log("loggin");
+
+        console.log(rpta);
 
         return rpta;
     }

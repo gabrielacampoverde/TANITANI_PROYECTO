@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { baseUrl } from "../../config";
 import compra from './../Compra/compra';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default class carritoDeCompras extends Component {
    render() {
      return (
- <div> 
+       <main>
+          <div> 
     <div className="container">
-        <h1>HOLA</h1>
-        <h2>hola</h2>
     
 <table className="tabla">
  <tr>
@@ -29,16 +28,16 @@ export default class carritoDeCompras extends Component {
      <br/>
   <tr>
 
-    <td> <img src={baseUrl + "/compra-img/vacaFlores.png"} height='140px' width="140px"/> </td>
+    <td> <img src={this.props.location.proProps.img} height='140px' width="140px"/> </td>
     
 
-    <td>Arreglo de rosas con peluche</td>
+    <td>{this.props.location.proProps.name}</td>
 
-    <td>S/. 89.90</td>
+    <td>S/. {this.props.location.proProps.precio}</td>
      <td >
          1</td>
 
-    <td>S/. 89.90 </td>
+    <td>S/. {this.props.location.proProps.precio} </td>
 
   </tr>
 <br/>
@@ -79,14 +78,20 @@ export default class carritoDeCompras extends Component {
 </table>
 <br/>
 <button id="button">
-   <a href="compra">
-     COMPRAR</a>
+   <Link href="compra" to={{pathname:`/compra`, proProps:{
+      name: this.props.location.proProps.name,
+      img: this.props.location.proProps.img,
+      precio: this.props.location.proProps.precio,
+      det: this.props.location.proProps.det,
+      categoria: this.props.location.proProps.categoria
+  }}}>
+     COMPRAR</Link>
 </button>
 	</div>
     <br/>
 <br/>
 </div>
-
+</main>
 );
    }
 }

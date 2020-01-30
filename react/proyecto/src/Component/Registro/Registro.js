@@ -26,14 +26,16 @@ const Registro = () => {
                 per_ape: apell,
                 per_dir: dir,
                 per_cel: cel,
+                per_est: '1',
             },
             usuario: {
                 usu_email: email,
+                "usu_tipo": "2",
                 usu_pass: pass
             }
 
         }
-        axios.post(`${URL_BACKEND}/api/usuario`, contenido, {
+        axios.post(`${URL_BACKEND}/api/usuario/crear`, contenido, {
             headers: misHeaders
         }).then(rpta => {
             console.log(rpta.status);

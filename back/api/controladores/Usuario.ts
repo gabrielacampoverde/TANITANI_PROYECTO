@@ -86,7 +86,7 @@ export let iniciarSesion = (req: Request, res: Response) => {
                     token
                 })
             }else{
-                res.status(500).json({
+                res.status(401).json({
                     message:'error',
                     content:'Usuario o contraseña incorrectos.'
                 })
@@ -100,6 +100,7 @@ export let iniciarSesion = (req: Request, res: Response) => {
         }
     })
  }
+ 
  export let deleteUsuario = (req: Request, res: Response) => {
     let { id } = req.params;
     console.log(res);

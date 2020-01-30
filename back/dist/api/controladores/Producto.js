@@ -91,7 +91,11 @@ exports.crearProductoCategoria = (req, res) => {
     });
 };
 exports.getProductos = (req, res) => {
-    sequelize_1.Producto.findAll().then((objProductos) => {
+    sequelize_1.Producto.findAll({
+        include: [{
+                model: sequelize_1.CategoriaProducto
+            }]
+    }).then((objProductos) => {
         res.status(200).json({
             message: 'Ok',
             Producto: objProductos

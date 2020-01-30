@@ -37,16 +37,16 @@ export default class Header extends Component {
                                 </div>
                             </div>
                             <div className="logo">
-                                <a href=""><img src={logo} /></a>
+                                <NavLink className="nav-link" to={"/"}><img src={logo} /></NavLink>
                             </div>
                             <div className="icons">
                                 <div className="cont-icons">
                                     <ul>
                                         <li>
-                                            <NavLink className="nav-link" to={"/loginYregistro"}><i className="icon-user"></i></NavLink>
+                                            <NavLink className="nav-link" to={"/registro"}><i className="icon-user"></i></NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to={"/compra"}>
+                                            <NavLink className="nav-link" to={"/"}>
                                             <i className="icon-heart"></i></NavLink>
                                         </li>
                                         <li>
@@ -66,17 +66,27 @@ export default class Header extends Component {
                                     </li>
                                     <li className="has-submenu"><NavLink className="nav-link" to={"/promociones"}>OCASIONES</NavLink>
                                         <ul className="submenu">
-                                            <li><a href="">Promocion 1</a></li>
-                                            <li><a href="">Promocion 2</a></li>
-                                            <li><a href="">Promocion 3</a></li>
-                                            <li><a href="">Promocion 4</a></li>
+                                            <li>
+                                                <NavLink className="nav-link" to={"/aniversarios"}>ANIVERSARIOS</NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink className="nav-link" to={"/cumpleaños"}>CUMPLEAÑOS</NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink className="nav-link" to={"/inauguraciones"}>INAUGURACIONES</NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink className="nav-link" to={"/nacimientos"}>NACIMIENTOS</NavLink>
+                                            </li>
                                         </ul>
                                     </li>
-                                    <li><a href="">ESPECIALES</a></li>
+                                    <li>
+                                        <NavLink className="nav-link" to={"/especiales"}>ESPECIALES</NavLink>
+                                    </li>
                                     <li>
                                         <NavLink className="nav-link" to={"/coorporativos"}>COORPORATIVOS</NavLink>
                                     </li>
-                                    <li><NavLink className="nav-link" to={"/promociones"}>COMPLEMENTOS</NavLink></li>
+                                    <li><NavLink className="nav-link" to={"/complementos"}>COMPLEMENTOS</NavLink></li>
                                     <li><NavLink className="nav-link" to={"/formulario"}>CONTÁCTANOS</NavLink></li>
                                 </ul>
                             </nav>
