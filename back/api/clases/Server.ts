@@ -16,7 +16,7 @@ import { compras_router } from '../rutas/compras';
 import { request } from 'http';
 
 // const cors=require('cors');
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 let transportador = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -90,16 +90,17 @@ export class Server {
     this.app.use('/api', ordenDetalle_router);
     this.app.use('/api', compras_router);
     this.app.post('/correo' ,(req:Request, res:Response )=>{
+      console.log("data",req.body)
       let email = {
         from:'gabriela.campoverde@gmail.com',
-        to:req.body.email,
+        to:'gabriela.campoverde@gmail.com',
         subject:"Solicitud Nueva",
         text:`Ha llegado una nueva solicitud de TaniTani de: ${req.body.nombre} con los datos ${req.body.email}, ${req.body.telefono}, ${req.body.ciudad}, ${req.body.mensaje}`
       }
 
       transportador.sendMail(email, (error:any, info:any)=>{
         if(error){
-          console.log(error)
+          console.log("aqui pasa algo",error)
         }else{
           console.log("exito");
           res.status(200).send("Correo Enviados")

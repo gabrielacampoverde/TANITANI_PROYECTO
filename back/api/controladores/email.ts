@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
+
 let nodemailer = require('nodemailer');
 
 let transportador = nodemailer.createTransport({

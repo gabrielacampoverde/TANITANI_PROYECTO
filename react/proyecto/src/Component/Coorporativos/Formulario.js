@@ -8,16 +8,38 @@ import Swal from 'sweetalert2';
 import toastr from 'toastr';
 
 export default function Formulario() {
-  const { register, handleSubmit, errors } = useForm();
-
-  const onSubmit = data => console.log(data);
-  console.log(errors);
-  
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [ciudad, setCiudad] = useState('');
   const [mensaje, setMensaje] = useState('');
+
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = data => {
+    console.log(data);
+    axios.post(`${URL_BACKEND}/correo`, data, {
+      headers: misHeaders
+    }).then(rpta => {
+      console.log(rpta.status);
+      if (rpta.status === 200) {
+  
+        Swal.fire(
+          "Mensaje Enviado",
+          "Operación Exitosa",
+          "success"
+        )
+      } else {
+        console.log("error al crear");
+  
+      }
+      limpiarCampos();
+    })
+
+  };
+  console.log(errors);
+  
+  
   let contenido = {
     persona: {
         nombre,
@@ -32,23 +54,7 @@ export default function Formulario() {
     "Content-Type": "application/json"
   }
 
-  axios.post(`${URL_BACKEND}/correo`, contenido, {
-    headers: misHeaders
-  }).then(rpta => {
-    console.log(rpta.status);
-    if (rpta.status === 201) {
-
-      Swal.fire(
-        "Usuario Creado",
-        "Operación Exitosa",
-        "success"
-      )
-    } else {
-      console.log("error al crear");
-
-    }
-    limpiarCampos();
-  })
+  
 
   const limpiarCampos = () => {
     setNombre('');
@@ -91,7 +97,7 @@ export default function Formulario() {
           <br />
           <label>Sabado y Domingo: 10:00 am a 1:00 pm </label>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="subContainer2" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <span className="asterisco">* </span><label className="label1">Nombre y Apellido: </label>
             <input className='form-control'
@@ -163,4 +169,3 @@ export default function Formulario() {
     </main>
   );
 }
-

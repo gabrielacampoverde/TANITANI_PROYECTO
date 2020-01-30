@@ -14,6 +14,7 @@ const sequelize_1 = require("./../configuracion/sequelize");
 const express_1 = __importDefault(require("express"));
 let bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
+let nodemailer = require('nodemailer');
 const swaggerDocument = __importStar(require("./../apidocs/documentacion.json"));
 const persona_1 = require("../rutas/persona");
 const metodoPago_1 = require("../rutas/metodoPago");
@@ -23,6 +24,16 @@ const Usuario_1 = require("../rutas/Usuario");
 const ordenDetalle_1 = require("../rutas/ordenDetalle");
 const compras_1 = require("../rutas/compras");
 // const cors=require('cors');
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+let transportador = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        // pones el correo que enviara el email
+        user: "gabriela.campoverde@gmail.com  ",
+        //pones la contraseña del email
+        pass: "gabych2401"
+    }
+});
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -76,6 +87,24 @@ class Server {
         this.app.use('/api', Usuario_1.usuario_router);
         this.app.use('/api', ordenDetalle_1.ordenDetalle_router);
         this.app.use('/api', compras_1.compras_router);
+        this.app.post('/correo', (req, res) => {
+            console.log("data", req.body);
+            let email = {
+                from: 'gabriela.campoverde@gmail.com',
+                to: 'gabriela.campoverde@gmail.com',
+                subject: "Solicitud Nueva",
+                text: `Ha llegado una nueva solicitud de TaniTani de: ${req.body.nombre} con los datos ${req.body.email}, ${req.body.telefono}, ${req.body.ciudad}, ${req.body.mensaje}`
+            };
+            transportador.sendMail(email, (error, info) => {
+                if (error) {
+                    console.log("aqui pasa algo", error);
+                }
+                else {
+                    console.log("exito");
+                    res.status(200).send("Correo Enviados");
+                }
+            });
+        });
     }
     start() {
         this.app.listen(this.puerto, () => {
